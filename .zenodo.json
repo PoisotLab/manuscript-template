@@ -12,5 +12,6 @@
       "orcid": "0000-0002-0735-5184"
     }
   ],
-  "decription": "This is the abstract of the manuscript"
+  "decription": "This is the abstract of the manuscript",
+  "keywords": ["ecological networks", "simulated annealing"]
 }
