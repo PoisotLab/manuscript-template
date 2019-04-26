@@ -20,7 +20,7 @@ script:
   - python build.py
 
 after_script:
-  - rm -r barlock
+  - yes | rm -r barlock
   - rm build.py
   - rm -r templates
   - rm install.sh
