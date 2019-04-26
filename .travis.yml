@@ -1,0 +1,4 @@
+language: r
+
+script:
+  pandoc manuscript.md
