@@ -1,7 +1,4 @@
-# Introduction
-
-This is the introduction of the manuscript. Let's see what happens. Probably not
-much at first.
+# The model
 
 This is a citation: @HampAnde15.
 
