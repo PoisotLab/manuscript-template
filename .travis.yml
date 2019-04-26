@@ -8,22 +8,13 @@ git:
 
 before_install:
   - git clone https://github.com/tpoisot/barlock.git
-  - cp barlock/install.sh .
-  - chmod u+x install.sh
-  - cp barlock/build.py .
-  - cp -r barlock/templates .
+  - chmod u+x barlock/boostrap.sh
 
 install:
-  - ./install.sh
+  - ./barlock/bootstrap.sh
 
 script:
-  - python build.py
-
-after_script:
-  - yes | rm -r barlock
-  - rm build.py
-  - rm -r templates
-  - rm install.sh
+  - python barlock/build.py
 
 deploy:
   provider: pages
