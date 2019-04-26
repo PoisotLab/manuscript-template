@@ -1,5 +1,5 @@
 {
-  "title": "A test of the manuscript system",
+  "title": "Some notes on population dynamics",
   "upload_type": "preprint",
   "access_right": "open",
   "license": "CC-BY",
@@ -12,6 +12,6 @@
       "orcid": "0000-0002-0735-5184"
     }
   ],
-  "decription": "This is the abstract of the manuscript",
-  "keywords": ["ecological networks", "simulated annealing"]
+  "decription": "This document is intended purely as a demo for the manuscript building system.",
+  "keywords": ["population dynamics", "differential equations", "community ecology"]
 }
