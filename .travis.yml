@@ -1,5 +1,5 @@
 dist: xenial
-language: bash
+language: python
 sudo: false
 git:
   quiet: true
