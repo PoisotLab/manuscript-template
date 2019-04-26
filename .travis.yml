@@ -1,5 +1,7 @@
 dist: xenial
 language: python
+python:
+  - "3.6"
 sudo: false
 git:
   quiet: true
@@ -12,7 +14,9 @@ before_install:
   - sudo apt-get install pandoc -y
   - sudo apt-get install pandoc-citeproc -y
   - git clone https://github.com/tpoisot/barlock.git
-  - chmod u+x barlock/install.sh
+
+install:
+  pip install -r barlock/requirements.txt
 
 script:
   - ./barlock/install.sh
