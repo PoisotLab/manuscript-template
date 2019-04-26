@@ -8,6 +8,6 @@ This is a citation @HampAnde15.
 
 This is an equation
 
-$$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \text{log}(p)}\right)$$
+$$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \text{log}(p)\right)$$
 
 # References
