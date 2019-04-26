@@ -1,4 +1,12 @@
-language: r
+sudo: false
+git:
+  quiet: true
 
-script:
-  pandoc manuscript.md
+addons:
+  apt:
+    update: true
+
+before_install:
+  - sudo apt-get install pandoc -y
+  - sudo apt-get install pandoc-citeproc -y
+  - git clone https://github.com/tpoisot/barlock.git
