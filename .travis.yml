@@ -1,4 +1,5 @@
 dist: xenial
+language: generic
 sudo: false
 git:
   quiet: true
