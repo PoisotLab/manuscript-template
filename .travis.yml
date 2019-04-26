@@ -1,3 +1,4 @@
+dist: xenial
 sudo: false
 git:
   quiet: true
@@ -10,3 +11,7 @@ before_install:
   - sudo apt-get install pandoc -y
   - sudo apt-get install pandoc-citeproc -y
   - git clone https://github.com/tpoisot/barlock.git
+  - chmod u+x barlock/install.sh
+
+script:
+  - ./barlock/install.sh
