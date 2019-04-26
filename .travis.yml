@@ -14,9 +14,10 @@ before_install:
   - sudo apt-get install pandoc -y
   - sudo apt-get install pandoc-citeproc -y
   - git clone https://github.com/tpoisot/barlock.git
+  - cp barlock/build.py .
 
 install:
-  pip install -r barlock/requirements.txt
+  - pip install -r barlock/requirements.txt
 
 script:
-  - ./barlock/install.sh
+  - python build.py
