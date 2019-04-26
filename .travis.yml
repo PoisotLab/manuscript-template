@@ -15,7 +15,6 @@ before_install:
 
 install:
   - ./install.sh
-  - pip install -r barlock/requirements.txt
 
 script:
   - python build.py
