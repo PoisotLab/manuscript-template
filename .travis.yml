@@ -16,6 +16,9 @@ install:
 script:
   - python barlock/build.py
 
+before_deploy:
+   - rm -r barlock/
+
 deploy:
   provider: pages
   skip_cleanup: true
