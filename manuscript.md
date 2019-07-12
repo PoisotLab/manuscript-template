@@ -4,7 +4,7 @@ This is a citation: @HampAnde15.
 
 # Methods
 
-There is an equation is {@eq:eq1}.
+There is an equation, which we can cite with {@eq:eq1}.
 
 $$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \text{log}(p)\right)$$ {#eq:eq1}
 
