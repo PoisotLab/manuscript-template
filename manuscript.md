@@ -1,6 +1,14 @@
 # The model
 
-This is a citation: @HampAnde15.
+This is a citation: @HampAnde15 -- we can also have citations in brackets
+[@HampAnde15].
+
+## Lists
+
+1. one fish
+2. two fish
+3. red fish
+4. blue fish
 
 # Methods
 
