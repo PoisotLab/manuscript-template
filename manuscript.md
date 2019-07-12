@@ -16,6 +16,12 @@ We can do tables:
 | -------- | --------:|
 | c1       |       c2 |
 
+# Figures
+
+![This is the legend of the figure](figures/biomes.png){#fig:biomes}
+
+We can refer to @fig:biomes.
+
 # Code?
 
 Yes
