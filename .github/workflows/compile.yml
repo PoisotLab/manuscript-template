@@ -1,16 +1,31 @@
 name: Compile the document
 
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   convert_via_pandoc:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: maxheld83/pandoc@v2
-        with:
-          args: "--standalone output/article.html manuscript.md"
-      - uses: actions/upload-artifact@master
+      - name: Install TinyTeX
+        run: wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
+      - name: Get LaTeX packages
+        run: |
+          tlmgr install xcolor
+          tlmgr install mdwtools
+          tlmgr install amsfonts
+      - name: Download pandoc
+        run: |
+          wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
+          sudo dpkg -i pandoc-2.7.3-1-amd64.deb
+          rm pandoc-2.7.3-1-amd64.deb
+      - name: Build the document
+        run: pandoc manuscript.md -o output/manuscript.html
+      - name: Save artifacts
+        uses: actions/upload-artifact@master
         with:
           name: output
           path: output
