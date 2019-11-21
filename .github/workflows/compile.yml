@@ -23,5 +23,5 @@ jobs:
       - name: Save artifacts
         uses: actions/upload-artifact@master
         with:
-          name: output
-          path: output
+          name: dist
+          path: dist
