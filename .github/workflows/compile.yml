@@ -6,19 +6,20 @@ on:
       - master
 
 jobs:
-  convert_via_pandoc:
+  dependencies:
+    name: Dependencies
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Install TinyTeX
-        run: wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
       - name: Download pandoc
         run: |
           wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
           sudo dpkg -i pandoc-2.7.3-1-amd64.deb
           rm pandoc-2.7.3-1-amd64.deb
+      - name: Prepare the output
+        run: mkdir -p dist
       - name: Build the document
-        run: pandoc manuscript.md -o output/manuscript.html
+        run: pandoc manuscript.md -o dist/manuscript.html
       - name: Save artifacts
         uses: actions/upload-artifact@master
         with:
