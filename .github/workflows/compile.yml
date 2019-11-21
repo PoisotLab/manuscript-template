@@ -12,11 +12,6 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install TinyTeX
         run: wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
-      - name: Get LaTeX packages
-        run: |
-          tlmgr install xcolor
-          tlmgr install mdwtools
-          tlmgr install amsfonts
       - name: Download pandoc
         run: |
           wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
