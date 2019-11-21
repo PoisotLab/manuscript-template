@@ -1,0 +1,16 @@
+name: Compile the document
+
+on: push
+
+jobs:
+  convert_via_pandoc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: maxheld83/pandoc@v2
+        with:
+          args: "--standalone output/article.html manuscript.md"
+      - uses: actions/upload-artifact@master
+        with:
+          name: output
+          path: output
