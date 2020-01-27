@@ -33,9 +33,14 @@ jobs:
       - name: Prepare the output
         run: mkdir -p dist
       - name: Build the document
-        run: pandoc manuscript.md -o dist/manuscript.html --filter pandoc-xnos --bibliography=references.json
+        run: pandoc manuscript.md -o dist/index.html --filter pandoc-xnos --bibliography=references.json
       - name: Save artifacts
         uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
+      - name: "GitHub Pages deployment"
+        uses: maxheld83/ghpages@v0.2.1
+        env:
+          BUILD_DIR: "dist/"
+          GH_PAT: ${{ secrets.ACCESS_TOKEN }}
