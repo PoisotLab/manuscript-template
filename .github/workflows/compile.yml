@@ -35,7 +35,7 @@ jobs:
       - name: Build the website
         run: pandoc manuscript.md -o dist/index.html --filter pandoc-xnos --bibliography=references.json
       - name: Build the tex file
-        run: pandoc manuscript.md -o dist/manuscript.tex --filter pandoc-xnos --bibliography=references.json
+        run: pandoc manuscript.md -s -o dist/manuscript.tex --filter pandoc-xnos --bibliography=references.json
       - name: Build the pdf file
         uses: xu-cheng/latex-action@master
         with:
