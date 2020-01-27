@@ -23,6 +23,14 @@ jobs:
           wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
           sudo dpkg -i pandoc-2.7.3-1-amd64.deb
           rm pandoc-2.7.3-1-amd64.deb
+      - name: Download and install TinyTeX
+        run: |
+          wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
+      - name: Get LaTeX packages
+        run: |
+          tlmgr install xcolor
+          tlmgr install mdwtools
+          tlmgr install amsfonts
       - name: Install python filters
         run: |
           python -m pip install --upgrade pip
@@ -32,8 +40,10 @@ jobs:
           pip install pandoc-secnos
       - name: Prepare the output
         run: mkdir -p dist
-      - name: Build the document
+      - name: Build the website
         run: pandoc manuscript.md -o dist/index.html --filter pandoc-xnos --bibliography=references.json
+      - name: Build the PDF
+        run: pandoc manuscript.md -o dist/manuscript.pdf --filter pandoc-xnos --bibliography=references.json
       - name: Save artifacts
         uses: actions/upload-artifact@master
         with:
