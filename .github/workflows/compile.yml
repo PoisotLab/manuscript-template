@@ -18,15 +18,22 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Download pandoc
+      - name: Download and install pandoc
         run: |
           wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
           sudo dpkg -i pandoc-2.7.3-1-amd64.deb
           rm pandoc-2.7.3-1-amd64.deb
+      - name: Install python filters
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandoc-fignos
+          pip install pandoc-eqnos
+          pip install pandoc-tablenos
+          pip install pandoc-secnos
       - name: Prepare the output
         run: mkdir -p dist
       - name: Build the document
-        run: pandoc manuscript.md -o dist/manuscript.html --bibliography=references.json
+        run: pandoc manuscript.md -o dist/manuscript.html --filter pandoc-xnos --bibliography=references.json
       - name: Save artifacts
         uses: actions/upload-artifact@master
         with:
