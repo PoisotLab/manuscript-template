@@ -30,6 +30,9 @@ jobs:
           pip install pandoc-eqnos
           pip install pandoc-tablenos
           pip install pandoc-secnos
+      - name: Copy the figures
+        run: |
+          cp figures dist/
       - name: Prepare the output
         run: mkdir -p dist
       - name: Build the website
