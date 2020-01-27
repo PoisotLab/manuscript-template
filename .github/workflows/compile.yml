@@ -9,8 +9,15 @@ jobs:
   dependencies:
     name: Dependencies
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - name: Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Download pandoc
         run: |
           wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
