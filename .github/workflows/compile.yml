@@ -32,7 +32,7 @@ jobs:
           pip install pandoc-secnos
       - name: Copy the figures
         run: |
-          cp figures dist/
+          cp -r figures dist/
       - name: Prepare the output
         run: mkdir -p dist
       - name: Build the website
