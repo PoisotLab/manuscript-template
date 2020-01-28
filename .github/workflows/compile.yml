@@ -45,7 +45,7 @@ jobs:
         with:
           working_directory: dist
           root_file: manuscript.tex
-          args: "-f"
+          args: "-f -interaction=nonstopmode"
       - name: Save artifacts
         if: always()
         uses: actions/upload-artifact@master
