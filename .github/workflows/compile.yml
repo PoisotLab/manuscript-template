@@ -44,6 +44,7 @@ jobs:
         with:
           working_directory: dist
           root_file: manuscript.tex
+          args: "-f"
       - name: Save artifacts
         uses: actions/upload-artifact@master
         with:
