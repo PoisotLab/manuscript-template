@@ -50,7 +50,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: dist
+          name: compiled_manuscript
           path: dist
       - name: "GitHub Pages deployment"
         if: always()
