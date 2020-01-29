@@ -18,6 +18,10 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Set variables
+        shell: bash
+        run: |
+          echo ::set-env name=repo_name::$(cat echo ${{ github.repository }} | cut -d/ -f2)
       - name: Download and install pandoc
         run: |
           wget https://github.com/jgm/pandoc/releases/download/2.9.1.1/pandoc-2.9.1.1-1-amd64.deb
@@ -50,7 +54,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: $(cat echo ${{ github.repository }} | cut -d/ -f2)
+          name: env['repo_name']
           path: dist
       - name: "GitHub Pages deployment"
         if: always()
