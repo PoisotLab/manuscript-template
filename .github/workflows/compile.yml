@@ -44,10 +44,6 @@ jobs:
           mv master.zip barlock.zip
           unzip barlock.zip
           mv barlock-master barlock
-      - name: ls
-        run: ls
-      - name: tree
-        run: tree
       - name: Build the website
         run: pandoc manuscript.md -o dist/index.html --filter pandoc-xnos --bibliography=references.json --template=barlock/templates/index.html
       - name: Build the tex file
