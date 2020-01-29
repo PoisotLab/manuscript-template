@@ -48,7 +48,7 @@ jobs:
         uses: xu-cheng/latex-action@master
         with:
           working_directory: dist
-          root_file: manuscript.tex
+          root_file: ${{ env.repo_name }}.tex
           args: "-f -interaction=nonstopmode -pdf"
       - name: Save artifacts
         if: always()
