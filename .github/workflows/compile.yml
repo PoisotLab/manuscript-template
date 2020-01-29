@@ -50,7 +50,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: ${{ env.GITHUB_REPOSITORY }}
+          name: ${{ github.repository }}
           path: dist
       - name: "GitHub Pages deployment"
         if: always()
