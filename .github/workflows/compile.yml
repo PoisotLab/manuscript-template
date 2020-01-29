@@ -49,12 +49,12 @@ jobs:
         with:
           working_directory: dist
           root_file: manuscript.tex
-          args: "-f -interaction=nonstopmode"
+          args: "-f -interaction=nonstopmode -pdf"
       - name: Save artifacts
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: env['repo_name']
+          name: ${{ env.repo_name }}
           path: dist
       - name: "GitHub Pages deployment"
         if: always()
