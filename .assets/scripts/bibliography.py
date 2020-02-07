@@ -6,7 +6,7 @@ with open("references.json") as jsfile:
     references = json.load(jsfile)
 
 # Fields to remove
-fields = ["source", "abstract", "language", "accessed", "container-title-short", "title-short", "ISSN"]
+fields = ["source", "abstract", "language", "accessed", "container-title-short", "title-short", "ISSN", "call-number", "number-of-pages", "ISBN", "note"]
 for reference in references:
     for field in fields:
         reference.pop(field, None)
