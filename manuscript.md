@@ -28,7 +28,7 @@ We can do tables:
 
 ![This is the legend of the figure](figures/biomes.png){#fig:biomes}
 
-We can refer to @fig:biomes.
+We can refer to +@fig:biomes.
 
 # Code?
 
