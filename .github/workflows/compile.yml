@@ -37,6 +37,7 @@ jobs:
         run: |
           mkdir -p dist
           cp -r figures dist/
+          cp references.json dist/
       - name: Build the website
         run: pandoc manuscript.md -o dist/index.html --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json
       - name: Build the tex file
