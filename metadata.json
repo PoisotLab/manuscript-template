@@ -1,12 +1,10 @@
 {
   "title": "Some notes on population dynamics",
-  "upload_type": "preprint",
-  "access_right": "open",
   "license": "CC-BY",
   "language": "en",
   "creators": [
     {
-      "affiliation": "Université de Montréal; QCBS",
+      "affiliations": ["Université de Montréal", "Québec Centre for Biodiversity Sciences"],
       "familyname": "Poisot",
       "givennames": "Timothée",
       "orcid": "0000-0002-0735-5184"
