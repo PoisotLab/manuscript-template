@@ -30,10 +30,9 @@ jobs:
       - name: Install python filters
         run: |
           python -m pip install --upgrade pip
-          pip install pandoc-fignos
-          pip install pandoc-eqnos
-          pip install pandoc-tablenos
-          pip install pandoc-secnos
+          pip install -r .assets/requirements.txt
+      - name: Cleanup the bibliography
+        run: python .assets/scripts/bibliography.py
       - name: Prepare the output
         run: |
           mkdir -p dist

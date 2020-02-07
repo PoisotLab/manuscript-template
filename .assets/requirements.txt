@@ -1,0 +1,4 @@
+pandoc-eqnos
+pandoc-fignos
+pandoc-tablenos
+pandoc-secnos
