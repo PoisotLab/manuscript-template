@@ -49,7 +49,7 @@ jobs:
         with:
           working_directory: dist
           root_file: ${{ env.repo_name }}.tex
-          args: "-f -interaction=nonstopmode -pdflatex='xelatex %O %S'"
+          args: "-f -interaction=nonstopmode -pdf"
       - name: Cleanup after PDF build
         uses: xu-cheng/latex-action@master
         with:
