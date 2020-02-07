@@ -18,6 +18,10 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Set variables
+        shell: bash
+        run: |
+          echo ::set-env name=repo_name::$(echo ${{ github.repository }} | cut -d/ -f2)
       - name: Download and install pandoc
         run: |
           wget https://github.com/jgm/pandoc/releases/download/2.9.1.1/pandoc-2.9.1.1-1-amd64.deb
@@ -30,26 +34,36 @@ jobs:
           pip install pandoc-eqnos
           pip install pandoc-tablenos
           pip install pandoc-secnos
-      - name: Copy the figures
-        run: |
-          cp figures dist/
       - name: Prepare the output
-        run: mkdir -p dist
+        run: |
+          mkdir -p dist
+          cp -r figures dist/
       - name: Build the website
         run: pandoc manuscript.md -o dist/index.html --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json
       - name: Build the tex file
-        run: pandoc manuscript.md -s -o dist/manuscript.tex --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json
+        run: pandoc manuscript.md -s -o dist/${{ env.repo_name }}.tex --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json
+      - name: File check
+        run: ls -lah dist/
       - name: Build the pdf file
         uses: xu-cheng/latex-action@master
         with:
           working_directory: dist
-          root_file: manuscript.tex
+          root_file: ${{ env.repo_name }}.tex
+          args: "-f -interaction=nonstopmode -pdf"
+      - name: Cleanup after PDF build
+        uses: xu-cheng/latex-action@master
+        with:
+          working_directory: dist
+          root_file: ${{ env.repo_name }}.tex
+          args: "-c"
       - name: Save artifacts
+        if: always()
         uses: actions/upload-artifact@master
         with:
-          name: dist
+          name: ${{ env.repo_name }}
           path: dist
       - name: "GitHub Pages deployment"
+        if: always()
         uses: maxheld83/ghpages@v0.2.1
         env:
           BUILD_DIR: "dist/"
