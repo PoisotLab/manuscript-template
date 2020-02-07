@@ -41,7 +41,7 @@ jobs:
       - name: Build the website
         run: pandoc manuscript.md -o dist/index.html --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json
       - name: Build the tex file
-        run: pandoc manuscript.md -s -o dist/${{ env.repo_name }}.tex --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json
+        run: pandoc manuscript.md -s -o dist/${{ env.repo_name }}.tex --filte pandoc-xnos --bibliography=references.json --metadata-file=metadata.json --template=.assets/templates/copyedit.tex
       - name: File check
         run: ls -lah dist/
       - name: Build the pdf file
