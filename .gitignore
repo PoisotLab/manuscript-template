@@ -1,1 +1,5 @@
 dist/
+*.log
+*synctex*
+references.json
+affiliations.json
