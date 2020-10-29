@@ -1,41 +1,29 @@
 <!DOCTYPE html>
-<html lang="$language$" dir="ltr">
+<html lang="${ language }" dir="ltr">
 
 <head>
     <meta charset="utf-8">
-    <title>$title$</title>
+    <title>${ title }</title>
     <script src="https://hypothes.is/embed.js" async></script>
-    <!--fonts-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
         integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:300,300i,400,400i,600,600i&display=swap&subset=greek"
-        rel="stylesheet">
-    <link rel="stylesheet/less" type="test/css" href="./assets/style.less">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
     <header>
         <section class="container">
-            <h1>$title$</h1>
-            <section class="creators">
-                $for(creators)$
-                <div class="creator">
-                    <div class="author">$creators.givennames$ $creators.familyname$</div>
-                    <div class="affiliation">$creators.affiliation$</div>
-                    <div class="orcid">$creators.orcid$</div>
+            <h1>${ title }</h1>
+            <section class="authors">
+                ${ for(authors)}
+                <div class="author">
+                    <div class="name">${ it.givennames } ${ it.familyname }</div>
+                    <!-- <div class="affiliation">$authors.affiliation$</div> -->
+                    <div class="orcid">${ it.orcid }</div>
                 </div>
-                $endfor$
+                ${ endfor }
             </section>
             <summary>
-                $description$
-                <!--<div class="keywords">-->
-                <!--$for(keywords)$-->
-                <!--<span class="keyword">$keywords$</span>-->
-                <!--$endfor$-->
-                <!--</div>-->
+                ${ description }
             </summary>
         </section>
     </header>
@@ -50,7 +38,7 @@
     </nav>
 
     <article class="container">
-        $body$
+        ${ body }
     </article>
 
 </body>
