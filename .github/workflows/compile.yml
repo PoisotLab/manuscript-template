@@ -51,7 +51,7 @@ jobs:
           cp -r figures dist/
           cp references.json dist/
       - name: Build the website
-        run: pandoc manuscript.md -o dist/index.html -F pandoc-crossref --citeproc --katex --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --metadata filename=${{ env.repo_name }} --template=.assets/templates/index.html
+        run: pandoc manuscript.md -o dist/index.html -F pandoc-crossref --citeproc --mathjax --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --metadata filename=${{ env.repo_name }} --template=.assets/templates/index.html
       - name: Build the tex file
         run: pandoc manuscript.md -s -o dist/${{ env.repo_name }}.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/copyedit.tex
       - name: File check
