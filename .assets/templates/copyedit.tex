@@ -35,44 +35,30 @@ ${ endif }
 
 {\small
 ${ for(authors) }
-\textsc{${ it.givennames }\,${ it.familyname }}\~%
+\textbf{${ it.givennames }\,${ it.familyname }}\~%
 (${ for(it.affilcode) }${ it.affilcode}{ sep },${ endfor }${ if(it.email) },*${ endif})\\
 ${ endfor }
 }
 
 {\small
-$for(institutions)$
-($institutions.id$)\,$institutions.name$\\
-$endfor$
-$for(authors)$
-$if(authors.email)$
-(*)\,\texttt{$authors.email$}\\
-$endif$
-$endfor$
+${ for(institutions) }
+(${ it.id })\,\emph{${ it.name }\\
+${ endfor }
+${ for(authors) }
+${ if(it.email) }
+(*)\,\texttt{${ it.email }}\\
+${ endif }
+${ endfor }
 }
 
-$if(toc)$
-\tableofcontents
-$endif$
-
-$if(description)$
-\begin{abstract}
-$description$
-\end{abstract}
-$endif$
-
-$if(alignment)$
-\begin{$alignment$}
-$endif$
+${ if(description) }
+\begin{abstract}${ description }\end{abstract}
+${ endif }
 
 \clearpage
 \linenumbers
 \doublespacing
 
-$body$
-
-$if(alignment)$
-\end{$alignment$}
-$endif$
+${ body }
 
 \end{document}
