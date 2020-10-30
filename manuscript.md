@@ -15,7 +15,7 @@ bibliography: references.bib
 
 # Methods
 
-There is an equation, which we can cite with {@eq:eq1}.
+There is an equation, which we can cite with @eq:eq1.
 
 $$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \text{log}(p)\right)$$ {#eq:eq1}
 
@@ -31,7 +31,7 @@ We can do tables:
 
 ![This is the legend of the figure](figures/biomes.png){#fig:biomes}
 
-We can refer to +@fig:biomes.
+We can refer to @fig:biomes.
 
 # Code?
 
