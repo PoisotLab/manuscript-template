@@ -8,3 +8,12 @@
 - Add your references to the `references.bib` file
 - Edit the `metadata.json` file to add the title, abstract, authors
 - Edit the `manuscript.md` file to make changes to your text
+
+## What are things to *not* do?
+
+- Do not add or remove fields in `metadata.json`
+- Do not modify the version numbers in the build matrix of the github workflow
+
+## Can I use this to build the pdf locally?
+
+- Yes, but you're on your own
