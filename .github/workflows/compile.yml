@@ -31,7 +31,7 @@ jobs:
           rm pandoc-${{ matrix.pandoc-version }}-1-amd64.deb
       - name: Get the crossref filter
         run: |
-          wget https://github.com/lierdakil/pandoc-crossref/releases/download/${{ matrix.crossref-version }}/pandoc-crossref-Linux.tar.xz
+          wget https://github.com/lierdakil/pandoc-crossref/releases/download/v${{ matrix.crossref-version }}/pandoc-crossref-Linux.tar.xz
           tar -zs pandoc-crossref-Linux.tar.xz
       - name: Install python filters
         run: |
