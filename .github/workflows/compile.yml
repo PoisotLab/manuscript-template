@@ -32,7 +32,7 @@ jobs:
       - name: Get the crossref filter
         run: |
           wget https://github.com/lierdakil/pandoc-crossref/releases/download/v${{ matrix.crossref-version }}/pandoc-crossref-Linux.tar.xz
-          tar -xs pandoc-crossref-Linux.tar.xz
+          tar -xf pandoc-crossref-Linux.tar.xz
       - name: Install python filters
         run: |
           python -m pip install --upgrade pip
