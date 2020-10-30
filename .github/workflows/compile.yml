@@ -33,7 +33,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r .assets/requirements.txt
       - name: Convert the bib file to json
-        run: pandoc-citeproc -j references.bib > references.json
+        run: pandoc refrences.bib -t csljson -o references.json
       - name: Cleanup the bibliography
         run: python .assets/scripts/bibliography.py
       - name: Cleanup the affiliations
