@@ -43,8 +43,8 @@ ${ endfor }
 {\small
 ${ for(institutions) }
 (${ it.id })\,\emph{${ it.name }\\
-${ endfor }
-${ for(authors) }
+${ endfor }
+$${ for(authors) }
 ${ if(it.email) }
 (*)\,\texttt{${ it.email }}\\
 ${ endif }
