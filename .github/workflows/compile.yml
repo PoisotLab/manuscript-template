@@ -48,7 +48,7 @@ jobs:
       - name: Build the website
         run: pandoc manuscript.md -o dist/index.html --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --metadata filename=${{ env.repo_name }} --template=.assets/templates/index.html
       - name: Build the tex file
-        run: pandoc manuscript.md -s -o dist/${{ env.repo_name }}.tex --filte pandoc-xnos --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/copyedit.tex
+        run: pandoc manuscript.md -s -o dist/${{ env.repo_name }}.tex --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/copyedit.tex
       - name: File check
         run: ls -lah dist/
       - name: Build the pdf file
