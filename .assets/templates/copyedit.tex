@@ -36,7 +36,7 @@ ${ endif }
 {\small
 ${ for(authors) }
 \textbf{${ it.givennames }\,${ it.familyname }}\~%
-(${ for(it.affilcode) }${ it.affilcode}{ sep },${ endfor }${ if(it.email) },*${ endif})\\
+(${ for(it.affilcode) }${ it.affilcode }${ sep },${ endfor }${ if(it.email) },*${ endif })\\
 ${ endfor }
 }
 
