@@ -1,7 +1,10 @@
+---
+bibliography: references.bib
+---
+
 # The model
 
-This is a citation: @HampAnde15 -- we can also have citations in brackets
-[@HampAnde15].
+@Elton1927AniEco
 
 ## Lists
 
