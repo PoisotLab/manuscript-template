@@ -46,19 +46,21 @@
 
 <body>
     <header>
-        <div id="title">${ title }</div>
-        <div id="authors">
-            ${ for(authors)}
-            <span class="author">
-                ${ if(it.orcid) }
-                <a href="https://orcid.org/${ it.orcid }" target="_blank">
+        <div class="container">
+            <div id="title">${ title }</div>
+            <div id="authors">
+                ${ for(authors)}
+                <span class="author">
+                    ${ if(it.orcid) }
+                    <a href="https://orcid.org/${ it.orcid }" target="_blank">
+                        ${ it.givennames } ${ it.familyname }
+                    </a>
+                    ${ else }
                     ${ it.givennames } ${ it.familyname }
-                </a>
-                ${ else }
-                ${ it.givennames } ${ it.familyname }
-                ${ endif }
-            </span>
-            ${ endfor }
+                    ${ endif }
+                </span>
+                ${ endfor }
+            </div>
         </div>
     </header>
 
