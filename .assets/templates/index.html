@@ -61,7 +61,10 @@
             color: white;
         }
         main {
-            margin-top: 4em;
+            margin-top: 8em;
+        }
+        .abstract {
+            color: var(--light);
         }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
@@ -107,10 +110,10 @@
     <main class="container">
         <section class="abstract">
             ${ description }
-            <nav class="artifacts">
-                <a href="$filename$-copyedit.pdf" title="Draft PDF" target="_blank">Draft (PDF)</a>
-                <a href="$filename$-preprint.pdf" title="Preprint PDF" target="_blank">Preprint (PDF)</a>
-            </nav>
+            <div class="artifacts">
+                <a href="$filename$-copyedit.pdf" title="Draft PDF" target="_blank">draft</a>
+                <a href="$filename$-preprint.pdf" title="Preprint PDF" target="_blank">preprint</a>
+            </div>
         </section>
         
         <article>
