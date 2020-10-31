@@ -1,28 +1,16 @@
 %!TEX TS-program = xelatex
-\documentclass[11pt]{scrartcl}
+\documentclass[11pt]{article}
 
 \input{../.assets/templates/_common}
 \input{../.assets/templates/_pandoc}
 
-\geometry{verbose,letterpaper,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=5cm}
-\usepackage{lineno}
+\geometry{verbose,letterpaper,tmargin=2.2cm,bmargin=2.2cm,lmargin=2.2cm,rmargin=5cm}
 
 \pagestyle{plain}
 
-${ if(title) }
-\title{$title$}
-${ endif }
-
-${ if(date)}
-\date{${ date }}
-${ endif }
-
 \begin{document}
 
-
-${ if(title) }
-\maketitle
-${ endif }
+{\Large\bfseries ${ title $}
 
 {\small
 ${ for(authors) }
@@ -32,22 +20,26 @@ ${ sep },
 ${ endfor }
 }
 
-{\small
+{\tiny
 ${ for(institutions) }
-\textsuperscript{${ it.id }}\,${ it.name }\\
+\textsuperscript{${ it.id }}\,${ it.name }
+${ sep }, 
 ${ endfor }
+\\
 ${ for(authors) }
 ${ if(it.email) }
-\textsuperscript{*}\,\,\texttt{${ it.email }}\\
+\textsuperscript{*}\,\,\texttt{${ it.email }}
 ${ endif }
 ${ endfor }
 }
 
+\vskip 2em
+
 ${ if(description) }
-\begin{abstract}${ description }\end{abstract}
+\textbf{Abstract:}\,${ description }
 ${ endif }
 
-\onehalfspacing
+\vskip 2em
 
 ${ body }
 
