@@ -27,6 +27,10 @@
             h1, h2, h3, h4, h5, h6 {
                 font-family: "IBM Plex Sans", sans-serif;
             }
+            nav.artifacts {
+                padding: 10px;
+                text-align: center;
+            }
         </style>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
             integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous" />
@@ -57,7 +61,7 @@
                 <div class="author">
                     <div class="name">
                     ${ if(it.orcid) }
-                        <a href="${ it.orcid }" target="_blank">
+                        <a href="https://orcid.org/${ it.orcid }" target="_blank">
                             ${ it.givennames } ${ it.familyname }
                         </a>
                     ${ else }
@@ -65,11 +69,11 @@
                     ${ endif }
                     ${ if(it.affilcode) }
                         ${ for(it.affilcode) }
-                            <a href="#affil-${ it.affilcode }">${ it.affilcode }</a>
+                            <a href="#affil-${ it.affilcode }" class="affiliation-label">${ it.affilcode }</a>
                             ${ sep },
                         ${ endfor }
                     ${ endif }
-                    </div>span class="aff"
+                    </div>
                 </div>
                 ${ endfor }
             </section>
