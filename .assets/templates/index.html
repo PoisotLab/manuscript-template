@@ -35,6 +35,13 @@
             left: 0;
             border-bottom: 1px solid black;
             width: 100vw;
+            background-color: white;
+        }
+        .header--title {
+            font-weight: 800;
+        }
+        .header--author {
+            color: #333;
         }
         main {
             margin-top: 4em;
@@ -63,10 +70,10 @@
 <body>
     <header>
         <div class="container">
-            <div id="title">${ title }</div>
-            <div id="authors">
+            <div class="header--title">${ title }</div>
+            <div class="header--authors">
                 ${ for(authors)}
-                <span class="author">
+                <span class="header--author">
                     ${ if(it.orcid) }
                     <a href="https://orcid.org/${ it.orcid }" target="_blank">
                         ${ it.givennames } ${ it.familyname }
