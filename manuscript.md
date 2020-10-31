@@ -1,5 +1,5 @@
 ---
-bibliography: references.bib
+bibliography: [references.bib]
 ---
 
 # The model
@@ -46,6 +46,9 @@ preferences as
 ~~~
 [auth:fold][year][title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize][title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]
 ~~~
+
+The citations are done using normal markdown, where `@Elton1927AniEco` produces
+@Elton1927AniEco, and `[@Camerano1880EquViv]` produces [@Camerano1880EquViv].
 
 # Tables
 
