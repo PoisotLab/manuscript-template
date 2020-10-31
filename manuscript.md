@@ -13,15 +13,43 @@ bibliography: references.bib
 3. red fish
 4. blue fish
 
-# Methods
+This template uses recent versions of `pandoc` and `pandoc-crosserf` to
+faciltate the referencing of equations, figures, and tables within the text. For
+example, the following equation
 
-There is an equation, which we can cite with @eq:eq1.
+$$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)$$ {#eq:eq1}
 
-$$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \text{log}(p)\right)$$ {#eq:eq1}
+is produced using
+
+~~~latex
+$$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)$$ {#eq:eq1}
+~~~
+
+and can be referenced using `@eq:eq1`, which will result in @eq:eq1.
+
+# Using references
+
+The references are managed by the `citeproc` filter for `pandoc`. Note that we
+*do not* use `pandoc-citeproc`, which was an external moduler for older `pandoc`
+versions. References *have to* be stored in a `references.bib` file. We use
+[Zotero](https://www.zotero.org/) for references management, and for the lab's
+manuscripts, we work from folders in a shared library (with a folder for every
+manuscript).
+
+
+We use the [Better BibTeX](https://retorque.re/zotero-better-bibtex/) plugin for
+citation key generations, and auto-export of the shared library to the
+`references.bib` file. We use a citation key format meant to convey information
+on the author, date, year, and title. It must be set in the Better BibTeX
+preferences as
+
+~~~
+[auth:fold][year][title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize][title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]
+~~~
 
 # Tables
 
-We can do tables:
+Tables are supported in their normal markdown way:
 
 | Column 1 | Column 2 |
 | -------- | --------:|
@@ -29,18 +57,15 @@ We can do tables:
 
 # Figures
 
+Figures can have a legend -- all figures *must* be in the `figures/` folder of
+the project:
+
+~~~
+![This is the legend of the figure](figures/biomes.png){#fig:biomes}
+~~~
+
 ![This is the legend of the figure](figures/biomes.png){#fig:biomes}
 
-We can refer to @fig:biomes.
-
-# Code?
-
-Yes
-
-~~~ julia
-for i in eachindex(x)
-  x[i] = zero(eltype(x)) # Don't do that
-end
-~~~
+We can now use `@fig:biomes` to refer to @fig:biomes.
 
 # References
