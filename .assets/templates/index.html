@@ -27,14 +27,6 @@
             h1, h2, h3, h4, h5, h6 {
                 font-family: "IBM Plex Sans", sans-serif;
             }
-            header {
-                background: #eee;
-            }
-            nav.artifacts {
-                background: #ddd;
-                padding: 10px;
-                text-align: center;
-            }
         </style>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
             integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous" />
@@ -71,7 +63,7 @@
                     ${ else }
                         ${ it.givennames } ${ it.familyname }
                     ${ endif }
-                    ${ if (it.affilcode )}
+                    ${ if (it.affilcode) }
                         ${ for (it.affilcode) }
                             <a href="#affil-${ it.affilcode }">${ it.affilcode }</a>
                             ${ sep },
@@ -92,8 +84,6 @@
                 src="https://img.shields.io/badge/write-github-blue.svg" /></a>
         <a href="$filename$.pdf" title="Github repo" target="_blank"><img
                 src="https://img.shields.io/badge/read-pdf-green.svg" /></a>
-        <a href="$filename$.docx" title="Github repo" target="_blank"><img
-                src="https://img.shields.io/badge/read-docx-yellow.svg" /></a>
     </nav>
 
     <article class="container">
