@@ -1,28 +1,22 @@
 %!TEX TS-program = xelatex
-\documentclass[11pt]{scrartcl}
+\documentclass[12pt]{article}
 
 \input{../.assets/templates/_common}
 \input{../.assets/templates/_pandoc}
 
 \geometry{verbose,letterpaper,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
 \usepackage{lineno}
+\usepackage{endfloat}
 
 \pagestyle{plain}
 
-${ if(title) }
-\title{$title$}
-${ endif }
-
-${ if(date)}
-\date{${ date }}
-${ endif }
-
 \begin{document}
 
+{\Large\bfseries ${ title }}
+\medksip
+Last revision: \emph{\today}
 
-${ if(title) }
-\maketitle
-${ endif }
+\textbf{Authors:}
 
 {\small
 ${ for(authors) }
@@ -30,6 +24,8 @@ ${ for(authors) }
 (${ for(it.affilcode) }${ it.affilcode }${ sep },${ endfor }${ if(it.email) },*${ endif })\\
 ${ endfor }
 }
+
+\textbf{Affiliations:}
 
 {\small
 ${ for(institutions) }
@@ -42,8 +38,10 @@ ${ endif }
 ${ endfor }
 }
 
+\clearpage
+
 ${ if(description) }
-\begin{abstract}${ description }\end{abstract}
+\textbf{Abstract: }${ description }
 ${ endif }
 
 \clearpage
