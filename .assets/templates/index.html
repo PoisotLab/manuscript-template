@@ -56,15 +56,15 @@
                 ${ for(authors)}
                 <div class="author">
                     <div class="name">
-                    ${ if (it.orcid) }
+                    ${ if(it.orcid) }
                         <a href="${ it.orcid }" target="_blank">
                             ${ it.givennames } ${ it.familyname }
                         </a>
                     ${ else }
                         ${ it.givennames } ${ it.familyname }
                     ${ endif }
-                    ${ if (it.affilcode) }
-                        ${ for (it.affilcode) }
+                    ${ if(it.affilcode) }
+                        ${ for(it.affilcode) }
                             <a href="#affil-${ it.affilcode }">${ it.affilcode }</a>
                             ${ sep },
                         ${ endfor }
