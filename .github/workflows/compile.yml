@@ -14,6 +14,7 @@ jobs:
         python-version: [3.6]
         pandoc-version: [2.11.0.4]
         crossref-version: [0.3.8.3a]
+        pdf-version: [copyedit, preprint]
     steps:
       - uses: actions/checkout@v2
       - name: Python ${{ matrix.python-version }}
@@ -53,20 +54,20 @@ jobs:
       - name: Build the website
         run: pandoc manuscript.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --metadata filename=${{ env.repo_name }} --template=.assets/templates/index.html
       - name: Build the tex file
-        run: pandoc manuscript.md -s -o dist/${{ env.repo_name }}.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/copyedit.tex
+        run: pandoc manuscript.md -s -o dist/${{ env.repo_name }}-${{ matrix.pdf-version }}.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/${{ matrix.pdf-version }}.tex
       - name: File check
         run: ls -lah dist/
       - name: Build the pdf file
         uses: xu-cheng/latex-action@master
         with:
           working_directory: dist
-          root_file: ${{ env.repo_name }}.tex
+          root_file: ${{ env.repo_name }}-${{ matrix.pdf-version }}.tex
           args: "-f -interaction=nonstopmode -pdf"
       - name: Cleanup after PDF build
         uses: xu-cheng/latex-action@master
         with:
           working_directory: dist
-          root_file: ${{ env.repo_name }}.tex
+          root_file: ${{ env.repo_name }}-${{ matrix.pdf-version }}.tex
           args: "-c"
       - name: Save artifacts
         if: always()
