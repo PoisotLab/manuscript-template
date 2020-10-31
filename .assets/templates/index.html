@@ -114,6 +114,15 @@
             ${ body }
         </article>
     </main>
+
+    <footer>
+        <div class="container">
+            <h2>Affiliations</h2> 
+            ${ for(institutions) }
+            <div><sup>${ it.id }</sup> ${ it.name }</div>
+            ${ endfor }
+        </div>
+    </footer>
     
     
 </body>
