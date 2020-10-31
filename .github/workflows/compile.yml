@@ -50,8 +50,6 @@ jobs:
         run: |
           pandoc manuscript.md -s -o dist/${{ env.repo_name }}-copyedit.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/copyedit.tex
           pandoc manuscript.md -s -o dist/${{ env.repo_name }}-preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/preprint.tex
-      - name: File check
-        run: ls -lah dist/
       - name: Build the copyedit pdf file
         uses: xu-cheng/latex-action@master
         with:
