@@ -13,19 +13,25 @@
 \begin{document}
 
 {\Large\bfseries ${ title }}
-\medksip
+\vskip 5em
 Last revision: \emph{\today}
+\vskip 5em
+${ if(description) }
+\textbf{Abstract: }${ description }
+${ endif }
 
-\textbf{Authors:}
+\clearpage
+
+\section{Authors}
 
 {\small
 ${ for(authors) }
-\textbf{${ it.givennames }\,${ it.familyname }}\,%
+${ it.givennames }\,${ it.familyname }\,%
 (${ for(it.affilcode) }${ it.affilcode }${ sep },${ endfor }${ if(it.email) },*${ endif })\\
 ${ endfor }
 }
 
-\textbf{Affiliations:}
+\section{Affiliations}
 
 {\small
 ${ for(institutions) }
@@ -37,12 +43,6 @@ ${ if(it.email) }
 ${ endif }
 ${ endfor }
 }
-
-\clearpage
-
-${ if(description) }
-\textbf{Abstract: }${ description }
-${ endif }
 
 \clearpage
 \linenumbers
