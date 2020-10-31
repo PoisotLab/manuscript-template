@@ -26,18 +26,19 @@ ${ endif }
 
 {\small
 ${ for(authors) }
-\textbf{${ it.givennames }\,${ it.familyname }}\,%
-(${ for(it.affilcode) }${ it.affilcode }${ sep },${ endfor }${ if(it.email) },*${ endif })\\
+${ it.givennames }\,${ it.familyname }\,%
+\textsuperscript{${ for(it.affilcode) }${ it.affilcode }${ sep },${ endfor }${ if(it.email) },*${ endif }}%
+${ sep },
 ${ endfor }
 }
 
 {\small
 ${ for(institutions) }
-(${ it.id })\,\emph{${ it.name }}\\
+\textsuperscript{${ it.id }}\,${ it.name }\\
 ${ endfor }
 ${ for(authors) }
 ${ if(it.email) }
-(*)\,\texttt{${ it.email }}\\
+\textsuperscript{*}\,\,\texttt{${ it.email }}\\
 ${ endif }
 ${ endfor }
 }
@@ -46,9 +47,7 @@ ${ if(description) }
 \begin{abstract}${ description }\end{abstract}
 ${ endif }
 
-\clearpage
-\linenumbers
-\doublespacing
+\onehalfspacing
 
 ${ body }
 
