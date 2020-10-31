@@ -1,12 +1,10 @@
 name: Compile the document
 
 on:
-  push:
-    branches:
-      - master
+  [push, pull_request]
 
 jobs:
-  dependencies:
+  generate:
     name: Build the document
     runs-on: ubuntu-latest
     strategy:
@@ -33,10 +31,6 @@ jobs:
         run: |
           wget https://github.com/lierdakil/pandoc-crossref/releases/download/v${{ matrix.crossref-version }}/pandoc-crossref-Linux.tar.xz
           tar -xf pandoc-crossref-Linux.tar.xz
-      - name: Install python filters
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r .assets/requirements.txt
       - name: Convert the bib file to json
         run: |
           export LANG=en_US.UTF-8
@@ -88,6 +82,26 @@ jobs:
         with:
           name: ${{ env.repo_name }}
           path: dist
+  deploy:
+    name: Deploy gh-pages
+    needs: generate
+    runs-on: ubuntu-latest
+    if: contains(github.ref, "master")
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set variables
+        shell: bash
+        run: |
+          echo ::set-env name=repo_name::$(echo ${{ github.repository }} | cut -d/ -f2)
+      - name: Download dist folder
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ env.repo_name }}
+          path: dist
+      - name: Show files
+        run: |
+          ls -lah
+          ls -lah dist/
       - name: "GitHub Pages deployment"
         if: always()
         uses: maxheld83/ghpages@v0.2.1
