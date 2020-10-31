@@ -16,9 +16,9 @@ $$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)
 
 and can be referenced using `@eq:eq1`, which will result in @eq:eq1.
 
-All documents will be deployed only from the `master` branch - for all other
-branches, and for pull request, they will be built and uploaded as artifacts (so
-you can check the PDFs), but *not* deployed to `gh-pages` for the world to see.
+All documents will be deployed to `gh-pages` *only* on push events from the `master`
+All of the artifacts will be built when doing pull requests, so you can check that
+merging a branch is *not* going to cause the compilation of the documents to fail.
 
 # Using references
 
