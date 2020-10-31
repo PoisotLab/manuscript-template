@@ -26,6 +26,11 @@
             margin: 0 0;
             padding: 0 0;
         }
+        a {
+            text-decoration: none;
+            color: var(--links);
+            font-weight: 600;
+        }
         .container {
             margin: 0em auto;
             max-width: 1000px;
@@ -41,17 +46,17 @@
             position: fixed;
             top: 0;
             left: 0;
-            border-bottom: 1px solid black;
             width: 100vw;
             background-color: var(--structure);
             z-index: 5;
+            color: white;
         }
         .header--title {
             font-weight: 900;
             text-transform: uppercase;
         }
-        .header--author {
-            color: #333;
+        .header--authors > span > a {
+            color: white;
         }
         main {
             margin-top: 4em;
