@@ -2,17 +2,6 @@
 bibliography: [references.bib]
 ---
 
-# The model
-
-@Elton1927AniEco
-
-## Lists
-
-1. one fish
-2. two fish
-3. red fish
-4. blue fish
-
 This template uses recent versions of `pandoc` and `pandoc-crosserf` to
 faciltate the referencing of equations, figures, and tables within the text. For
 example, the following equation
@@ -26,6 +15,10 @@ $$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)
 ~~~
 
 and can be referenced using `@eq:eq1`, which will result in @eq:eq1.
+
+All documents will be deployed only from the `master` branch - for all other
+branches, and for pull request, they will be built and uploaded as artifacts (so
+you can check the PDFs), but *not* deployed to `gh-pages` for the world to see.
 
 # Using references
 
