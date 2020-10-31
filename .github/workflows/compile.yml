@@ -1,7 +1,11 @@
 name: Compile the document
 
 on:
-  [push, pull_request]
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
 
 jobs:
   generate:
