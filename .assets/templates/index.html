@@ -6,84 +6,76 @@
     <title>${ title }</title>
     <script src="https://hypothes.is/embed.js" async></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-            @import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-            body {
-                font-family: "Merriweather", serif;
-                margin: 0 0;
-                padding: 0 0;
-            }
-            .container {
-                margin: 0em auto;
-                max-width: 900px;
-                padding: 1em;
-            }
-            code, pre {
-                font-family: "Cousine", monospace;
-            }
-        </style>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
-            integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous" />
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
-            integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
-            crossorigin="anonymous"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
-            integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
-            crossorigin="anonymous"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                renderMathInElement(document.body, {
-                    delimiters: [
-                        { left: "$$$$", right: "$$$$", display: true },
-                        { left: "$$", right: "$$", display: false }
-                    ]
-                });
+    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        body {
+            font-family: "Open Sans", sans-serif;
+            margin: 0 0;
+            padding: 0 0;
+        }
+        .container {
+            margin: 0em auto;
+            max-width: 900px;
+            padding: 1em;
+        }
+        code, pre {
+            font-family: "Cousine", monospace;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
+    integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
+    integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
+    crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
+    crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                { left: "$$$$", right: "$$$$", display: true },
+                { left: "$$", right: "$$", display: false }
+                ]
             });
-        </script>
+        });
+    </script>
 </head>
 
 <body>
     <header>
-        <section class="container">
-            <h1>${ title }</h1>
-            <section class="authors">
-                ${ for(authors)}
-                <div class="author">
-                    <div class="name">
-                    ${ if(it.orcid) }
-                        <a href="https://orcid.org/${ it.orcid }" target="_blank">
-                            ${ it.givennames } ${ it.familyname }
-                        </a>
-                    ${ else }
-                        ${ it.givennames } ${ it.familyname }
-                    ${ endif }
-                    ${ if(it.affilcode) }
-                        ${ for(it.affilcode) }
-                            <a href="#affil-${ it.affilcode }" class="affiliation-label">${ it.affilcode }</a>
-                            ${ sep },
-                        ${ endfor }
-                    ${ endif }
-                    </div>
-                </div>
-                ${ endfor }
-            </section>
-            <summary>
-                ${ description }
-            </summary>
-        </section>
+        <div id="title">${ title }</div>
+        <div id="authors">
+            ${ for(authors)}
+            <span class="author">
+                ${ if(it.orcid) }
+                <a href="https://orcid.org/${ it.orcid }" target="_blank">
+                    ${ it.givennames } ${ it.familyname }
+                </a>
+                ${ else }
+                ${ it.givennames } ${ it.familyname }
+                ${ endif }
+            </span>
+            ${ endfor }
+        </div>
     </header>
 
-    <nav class="artifacts">
-        <a href="$filename$-copyedit.pdf" title="Draft PDF" target="_blank">Draft (PDF)</a>
-        <a href="$filename$-preprint.pdf" title="Preprint PDF" target="_blank">Preprint (PDF)</a>
-    </nav>
+    <main class="container">
+        <section class="abstract">
+            ${ description }
+            <nav class="artifacts">
+                <a href="$filename$-copyedit.pdf" title="Draft PDF" target="_blank">Draft (PDF)</a>
+                <a href="$filename$-preprint.pdf" title="Preprint PDF" target="_blank">Preprint (PDF)</a>
+            </nav>
+        </section>
+    </main>
 
-    <article class="container">
+    <article>
         ${ body }
     </article>
-
+    
 </body>
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
 
