@@ -81,7 +81,7 @@ jobs:
           name: ${{ env.repo_name }}
           path: dist
   deploy:
-    name: Deploy gh-pages
+    name: Deploy to gh-pages
     needs: generate
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
