@@ -24,25 +24,17 @@ ${ endif }
 
 \section{Authors}
 
-{\small
+${ authors:_list_authors()[\\] }
+
 ${ for(authors) }
-${ it.givennames }\,${ it.familyname }\,%
-(${ for(it.affilcode) }${ it.affilcode }${ sep },${ endfor }${ if(it.email) },*${ endif })\\
+${ if(it.email) }
+\textsuperscript{*}\,\,\texttt{${ it.email }}
+${ endif }
 ${ endfor }
-}
 
 \section{Affiliations}
 
-{\small
-${ for(institutions) }
-(${ it.id })\,\emph{${ it.name }}\\
-${ endfor }
-${ for(authors) }
-${ if(it.email) }
-(*)\,\texttt{${ it.email }}\\
-${ endif }
-${ endfor }
-}
+${ institutions:_list_institutions()[; ] }\\
 
 \clearpage
 \linenumbers
