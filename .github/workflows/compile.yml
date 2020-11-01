@@ -9,7 +9,7 @@ on:
 
 jobs:
   generate:
-    name: Build the document
+    name: Build the sources
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -54,29 +54,41 @@ jobs:
         run: |
           pandoc manuscript.md -s -o dist/${{ env.repo_name }}-copyedit.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/copyedit.tex
           pandoc manuscript.md -s -o dist/${{ env.repo_name }}-preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/preprint.tex
-      - name: Build the copyedit pdf file
-        uses: xu-cheng/latex-action@master
+      - name: Save artifacts
+        if: always()
+        uses: actions/upload-artifact@master
         with:
-          working_directory: dist
-          root_file: ${{ env.repo_name }}-copyedit.tex
-          args: "-f -interaction=nonstopmode -pdf"
+          name: ${{ env.repo_name }}
+          path: dist
+  build:
+    name: Build the PDFs
+    needs: generate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pdf-version: [preprint, copyedit]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set variables
+        shell: bash
+        run: |
+          echo ::set-env name=repo_name::$(echo ${{ github.repository }} | cut -d/ -f2
+      - name: Download dist folder
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ env.repo_name }}
+          path: dist
       - name: Build the preprint pdf file
         uses: xu-cheng/latex-action@master
         with:
           working_directory: dist
-          root_file: ${{ env.repo_name }}-preprint.tex
+          root_file: ${{ env.repo_name }}-${{ matrix.pdf-version }}.tex
           args: "-f -interaction=nonstopmode -pdf"
       - name: Cleanup after PDF build
         uses: xu-cheng/latex-action@master
         with:
           working_directory: dist
-          root_file: ${{ env.repo_name }}-copyedit.tex
-          args: "-c"
-      - name: Cleanup after PDF build
-        uses: xu-cheng/latex-action@master
-        with:
-          working_directory: dist
-          root_file: ${{ env.repo_name }}-preprint.tex
+          root_file: ${{ env.repo_name }}-$ {{ matrix.pdf-version }}.tex
           args: "-c"
       - name: Save artifacts
         if: always()
@@ -86,7 +98,7 @@ jobs:
           path: dist
   deploy:
     name: Deploy to gh-pages
-    needs: generate
+    needs: [generate, build]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
