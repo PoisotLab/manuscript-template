@@ -47,6 +47,7 @@
         }
         .header--authors > span > a {
             color: white;
+            font-size: 90%;
         }
         main {
             padding-top: 8em !important;
