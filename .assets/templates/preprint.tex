@@ -16,16 +16,8 @@ ${ _pandoc() }
 
 {\small
 ${ authors:_list_authors()[, ] }
-}
-
 \vskip 1em
-
-{\small
-${ for(institutions) }
-\textsuperscript{${ it.id }}\,${ it.name }
-${ sep }, 
-${ endfor }
-\\
+${ institutions:_list_institutions()[; ] }\\
 ${ for(authors) }
 ${ if(it.email) }
 \textsuperscript{*}\,\,\texttt{${ it.email }}
