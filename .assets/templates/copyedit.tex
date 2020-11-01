@@ -26,15 +26,17 @@ ${ endif }
 
 ${ authors:_list_authors()[\\] }
 
+\section{Affiliations}
+
+${ institutions:_list_institutions()[\\] }\\
+
+\section{Correspondance}
+
 ${ for(authors) }
 ${ if(it.email) }
 \textsuperscript{*}\,\,\texttt{${ it.email }}
 ${ endif }
 ${ endfor }
-
-\section{Affiliations}
-
-${ institutions:_list_institutions()[; ] }\\
 
 \clearpage
 \linenumbers
