@@ -2,7 +2,7 @@
 bibliography: [references.bib]
 ---
 
-This template uses recent versions of `pandoc` and `pandoc-crosserf` to
+This template uses recent versions of `pandoc` and `pandoc-crossref` to
 faciltate the referencing of equations, figures, and tables within the text. For
 example, the following equation
 
