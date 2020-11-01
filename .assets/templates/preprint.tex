@@ -15,11 +15,7 @@ ${ _pandoc() }
 \vskip 2em
 
 {\small
-${ for(authors) }
-${ it.givennames }\,${ it.familyname }\,%
-\textsuperscript{${ for(it.affilcode) }${ it.affilcode }${ sep },${ endfor }${ if(it.email) },*${ endif }}%
-${ sep },
-${ endfor }
+${ authors:_list_authors()[, ]$
 }
 
 \vskip 1em
