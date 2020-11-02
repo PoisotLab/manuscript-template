@@ -12,6 +12,23 @@
       "givennames": "Timothée",
       "email": "timothee.poisot@umontreal.ca",
       "orcid": "0000-0002-0735-5184"
+    },
+    {
+      "affiliations": [
+        "Inn of the Prancing Pony",
+        "Fellowship of the Ring"
+      ],
+      "familyname": "Took",
+      "givennames": "Peregrin",
+      "email": "timothee.poisot@umontreal.ca"
+    }
+    {
+      "affiliations": [
+        "Green Dragon Inn",
+        "Fellowship of the Ring"
+      ],
+      "familyname": "Brandybuck",
+      "givennames": "Merriadoc"
     }
   ],
   "description": "This template is used by the Poisot lab at Université de Montréal to write manuscripts using github. It uses github actions as a way to generate a website that can be annotated using hypothes.is, a PDF document for copy-editing and submission to journals, and a PDF document for submission to preprint servers. At every push on the master branch, the whole series of documents will get built.",
