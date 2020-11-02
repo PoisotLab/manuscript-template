@@ -65,8 +65,9 @@ footer {
 }
 figure {
     max-width: 100%;
-    margin: 1px solid var(--pale);
+    border: 1px solid var(--pale);
     border-radius: 2px;
+    margin: 1em 0.5em;
 }
 figure > img {
     max-width: 100%;
@@ -76,10 +77,14 @@ figure > img {
 table {
     width: 100%;
     min-width: 100%;
+    border-collapse: collapse;
 }
 thead {
     background-color: var(--structure);
     color: white;
+}
+td, th {
+    padding: 3px;
 }
 tr > th {
     text-align: center !important;
