@@ -47,9 +47,11 @@ The citations are done using normal markdown, where `@Elton1927AniEco` produces
 
 Tables are supported in their normal markdown way:
 
-| Column 1 | Column 2 |
-| -------- | --------:|
-| c1       |       c2 |
+| Column 1 | Column 2 | Column 3 |
+|----------|---------:|:--------:|
+| c1       |       c2 |    c3    |
+| c2       |       c3 |    c4    |
+| c5       |       c6 |    c7    |
 
 # Figures
 

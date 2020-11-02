@@ -1,68 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-        :root {
-            --structure: #1976D2;
-            --links: #00897B;
-            --light: #9E9E9E;
-            --pale: #e0e0e0;
-        }
-        body {
-            font-family: "Nunito", sans-serif;
-            margin: 0 0;
-            padding: 0 0;
-        }
-        a {
-            text-decoration: none;
-            color: var(--links);
-        }
-        a:hover {
-            font-weight: 600;
-        }
-        .container {
-            margin: 0em auto;
-            max-width: 1000px;
-            padding: 1em;
-        }
-        code, pre {
-            font-family: "Cousine", monospace;
-        }
-        pre {
-            white-space: pre-wrap;
-        }
-        h1, h2, h3 {
-            color: var(--structure);
-        }
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            background-color: var(--structure);
-            z-index: 5;
-            color: white;
-        }
-        .header--title {
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        .header--authors > span > a {
-            color: white;
-            font-size: 90%;
-        }
-        main {
-            padding-top: 8em !important;
-            padding-bottom: 8em !important;
-        }
-        footer {
-            background-color: var(--pale);
-        }
-        .abstract {
-            color: var(--light);
-            margin-bottom: 5em;
-        }
-        figure {
-                max-width: 100%;
-        }
-        figure > img {
-               max-width: 100%;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+:root {
+    --structure: #1976D2;
+    --links: #00897B;
+    --light: #9E9E9E;
+    --pale: #e0e0e0;
+
+    --width: 900px;
+    --inner-space: 1.2em;
+}
+body {
+    font-family: "Nunito", sans-serif;
+    margin: 0 0;
+    padding: 0 0;
+}
+a {
+    text-decoration: none;
+    color: var(--links);
+}
+a:hover {
+    font-weight: 600;
+}
+.container {
+    margin: 0em auto;
+    max-width: var(--width);
+    padding: var(--inner-space);
+}
+code, pre {
+    font-family: "Cousine", monospace;
+}
+pre {
+    white-space: pre-wrap;
+}
+h1, h2, h3 {
+    color: var(--structure);
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: var(--structure);
+    z-index: 5;
+    color: white;
+}
+.header--title {
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.header--authors > span > a {
+    color: white;
+    font-size: 90%;
+}
+main {
+    padding-top: 8em !important;
+    padding-bottom: 8em !important;
+}
+footer {
+    background-color: var(--pale);
+}
+.abstract {
+    color: var(--light);
+    margin-bottom: 5em;
+}
+figure {
+    max-width: 100%;
+    margin: 1px solid var(--pale);
+    border-radius: 2px;
+}
+figure > img {
+    max-width: 100%;
+    display: block;
+    margin: 0em auto;
+}
+table {
+    width: 100%;
+    min-width: 100%;
+}
+thead {
+    background-color: var(--structure);
+    color: white;
+}
+tr > th {
+    text-align: center !important;
+}
+tbody > tr:nth-child(even) {background: var(--pale)};
+tbody {
+    border-bottom: 1px solid var(--structure);
+}
