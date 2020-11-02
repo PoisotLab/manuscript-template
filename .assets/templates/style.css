@@ -5,6 +5,7 @@
     --links: #00897B;
     --light: #9E9E9E;
     --pale: #e0e0e0;
+    --citation: #e67e22;
 
     --width: 900px;
     --inner-space: 1.2em;
@@ -20,6 +21,9 @@ a {
 }
 a:hover {
     font-weight: 600;
+}
+.citation {
+    color: var(--citation);
 }
 .container {
     margin: 0em auto;
