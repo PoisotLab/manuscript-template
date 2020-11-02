@@ -74,6 +74,9 @@ figure > img {
     display: block;
     margin: 0em auto;
 }
+figure > figcaption {
+    padding: var(--inner-space);
+}
 table {
     width: 100%;
     min-width: 100%;
