@@ -70,9 +70,7 @@
     <footer>
         <div class="container">
             <h2>Affiliations</h2> 
-            ${ for(institutions) }
-            <div><sup>${ it.id }</sup> ${ it.name }</div>
-            ${ endfor }
+            ${ institutions:_list_institutions()[; ] }
         </div>
     </footer>
     
