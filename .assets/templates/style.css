@@ -100,3 +100,15 @@ tbody > tr:nth-child(even) {background: var(--pale)};
 tbody {
     border-bottom: 1px solid var(--structure);
 }
+#refs {
+    font-size: 90%;
+    column-count: 2;
+}
+#refs > .csl-entry {
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+}
+.hanging-indent > .csl-entry {
+    padding-left: 15px ;
+    text-indent: -15px ;
+}
