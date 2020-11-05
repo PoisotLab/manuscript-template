@@ -64,6 +64,7 @@ jobs:
     name: Build the PDFs
     needs: generate
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       matrix:
         pdf-version: [preprint, copyedit]
