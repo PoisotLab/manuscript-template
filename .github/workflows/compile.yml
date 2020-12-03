@@ -5,7 +5,6 @@ on:
     branches:
       - master
   pull_request:
-    branches:
 
 jobs:
   generate:
@@ -22,10 +21,6 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Set variables
-        shell: bash
-        run: |
-          echo ::set-env name=repo_name::$(echo ${{ github.repository }} | cut -d/ -f2)
       - name: Download and install pandoc
         run: |
           wget https://github.com/jgm/pandoc/releases/download/${{ matrix.pandoc-version }}/pandoc-${{ matrix.pandoc-version }}-1-amd64.deb
@@ -49,16 +44,16 @@ jobs:
           cp -r figures dist/
           cp references.json dist/
       - name: Build the website
-        run: pandoc manuscript.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --metadata filename=${{ env.repo_name }} --template=.assets/templates/index.html
+        run: pandoc manuscript.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/index.html
       - name: Build the tex files
         run: |
-          pandoc manuscript.md -s -o dist/${{ env.repo_name }}-copyedit.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/copyedit.tex
-          pandoc manuscript.md -s -o dist/${{ env.repo_name }}-preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/preprint.tex
+          pandoc manuscript.md -s -o dist/draft.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/copyedit.tex
+          pandoc manuscript.md -s -o dist/preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/preprint.tex
       - name: Save artifacts
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: ${{ env.repo_name }}
+          name: "manuscript"
           path: dist
   build:
     name: Build the PDFs
@@ -67,35 +62,31 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        pdf-version: [preprint, copyedit]
+        pdf-version: [preprint, draft]
     steps:
       - uses: actions/checkout@v2
-      - name: Set variables
-        shell: bash
-        run: |
-          echo ::set-env name=repo_name::$(echo ${{ github.repository }} | cut -d/ -f2)
       - name: Download dist folder
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.repo_name }}
+          name: "manuscript"
           path: dist
       - name: Build the preprint pdf file
         uses: xu-cheng/latex-action@master
         with:
           working_directory: dist
-          root_file: ${{ env.repo_name }}-${{ matrix.pdf-version }}.tex
+          root_file: ${{ matrix.pdf-version }}.tex
           args: "-f -interaction=nonstopmode -pdf"
       - name: Cleanup after PDF build
         uses: xu-cheng/latex-action@master
         with:
           working_directory: dist
-          root_file: ${{ env.repo_name }}-${{ matrix.pdf-version }}.tex
+          root_file: ${{ matrix.pdf-version }}.tex
           args: "-c"
       - name: Save artifacts
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: ${{ env.repo_name }}
+          name: "manuscript"
           path: dist
   deploy:
     name: Deploy to gh-pages
@@ -104,14 +95,10 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
-      - name: Set variables
-        shell: bash
-        run: |
-          echo ::set-env name=repo_name::$(echo ${{ github.repository }} | cut -d/ -f2)
       - name: Download dist folder
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.repo_name }}
+          name: "manuscript"
           path: dist
       - name: "GitHub Pages deployment"
         if: always()
