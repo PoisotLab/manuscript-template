@@ -42,16 +42,23 @@ preferences as
 
 The citations are done using normal markdown, where `@Elton1927AniEco` produces
 @Elton1927AniEco, and `[@Camerano1880EquViv]` produces [@Camerano1880EquViv].
-
 # Tables
 
-Tables are supported in their normal markdown way:
+Table legends go on the line after the table itself. To generate a reference to
+the table, use `{#tbl:id}` -- then, in the text, you can use `{@tbl:id}` to
+refer to the table. For example, the table below is @tbl:id. You can remove the
+*table* in front by using `!@tbl:id`, or force it to be capitalized with
+`\*tbl:id`.
 
-| Column 1 | Column 2 | Column 3 |
-|----------|---------:|:--------:|
-| c1       |       c2 |    c3    |
-| c2       |       c3 |    c4    |
-| c5       |       c6 |    c7    |
+| Sepal.Length | Sepal.Width | Petal.Length | Petal.Width | Species |
+|-------------:|------------:|-------------:|------------:|:--------|
+|          5.1 |         3.5 |          1.4 |         0.2 | setosa  |
+|          5.0 |         3.6 |          1.4 |         0.2 | setosa  |
+|          5.4 |         3.9 |          1.7 |         0.4 | setosa  |
+
+Table: This is a table, and its identifier is `id` -- we can refer to it using
+`{@tbl:id}`. Note that even if the table legend is written below the table
+itself, it will appear on top in the compiled document. {#tbl:id}
 
 # Figures
 
@@ -65,5 +72,25 @@ the project:
 ![This is the legend of the figure](figures/biomes.png){#fig:biomes}
 
 We can now use `@fig:biomes` to refer to @fig:biomes.
+
+# Example text
+
+
+Connectance, defined as the ratio of realized interactions on the total number
+of potential interactions, is one of the most common descriptor of network
+structure. In a bipartite network with $T$ species at the top, and $B$ at the
+bottom, having a total of $L$ interactions, it is defined as $Co = L/(T\times
+B)$. Connectance has a lower bound, as the network cannot have fewer
+interactions that the number of species in its more speciose level -- the
+minimal connectance is therefore $c_m = \text{max}(T,B)$. This makes the
+connectance of networks of different sizes difficult to compare, especially
+since bipartite networks tends to have a low connectance. For this reason, we
+used a corrected version of connectance, defined as
+
+$$Co^\star=\frac{L-c_m}{T\times B-c_m} \,.$${#eq:cstar}
+
+This takes values between 0 (the network has the minimal number of interactions)
+and 1 (all species are connected), but is robust to variations in species
+richness.
 
 # References
