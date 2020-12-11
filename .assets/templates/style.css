@@ -74,6 +74,7 @@ main {
 }
 footer {
     background-color: var(--pale);
+    font-weight: 300;
 }
 .abstract {
     color: var(--light);
