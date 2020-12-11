@@ -1,0 +1,36 @@
+\geometry{verbose,letterpaper,tmargin=2.2cm,bmargin=2.2cm,lmargin=2.2cm,rmargin=5cm}
+
+\usepackage[nooneline]{caption}
+\captionsetup{
+  font={small},
+  labelfont={bf},
+  format=plain,
+  labelsep=quad
+}
+\usepackage{floatrow}
+\floatsetup[figure]{margins=hangright,
+              facing=no,
+              capposition=beside,
+              capbesideposition={center,outside},
+              floatwidth=\textwidth}
+\floatsetup[table]{margins=hangoutside,
+             facing=yes,
+             capposition=beside,
+             capbesideposition={center,outside},
+             floatwidth=\textwidth}
+
+\pagestyle{plain}
+
+\usepackage{titlesec}
+
+\titleformat{\section}[block]
+{\normalfont\large\sffamily}
+{\thesection}{.5em}{\titlerule\\[.8ex]\bfseries}
+
+\titleformat{\subsection}[runin]
+{\normalfont\fontseries{b}\selectfont\filright\sffamily}
+{\thesubsection.}{.5em}{}
+
+
+\titleformat{\subsubsection}[runin]
+{\normalfont\itshape\sffami
