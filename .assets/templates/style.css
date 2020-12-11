@@ -20,7 +20,7 @@ body {
 article > p {
     font-family: "Merriweather", serif;
     padding: 0px 30px;
-    line-height: 125%;
+    line-height: 135%;
 }
 
 a {
@@ -54,6 +54,7 @@ header {
     left: 0;
     width: 100vw;
     background-color: var(--nav);
+    border: 1px solid var(--pale);
     z-index: 5;
     color: black;
 }
@@ -61,9 +62,8 @@ header {
     font-weight: 900;
     text-transform: uppercase;
 }
-.header--authors > span > a {
+.header--authors > span {
     color: var(--light);
-    font-size: 90%;
 }
 main {
     padding-top: 8em !important;
