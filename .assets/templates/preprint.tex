@@ -6,11 +6,17 @@ ${ _pandoc() }
 ${ _preprint() }
 
 \begin{document}
+\thispagestyle{firstpage}
 
-{\LARGE\bfseries ${ title }}
 
+\newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
+\noindent {\huge \textbf{\textsf{${ title }}}}
 \vskip 2em
+\makebox[0pt][l]{\colorRule[CCCCCC]{2.0\textwidth}{0.5pt}}
+\vskip 2em
+\noindent
 
+\begin{flushleft}
 {\small
 ${ authors:_list_authors()[, ] }
 \vskip 1em
@@ -21,16 +27,24 @@ ${ if(it.email) }
 ${ endif }
 ${ endfor }
 }
+\end{flushleft}
+
+\medskip
+
+${ if(keywords) }\marginpar{\vskip 1em\flushright
+{\small{\bfseries Keywords}:\par
+${ for(keywords) }${ it }\\${ endfor }}
+}
+$endif$
+
+$if(abstract)$
+\textbf{Abstract}:\,${ description }
+\medskip
+$endif$
 
 \vskip 2em
-
-${ if(description) }
-\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
-\textbf{Abstract:}\,${ description }
-\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
-${ endif }
-
-\vskip 5em
+\makebox[0pt][l]{\colorRule[CCCCCC]{2.0\textwidth}{0.5pt}}
+\vskip 2em
 
 ${ body }
 
