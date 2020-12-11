@@ -6,7 +6,7 @@
     --structure: #00897B;
     --light: #9E9E9E;
     --pale: #e0e0e0;
-    --nav: #f0f0f0;
+    --nav: #fdfdfd;
 
     --width: 900px;
     --inner-space: 1.2em;
@@ -22,7 +22,6 @@ article > p {
     padding: 0px 30px;
     line-height: 135%;
 }
-
 a {
     text-decoration: none;
     color: #000;
