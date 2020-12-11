@@ -42,6 +42,7 @@ preferences as
 
 The citations are done using normal markdown, where `@Elton1927AniEco` produces
 @Elton1927AniEco, and `[@Camerano1880EquViv]` produces [@Camerano1880EquViv].
+
 # Tables
 
 Table legends go on the line after the table itself. To generate a reference to
