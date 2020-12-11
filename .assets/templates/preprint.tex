@@ -9,6 +9,7 @@ ${ _preprint() }
 \thispagestyle{firstpage}
 
 \newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
+
 \noindent {\huge \textbf{\textsf{${ title }}}}
 
 \medskip
@@ -21,11 +22,8 @@ ${ for(authors) }
 ${ if(it.email) }
 \textsuperscript{*}\,\,\texttt{${ it.email }}
 ${ endif }
-${ endfor }
-}
+${ endfor }}
 \end{flushleft}
-\medskip
-
 
 \vskip 2em
 \makebox[0pt][l]{\colorRule[CCCCCC]{2.0\textwidth}{0.5pt}}
@@ -40,7 +38,6 @@ $endif$
 
 ${ if(description) }
 \textbf{Abstract}:\,${ description }
-\medskip
 ${ endif }
 
 \vskip 2em
