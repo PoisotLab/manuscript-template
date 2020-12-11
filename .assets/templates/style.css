@@ -19,6 +19,8 @@ body {
 
 article > p {
     font-family: "Merriweather", serif;
+    padding: 0px 30px;
+    line-height: 125%;
 }
 
 a {
