@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-    --structure: #1976D2;
-    --links: #00897B;
+    --citation: #1976D2;
+    --structure: #00897B;
     --light: #9E9E9E;
     --pale: #e0e0e0;
-    --citation: #e67e22;
+    --nav: #f0f0f0;
 
     --width: 900px;
     --inner-space: 1.2em;
@@ -25,7 +25,8 @@ article > p {
 
 a {
     text-decoration: none;
-    color: var(--links);
+    color: #000;
+    border-bottom: 1px solid var(--structure);
 }
 a:hover {
     font-weight: 600;
@@ -52,16 +53,16 @@ header {
     top: 0;
     left: 0;
     width: 100vw;
-    background-color: var(--structure);
+    background-color: var(--nav);
     z-index: 5;
-    color: white;
+    color: black;
 }
 .header--title {
     font-weight: 900;
     text-transform: uppercase;
 }
 .header--authors > span > a {
-    color: white;
+    color: var(--light);
     font-size: 90%;
 }
 main {
