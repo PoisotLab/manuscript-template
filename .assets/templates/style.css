@@ -108,16 +108,18 @@ figcaption, caption {
     color: var(--light);
     font-weight: 300;
 }
-}
 thead {
-    background-color: var(--structure);
-    color: white;
+    color: var(--structure);
 }
 td, th {
     padding: 3px;
 }
 tr > th {
     text-align: center !important;
+}
+tr {
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
 }
 tbody > tr:nth-child(even) {background: var(--pale)};
 tbody {
