@@ -19,7 +19,8 @@ and can be referenced using `@eq:eq1`, which will result in @eq:eq1.
 All documents will be deployed to `gh-pages` *only* on push events from the
 `master` branch. All of the artifacts will be built when doing pull requests, so
 you can check that merging a branch is *not* going to cause the compilation of
-the documents to fail -- but the website is not deployed.
+the documents to fail; indeed, you can download the artifacts produced during
+the run, to check the PDF and html files.
 
 # Using references
 
@@ -99,6 +100,14 @@ since bipartite networks tends to have a low connectance. For this reason, we
 used a corrected version of connectance, defined as
 
 $$Co^\star=\frac{L-c_m}{T\times B-c_m} \,.$${#eq:cstar}
+
+## This is a subsection
+
+This takes values between 0 (the network has the minimal number of interactions)
+and 1 (all species are connected), but is robust to variations in species
+richness.
+
+## This is another subsection
 
 This takes values between 0 (the network has the minimal number of interactions)
 and 1 (all species are connected), but is robust to variations in species
