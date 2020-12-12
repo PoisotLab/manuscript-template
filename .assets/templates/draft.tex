@@ -6,11 +6,11 @@ ${ _pandoc() }
 ${ _draft() }
 
 \begin{document}
-
+\thispagestyle{empty}
 {\Large\bfseries\sffamily ${ title }}
 \vskip 5em
 
-${ authors:_list_authors()[\\] }
+${ authors:_list_authors()[\quad] }
 
 ${ for(authors) }
 ${ if(it.email) }
@@ -18,23 +18,27 @@ ${ if(it.email) }
 ${ endif }
 ${ endfor }
 
-${ institutions:_list_institutions()[\\] }\\
+${ institutions:_list_institutions()[\quad] }
 
 \vfill
-\ccby -- this work is released by its authors under a CC-BY 4.0 license\\
+This work is released by its authors under a CC-BY 4.0 license\hfill\ccby\\
 Last revision: \emph{\today}
 
 \clearpage
+\thispagestyle{empty}
 
 ${ if(description) }
 \textbf{\sffamily Abstract: }${ description }
 ${ endif }
 
 \clearpage
+\thispagestyle{empty}
 \tableofcontents
 \clearpage
+\thispagestyle{empty}
 \listoffigures
 \clearpage
+\thispagestyle{empty}
 \listoftables
 \clearpage
 
