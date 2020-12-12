@@ -39,7 +39,7 @@ header > .container {
     max-width: 100vw;
 }
 code, pre {
-    font-family: "Cousine", monospace;
+    font-family: "Fira Mono", monospace;
 }
 pre {
     white-space: pre-wrap;
