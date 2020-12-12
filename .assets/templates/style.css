@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Fira+Sans+Condensed:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Fira+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 :root {
     --citation: #1976D2;
     --structure: #00897B;
@@ -11,15 +9,14 @@
     --width: 900px;
     --inner-space: 1.2em;
 }
+
 body {
-    font-family: "Merriweather Sans", sans-serif;
+    font-family: "Fira Sans", sans-serif;
     margin: 0 0;
     padding: 0 0;
 }
 
 article > p {
-    font-family: "Merriweather", serif;
-    padding: 0px 30px;
     line-height: 135%;
 }
 a {
@@ -49,8 +46,10 @@ pre {
 }
 h1, h2, h3 {
     color: var(--structure);
+    font-family: "Fira Sans Condensed", sans-serif;
 }
 header {
+    font-family: "Fira Sans Condensed", sans-serif;
     position: fixed;
     top: 0;
     left: 0;
@@ -61,11 +60,12 @@ header {
     color: black;
 }
 .header--title {
-    font-weight: 900;
+    font-weight: 400;
     text-transform: uppercase;
 }
 .header--authors > span {
     color: var(--light);
+    font-weight: 400;
 }
 main {
     padding-top: 8em !important;
