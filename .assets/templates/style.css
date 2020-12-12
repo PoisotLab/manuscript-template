@@ -98,6 +98,14 @@ table {
     min-width: 100%;
     border-collapse: collapse;
 }
+table > caption {
+    padding: var(--inner-space);
+}
+figcaption, caption {
+    color: var(--light);
+    font-weight: 300;
+}
+}
 thead {
     background-color: var(--structure);
     color: white;
