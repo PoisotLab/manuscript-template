@@ -6,7 +6,7 @@
     --pale: #e0e0e0;
     --nav: #fdfdfd;
 
-    --width: 900px;
+    --width: 820px;
     --inner-space: 1.2em;
 }
 
@@ -18,6 +18,9 @@ body {
 
 article > p {
     line-height: 135%;
+}
+article > h1 {
+    padding-top: 3em;
 }
 a {
     text-decoration: none;
