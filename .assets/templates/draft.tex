@@ -3,12 +3,7 @@
 
 ${ _common() }
 ${ _pandoc() }
-
-\geometry{verbose,letterpaper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=4.5cm}
-\usepackage{lineno}
-\usepackage[nolists,noheads]{endfloat}
-
-\pagestyle{plain}
+${ _draft() }
 
 \begin{document}
 
@@ -40,7 +35,6 @@ ${ endfor }
 
 \clearpage
 \linenumbers
-\doublespacing
 
 ${ body }
 
