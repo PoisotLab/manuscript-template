@@ -7,31 +7,28 @@ ${ _draft() }
 
 \begin{document}
 
-{\large\bfseries ${ title }}
+{\Large\bfseries\sffamily ${ title }}
 \vskip 5em
-${ if(description) }
-\textbf{Abstract: }${ description }
-${ endif }
-\vfill
-Last revision: \emph{\today}
-
-\clearpage
-
-\section{Authors}
 
 ${ authors:_list_authors()[\\] }
-
-\section{Affiliations}
-
-${ institutions:_list_institutions()[\\] }\\
-
-\section{Correspondance}
 
 ${ for(authors) }
 ${ if(it.email) }
 \textsuperscript{*}\,\,\texttt{${ it.email }}
 ${ endif }
 ${ endfor }
+
+${ institutions:_list_institutions()[\\] }\\
+
+\vfill
+\ccby -- this work is released by its authors under a CC-BY 4.0 license\\
+Last revision: \emph{\today}
+
+\clearpage
+
+${ if(description) }
+\textbf{\sffamily Abstract: }${ description }
+${ endif }
 
 \clearpage
 \tableofcontents
