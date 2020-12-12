@@ -3,8 +3,8 @@ bibliography: [references.bib]
 ---
 
 This template uses recent versions of `pandoc` and `pandoc-crossref` to
-faciltate the referencing of equations, figures, and tables within the text. For
-example, the following equation
+facilitate the referencing of equations, figures, and tables within the text.
+For example, the following equation
 
 $$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)$$ {#eq:eq1}
 
@@ -16,19 +16,19 @@ $$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)
 
 and can be referenced using `@eq:eq1`, which will result in @eq:eq1.
 
-All documents will be deployed to `gh-pages` *only* on push events from the `master`
-All of the artifacts will be built when doing pull requests, so you can check that
-merging a branch is *not* going to cause the compilation of the documents to fail.
+All documents will be deployed to `gh-pages` *only* on push events from the
+`master` branch. All of the artifacts will be built when doing pull requests, so
+you can check that merging a branch is *not* going to cause the compilation of
+the documents to fail -- but the website is not deployed.
 
 # Using references
 
-The references are managed by the `citeproc` filter for `pandoc`. Note that we
-*do not* use `pandoc-citeproc`, which was an external moduler for older `pandoc`
-versions. References *have to* be stored in a `references.bib` file. We use
+The references are managed by `pandoc`. Note that we *do not* use
+`pandoc-citeproc`, which was an external module for older `pandoc` versions.
+References *must* be stored in a `references.bib` file. We use
 [Zotero](https://www.zotero.org/) for references management, and for the lab's
 manuscripts, we work from folders in a shared library (with a folder for every
 manuscript).
-
 
 We use the [Better BibTeX](https://retorque.re/zotero-better-bibtex/) plugin for
 citation key generations, and auto-export of the shared library to the
@@ -40,8 +40,17 @@ preferences as
 [auth:fold][year][title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize][title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]
 ~~~
 
-The citations are done using normal markdown, where `@Elton1927AniEco` produces
-@Elton1927AniEco, and `[@Camerano1880EquViv]` produces [@Camerano1880EquViv].
+It is a good idea to configure Better BibTeX to auto-export on change, and to
+remove a lot of fields that are not strictly speaking required for references.
+The list of fields we usually ignore is:
+
+~~~
+abstract,copyright,annotation,file,pmid,month,shorttitle,keywords
+~~~
+
+The citations are done using the normal markdown syntax, where
+`@Elton1927AniEco` produces @Elton1927AniEco, and `[@Camerano1880EquViv]`
+produces [@Camerano1880EquViv].
 
 # Tables
 
@@ -59,12 +68,14 @@ refer to the table. For example, the table below is @tbl:id. You can remove the
 
 Table: This is a table, and its identifier is `id` -- we can refer to it using
 `{@tbl:id}`. Note that even if the table legend is written below the table
-itself, it will appear on top in the compiled document. {#tbl:id}
+itself, it will appear on top in the PDF document. {#tbl:id}
 
 # Figures
 
 Figures can have a legend -- all figures *must* be in the `figures/` folder of
-the project:
+the project, as it is also used for the website. We recommend to use good
+resolution images, rather than PDFs, or at least to have multiple versions
+available.
 
 ~~~
 ![This is the legend of the figure](figures/biomes.png){#fig:biomes}
@@ -75,7 +86,6 @@ the project:
 We can now use `@fig:biomes` to refer to @fig:biomes.
 
 # Example text
-
 
 Connectance, defined as the ratio of realized interactions on the total number
 of potential interactions, is one of the most common descriptor of network
