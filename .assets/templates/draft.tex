@@ -10,15 +10,15 @@ ${ _draft() }
 {\Large\bfseries\sffamily ${ title }}
 \vskip 5em
 
-${ authors:_list_authors()[\quad] }
+${ authors:_list_authors()[\quad ] }
+
+${ institutions:_list_institutions()[\quad ] }
 
 ${ for(authors) }
 ${ if(it.email) }
 \textsuperscript{*}\,\,\texttt{${ it.email }}
 ${ endif }
 ${ endfor }
-
-${ institutions:_list_institutions()[\quad] }
 
 \vfill
 This work is released by its authors under a CC-BY 4.0 license\hfill\ccby\\
