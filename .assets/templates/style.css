@@ -36,7 +36,7 @@ a:hover {
     padding: var(--inner-space);
 }
 header > .container {
-    max-width: 75vw;
+    max-width: 100vw;
 }
 code, pre {
     font-family: "Cousine", monospace;
