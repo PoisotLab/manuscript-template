@@ -43,6 +43,7 @@ jobs:
           mkdir -p dist
           cp -r figures dist/
           cp references.json dist/
+          cp .assets/logo.png dist/
       - name: Build the website
         run: pandoc manuscript.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --metadata-file=metadata.json --metadata-file=affiliations.json --template=.assets/templates/index.html
       - name: Build the tex files
