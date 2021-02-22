@@ -11,7 +11,8 @@
       "familyname": "Poisot",
       "givennames": "Timothée",
       "email": "timothee.poisot@umontreal.ca",
-      "orcid": "0000-0002-0735-5184"
+      "orcid": "0000-0002-0735-5184",
+      "status": ["corresponding", "equal"]
     },
     {
       "affiliations": [
@@ -19,7 +20,8 @@
         "Fellowship of the Ring"
       ],
       "familyname": "Took",
-      "givennames": "Peregrin"
+      "givennames": "Peregrin",
+      "email": "pippin@took.shire"
     },
     {
       "affiliations": [
@@ -27,7 +29,9 @@
         "Fellowship of the Ring"
       ],
       "familyname": "Brandybuck",
-      "givennames": "Merriadoc"
+      "givennames": "Merriadoc",
+      "email": "merry@fellowship.ring",
+      "status": ["equal"]
     }
   ],
   "description": "This template is used by the Poisot lab at Université de Montréal to write manuscripts using github. It uses github actions as a way to generate a website that can be annotated using hypothes.is, a PDF document for copy-editing and submission to journals, and a PDF document for submission to preprint servers. At every push on the master branch, the whole series of documents will be updated automatically.",
