@@ -33,7 +33,7 @@ a {
     border-bottom: 1px solid var(--structure);
 }
 a:hover {
-    font-weight: 600;
+    font-weight: 500;
 }
 .citation {
     color: var(--citation);
@@ -55,6 +55,7 @@ pre {
 h1, h2, h3 {
     color: var(--structure);
     font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
 }
 header {
     font-family: "Roboto Condensed", sans-serif;
@@ -76,7 +77,7 @@ main {
     padding-bottom: 8em !important;
 }
 footer {
-    background-color: var(--pale);
+    background-color: var(--grey);
     font-weight: 300;
 }
 .abstract {
@@ -116,8 +117,8 @@ td, th {
     padding: 3px;
 }
 tr {
-    border-top: 1px solid var(--light);
-    border-bottom: 1px solid var(--light);
+    border-top: 1px solid var(--structure);
+    border-bottom: 1px solid var(--structure);
 }
 tbody > tr:nth-child(even) {background: var(--grey)};
 tbody {
