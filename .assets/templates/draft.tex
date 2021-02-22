@@ -14,10 +14,13 @@ ${ authors:_list_authors()[\quad ] }
 
 ${ institutions:_list_institutions()[\quad ] }
 
-${ for(authors) }
-${ if(it.email) }
-\textsuperscript{*}\,\,\texttt{${ it.email }}
+${ if(metadata.equalcontributions) }
+${ metadata.equalcontributions:_list_institutions()[; ] }\\
 ${ endif }
+
+\textbf{Correspondance to:}\\
+${ for(metadata.corresponding) }
+${ metadata.corresponding.given } ${ metadata.corresponding.family } --- \texttt{${ metadata.corresponding.email }}\\
 ${ endfor }
 
 \vfill
