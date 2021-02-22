@@ -5,8 +5,10 @@
 :root {
     --citation: #1976D2;
     --structure: hsl(210, 61%, 43%);
+    
     --light: #474747;
     --pale: #a5a5a5;
+    --grey: #e0e0e0;
     --nav: #fdfdfd;
 
     --width: 820px;
@@ -117,14 +119,11 @@ thead {
 td, th {
     padding: 3px;
 }
-tr > th {
-    text-align: center !important;
-}
 tr {
     border-top: 1px solid var(--light);
     border-bottom: 1px solid var(--light);
 }
-tbody > tr:nth-child(even) {background: var(--pale)};
+tbody > tr:nth-child(even) {background: var(--grey)};
 tbody {
     border-bottom: 1px solid var(--structure);
 }
