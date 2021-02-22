@@ -38,6 +38,7 @@ for creator in creators:
         biorxiv.write(creator["orcid"])
     biorxiv.write("\n")
     
+biorxiv.close()
 
 for creator in creators:
     creator["affilcode"] = [affiliation_to_number[affiliation]
@@ -68,5 +69,3 @@ with open("affiliations.json", "w") as outfile:
     json.dump(affiliations, outfile, sort_keys=False,
               indent=4, separators=(',', ': '))
     outfile.write('\n')
-
-biorxiv.close()
