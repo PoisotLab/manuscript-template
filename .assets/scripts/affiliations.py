@@ -5,8 +5,8 @@ import os
 with open("metadata.json") as jsfile:
     metadata = json.load(jsfile)
 
-biorxiv = open("author_template.tsv", "a")
-biorxiv.write("\n")
+biorxiv = open("author_template.tsv", "")
+biorxiv.write("Email	Institution	First Name	Middle Name(s)/Initial(s)	Last Name	Suffix	Corresponding Author	Home Page URL	Collaborative Group/Consortium	ORCiD\n")
 
 # Fields to remove
 creators = metadata["creators"]
