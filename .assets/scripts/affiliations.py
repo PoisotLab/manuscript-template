@@ -60,7 +60,7 @@ for creator in affiliations["authors"]:
         if "equal" in creator["status"]:
             creator["affilcode"].append("‡")
             if toadd:
-                affiliations["metadata"]["equalcontributions"] = {"id": "‡", "text": "These authors contributed equally to the work"}
+                affiliations["metadata"]["equalcontributions"] = {"id": "‡", "name": "These authors contributed equally to the work"}
                 toadd = False
         if "corresponding" in creator["status"]:
             affiliations["metadata"]["corresponding"].append({"given": creator["givennames"], "family": creator["familyname"], "email": creator["email"]})
