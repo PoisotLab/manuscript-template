@@ -4,9 +4,9 @@
 
 :root {
     --citation: #1976D2;
-    --structure: #00897B;
-    --light: #9E9E9E;
-    --pale: #e0e0e0;
+    --structure: hsl(210, 61%, 43%);
+    --light: #474747;
+    --pale: #a5a5a5;
     --nav: #fdfdfd;
 
     --width: 820px;
