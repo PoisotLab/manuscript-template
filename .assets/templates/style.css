@@ -44,7 +44,7 @@ a:hover {
     padding: var(--inner-space);
 }
 header > .container {
-    max-width: 100vw;
+    margin-top: 4em;
 }
 code, pre {
     font-family: "Roboto Mono", monospace;
@@ -58,18 +58,14 @@ h1, h2, h3 {
 }
 header {
     font-family: "Roboto Condensed", sans-serif;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    background-color: var(--nav);
-    border: 1px solid var(--pale);
     z-index: 5;
     color: black;
+    margin-top: 4rem;
 }
 .header--title {
     font-weight: 400;
-    text-transform: uppercase;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 .header--authors > span {
     color: var(--light);
