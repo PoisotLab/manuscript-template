@@ -21,6 +21,9 @@ ${ _preprint() }
 ${ authors:_list_authors()[, ] }
 \vskip 1em
 ${ institutions:_list_institutions()[; ] }\\
+${ if(metadata.equalcontributions)[; ]}
+${ metadata.equalcontributions:_list_institutions()[; ] }\\
+${ endif }
 ${ for(authors) }
 ${ if(it.email) }
 \textsuperscript{*}\,\,\texttt{${ it.email }}
