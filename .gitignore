@@ -5,3 +5,4 @@ references.json
 affiliations.json
 .vscode
 .assets/*csl
+author_template.tsv
