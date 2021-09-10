@@ -4,3 +4,4 @@ dist/
 references.json
 affiliations.json
 .vscode
+.assets/*csl
