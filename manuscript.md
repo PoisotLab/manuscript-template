@@ -115,7 +115,7 @@ richness.
 
 ## Some non-standard maths
 
-The phylogenetic reconstruction of $\hat{\mathcal{L}}$ and $\hat{\mathcal{R}}$
+The phylogenetic reconstruction of $\hat{\mathscr{L}}$ and $\hat{\mathscr{R}}$
 has an associated uncertainty, represented by the breadth of the uniform
 distribution associated to each of their entries. Therefore, we can use this
 information to assemble a *probabilistic* metaweb in the sense of
@@ -123,15 +123,15 @@ information to assemble a *probabilistic* metaweb in the sense of
 independent, Bernoulli event of probability $p$.
 
 Specifically, we have adopted the following approach. For every entry in
-$\hat{\mathcal{L}}$ and $\hat{\mathcal{R}}$, we draw a value from its
+$\hat{\mathscr{L}}$ and $\hat{\mathscr{R}}$, we draw a value from its
 distribution. This results in one instance of the possible left
-($\hat{\mathcal{l}}$) and right ($\hat{\mathcal{r}}$) subspaces for the Canadian
+($\hat{\mathscr{l}}$) and right ($\hat{\mathscr{r}}$) subspaces for the Canadian
 metaweb. These can be multiplied, to produce one matrix of real values. Because
-the entries in $\hat{\mathcal{l}}$ and $\hat{\mathcal{r}}$ are in the same space
-where $\mathcal{L}$ and $\mathcal{R}$ were originally predicted, it follows that
+the entries in $\hat{\mathscr{l}}$ and $\hat{\mathscr{r}}$ are in the same space
+where $\mathscr{L}$ and $\mathscr{R}$ were originally predicted, it follows that
 the threshold $\rho$ estimated for the European metaweb also applies. We use
 this information to produce one random Canadian metaweb, $N =
-\hat{\mathcal{L}}$$\hat{\mathcal{R}}' \ge \rho$.
+\hat{\mathscr{L}}$$\hat{\mathscr{R}}' \ge \rho$.
 
 Because the intervals around some trait values can be broad [in fact, probably
 broader than what they would actually be, see *e.g.* @Garland1999IntPhy], we
