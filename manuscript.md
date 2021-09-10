@@ -113,4 +113,34 @@ This takes values between 0 (the network has the minimal number of interactions)
 and 1 (all species are connected), but is robust to variations in species
 richness.
 
+## Some non-standard maths
+
+The phylogenetic reconstruction of $\hat{\mathcal{L}}$ and $\hat{\mathcal{R}}$
+has an associated uncertainty, represented by the breadth of the uniform
+distribution associated to each of their entries. Therefore, we can use this
+information to assemble a *probabilistic* metaweb in the sense of
+@Poisot2016StrPro, *i.e.* in which every interaction is represented as a single,
+independent, Bernoulli event of probability $p$.
+
+Specifically, we have adopted the following approach. For every entry in
+$\hat{\mathcal{L}}$ and $\hat{\mathcal{R}}$, we draw a value from its
+distribution. This results in one instance of the possible left
+($\hat{\mathcal{l}}$) and right ($\hat{\mathcal{r}}$) subspaces for the Canadian
+metaweb. These can be multiplied, to produce one matrix of real values. Because
+the entries in $\hat{\mathcal{l}}$ and $\hat{\mathcal{r}}$ are in the same space
+where $\mathcal{L}$ and $\mathcal{R}$ were originally predicted, it follows that
+the threshold $\rho$ estimated for the European metaweb also applies. We use
+this information to produce one random Canadian metaweb, $N =
+\hat{\mathcal{L}}$$\hat{\mathcal{R}}' \ge \rho$.
+
+Because the intervals around some trait values can be broad [in fact, probably
+broader than what they would actually be, see *e.g.* @Garland1999IntPhy], we
+repeat the above process $2\times 10^5$ times, which results in a probabilistic
+metaweb $P$, where the probability of an interaction (here conveying our degree
+of trust that it exists given the inferred trait distributions) is given by the
+number of times where it appears across all random draws $N$, divided by the
+number of samples. An interaction with $P_{i,j} = 1$ means that these two
+species were predicted to interact in all $2\times 10^5$ random draws, etc..
+
+
 # References
