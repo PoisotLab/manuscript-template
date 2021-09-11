@@ -1,0 +1,119 @@
+[
+    {
+        "DOI": "10.1002/jez.1400610202",
+        "author": [
+            {
+                "family": "Allee",
+                "given": "W. C."
+            },
+            {
+                "family": "Bowen",
+                "given": "Edith S."
+            }
+        ],
+        "container-title": "Journal of Experimental Zoology",
+        "id": "Allee1932StuAni",
+        "issue": "2",
+        "issued": {
+            "date-parts": [
+                [
+                    1932,
+                    2
+                ]
+            ]
+        },
+        "page": "185-207",
+        "title": "Studies in animal aggregations: Mass protection against colloidal silver among goldfishes",
+        "type": "article-journal",
+        "volume": "61"
+    },
+    {
+        "author": [
+            {
+                "family": "Camerano",
+                "given": "Lorenzo"
+            }
+        ],
+        "container-title": "Atti Della R. Accad. Delle Sci. Torino",
+        "id": "Camerano1880EquViv",
+        "issued": {
+            "date-parts": [
+                [
+                    1880
+                ]
+            ]
+        },
+        "page": "393-414",
+        "title": "Dell\u2019equilibrio dei viventi merce la reciproca distruzione",
+        "type": "article-journal",
+        "volume": "15"
+    },
+    {
+        "author": [
+            {
+                "family": "Elton",
+                "given": "Charles S"
+            }
+        ],
+        "id": "Elton1927AniEco",
+        "issued": {
+            "date-parts": [
+                [
+                    1927
+                ]
+            ]
+        },
+        "publisher": "University of Chicago Press",
+        "title": "Animal ecology",
+        "type": "book"
+    },
+    {
+        "author": [
+            {
+                "family": "Fahrenholz",
+                "given": "H."
+            }
+        ],
+        "container-title": "Zool. Anz.",
+        "id": "Fahrenholz1913EctUnd",
+        "issued": {
+            "date-parts": [
+                [
+                    1913
+                ]
+            ]
+        },
+        "page": "371-374",
+        "title": "Ectoparasiten und abstammungslehre",
+        "type": "article-journal",
+        "volume": "41"
+    },
+    {
+        "DOI": "10.1111/j.1096-3642.1935.tb01680.x",
+        "author": [
+            {
+                "family": "Nicholson",
+                "given": "A. J."
+            },
+            {
+                "family": "Bailey",
+                "given": "V. A."
+            }
+        ],
+        "container-title": "Proceedings of the Zoological Society of London",
+        "id": "Nicholson1935BalAni",
+        "issue": "3",
+        "issued": {
+            "date-parts": [
+                [
+                    1935,
+                    9
+                ]
+            ]
+        },
+        "page": "551-598",
+        "title": "The Balance of Animal Populations.Part I.",
+        "type": "article-journal",
+        "volume": "105"
+    }
+]
