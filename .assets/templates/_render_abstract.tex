@@ -12,6 +12,6 @@ ${ endif }
 
 ${ if(it.structured) }
     ${ for(it.content) }
-    {\bfseries ${ it.key }}\qquad ${ it.value }\\%
+    {\bfseries ${ it.key }:}\,${ it.value }\\%
     ${ endfor }
 ${ endif }
