@@ -138,11 +138,15 @@ manuscript).
 We use the [Better BibTeX](https://retorque.re/zotero-better-bibtex/) plugin for
 citation key generations, and auto-export of the shared library to the
 `references.bib` file. We use a citation key format meant to convey information
-on the author, date, year, and title. It must be set in the Better BibTeX
-preferences as
+on the author (first author full name), date (complet year), and title (first
+three letters of the first two non-stop words). It must be set in the Better
+BibTeX preferences as (you might need to remove the line changes):
 
 ~~~
-[auth:fold][year][title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize][title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]
+[auth:fold]
+[year]
+[title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize]
+[title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]
 ~~~
 
 It is a good idea to configure Better BibTeX to auto-export on change, and to
