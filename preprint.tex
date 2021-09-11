@@ -288,30 +288,32 @@ and mathematics, so this will render (mostly) like a normal README file.
 \hypertarget{deploying-the-template}{%
 \section{Deploying the template}\label{deploying-the-template}}
 
+The process of deploying this template has been \emph{greatly}
+streamlined from previous versions:
+
 \begin{itemize}
 \tightlist
 \item
   Click on the ``Use this template'' button
 \item
-  Edit this README!
+  Edit \texttt{README.md} with your own text, commit, and push
 \item
-  \textasciitilde Add an \texttt{ACCESS\_TOKEN} secret to your
-  repository\textasciitilde{}
-\item
-  Trigger a build by pushing a commit - the builds are only active on
-  the \texttt{main} (\textbf{not} \texttt{master}) branch, and on pull
+  This push will trigger the first build - the builds are only active on
+  the \texttt{main} branch (\emph{not} \texttt{master}!), and on pull
   requests
 \item
   Go to \texttt{http://you.github.io/repo-name/} to view the html
-  version and the PDFs
+  version, and get access to the PDFs
 \item
   Add your references to the \texttt{references.bib} file
 \item
   Edit the \texttt{metadata.json} file to add the title, abstract,
   authors
-\item
-  Edit the \texttt{manuscript.md} file to make changes to your text
 \end{itemize}
+
+In particular, note that \emph{you do not need} to create a personnal
+access token to deploy to \texttt{gh-pages} (from where the website is
+served).
 
 \hypertarget{the-metadata-file}{%
 \section{The metadata file}\label{the-metadata-file}}

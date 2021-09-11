@@ -217,16 +217,16 @@
             <p>The core bit of configuration is the <code>metadata.json</code> file, which handles information about authorship, affiliations, the abstract, keywords, etc. All documents will be deployed to <code>gh-pages</code> <em>only</em> on push events from the <code>main</code> branch. All of the artifacts will be built when doing pull requests, so you can check that merging a branch is <em>not</em> going to cause the compilation of the documents to fail; indeed, you can download the artifacts produced during the run, to check the PDF and html files. The website is only updated from the <code>main</code> branch.</p>
             <p>The workflow is <em>very</em> GitHub based, and so the manuscript file <em>is</em> the <code>README.md</code> - this is not going to be a huge issue as 90% of the markdown is standard, with the exception of the citations and mathematics, so this will render (mostly) like a normal README file.</p>
             <h1 id="deploying-the-template">Deploying the template</h1>
+            <p>The process of deploying this template has been <em>greatly</em> streamlined from previous versions:</p>
             <ul>
             <li>Click on the “Use this template” button</li>
-            <li>Edit this README!</li>
-            <li>~Add an <code>ACCESS_TOKEN</code> secret to your repository~</li>
-            <li>Trigger a build by pushing a commit - the builds are only active on the <code>main</code> (<strong>not</strong> <code>master</code>) branch, and on pull requests</li>
-            <li>Go to <code>http://you.github.io/repo-name/</code> to view the html version and the PDFs</li>
+            <li>Edit <code>README.md</code> with your own text, commit, and push</li>
+            <li>This push will trigger the first build - the builds are only active on the <code>main</code> branch (<em>not</em> <code>master</code>!), and on pull requests</li>
+            <li>Go to <code>http://you.github.io/repo-name/</code> to view the html version, and get access to the PDFs</li>
             <li>Add your references to the <code>references.bib</code> file</li>
             <li>Edit the <code>metadata.json</code> file to add the title, abstract, authors</li>
-            <li>Edit the <code>manuscript.md</code> file to make changes to your text</li>
             </ul>
+            <p>In particular, note that <em>you do not need</em> to create a personnal access token to deploy to <code>gh-pages</code> (from where the website is served).</p>
             <h1 id="the-metadata-file">The metadata file</h1>
             <h2 id="general-information">General information</h2>
             <p>The first three fields are the title, language, and license. It’s probably advisable not to change these, and there are chances that the logo on the PDF will not capture the values made here (this will have to be, maybe, fixed at some point).</p>
