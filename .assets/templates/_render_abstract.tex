@@ -1,0 +1,13 @@
+${ if(abstract} }%
+${ abstract }
+${ elseif(itemized-abstract) }
+\begin{enumerate}
+    ${ for(itemized-abstract)}
+    \item ${ it }
+    $endfor$
+\end{enumerate}
+${ elseif(structured-abstract) }
+${ for(structured-abstract)}
+\textbf{${ it.first }}\hskip 1em ${ it.last }\\%
+$endfor$
+${ endif }

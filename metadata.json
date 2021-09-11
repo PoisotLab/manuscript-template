@@ -34,7 +34,11 @@
       "status": ["equal"]
     }
   ],
-  "abstract": "This template is used by the Poisot lab at Université de Montréal to write manuscripts using github. It uses github actions as a way to generate a website that can be annotated using hypothes.is, a PDF document for copy-editing and submission to journals, and a PDF document for submission to preprint servers. At every push on the master branch, the whole series of documents will be updated automatically.",
+  "structured-abstract": [
+    ["Purpose", "This template provides a series of scripts to render a markdown document into an interactive website and a series of PDFs."],
+    ["But why?", "It makes collaborating on text with GitHub easier, and means that we never need to think about the output."],
+    ["How does it works?", "GitHub actions and a series of python scritpts. The markdown is handled with `pandoc`."]
+  ],
   "keywords": [
     "pandoc",
     "pandoc-crossref",

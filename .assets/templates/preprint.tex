@@ -43,9 +43,7 @@ ${ for(keywords) }${ it }\\${ endfor }}
 }
 $endif$
 
-${ if(abstract) }
-${ abstract }
-${ endif }
+${ _render_abstract() }
 
 \vskip 2em
 \makebox[0pt][l]{\colorRule[CCCCCC]{2.0\textwidth}{0.5pt}}
