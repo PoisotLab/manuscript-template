@@ -16,6 +16,11 @@ documents to fail; indeed, you can download the artifacts produced during the
 run, to check the PDF and html files. The website is only updated from the
 `main` branch.
 
+The workflow is *very* GitHub based, and so the manuscript file *is* the
+`README.md` - this is not going to be a huge issue as 90% of the markdown is
+standard, with the exception of the citations and mathematics, so this will
+render (mostly) like a normal README file.
+
 # Deploying the template
 
 - Click on the "Use this template" button
