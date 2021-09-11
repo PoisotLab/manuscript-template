@@ -4,10 +4,10 @@ ${ elseif(itemized-abstract) }
 \begin{enumerate}
     ${ for(itemized-abstract)}
     \item ${ it }
-    $endfor$
+    ${ endfor } 
 \end{enumerate}
 ${ elseif(structured-abstract) }
-${ for(structured-abstract)}
-\textbf{${ it.first }}\hskip 1em ${ it.last }\\%
-$endfor$
+    ${ for(structured-abstract) }
+        \textbf{${ it.first }}\hskip 1em ${ it.last }\\%
+    ${ endfor }
 ${ endif }
