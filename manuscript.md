@@ -4,6 +4,45 @@ bibliography: [references.bib]
 
 This template uses recent versions of `pandoc` and `pandoc-crossref` to
 facilitate the referencing of equations, figures, and tables within the text.
+
+# The metadata file
+
+## Abstract
+
+This template supports three types of abstracts, indicated in the metadata file
+as `abstract` (the usual block of text), `itemized-abstract` (numbered points),
+and `structured-abstract` (with specific headings). Note that it is *expected*
+that only one type of abstract will be present, and we are looking into ways to
+automatically detect the abstract type.
+
+A regular `abstract` is defined as
+
+~~~json
+"abstract": "A very long string"
+~~~
+
+An `itemized-abstract` is an array of strings, each representing a bullet point:
+
+~~~json
+"itemized-abstract": [
+    "Point 1",
+    "Point 2"
+]
+~~~
+
+A `structured-abstract` is an array of 2-elements array of strings:
+
+~~~json
+"structured-abstract": [
+    ["Location", "Worldwide"],
+    ["Organisms", "Mammals"]
+]
+~~~
+
+## Citation style
+
+# Usage examples
+
 For example, the following equation
 
 $$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)$$ {#eq:eq1}
