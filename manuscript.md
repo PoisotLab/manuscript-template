@@ -68,10 +68,7 @@ will take care of this automatically.
 ## Abstract
 
 This template supports three types of abstracts, indicated in the metadata file
-as `abstract` (the usual block of text), `itemized-abstract` (numbered points),
-and `structured-abstract` (with specific headings). Note that it is *expected*
-that only one type of abstract will be present, and we are looking into ways to
-automatically detect the abstract type.
+as `abstract`:
 
 A regular `abstract` is defined as
 
@@ -79,22 +76,22 @@ A regular `abstract` is defined as
 "abstract": "A very long string"
 ~~~
 
-An `itemized-abstract` is an array of strings, each representing a bullet point:
+An itemized abstract is an array of strings, each representing a bullet point:
 
 ~~~json
-"itemized-abstract": [
+"abstract": [
     "Point 1",
     "Point 2"
 ]
 ~~~
 
-A `structured-abstract` is an array of 2-elements array of strings:
+A structured abstract is an object with key-value pairs :
 
 ~~~json
-"structured-abstract": [
-    ["Location", "Worldwide"],
-    ["Organisms", "Mammals"]
-]
+"abstract": {
+    "Location": "Worldwide",
+    "Organisms": "Mammals"
+}
 ~~~
 
 ## Citation style
