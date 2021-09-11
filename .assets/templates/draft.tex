@@ -6,6 +6,7 @@ ${ _pandoc() }
 ${ _draft() }
 
 \begin{document}
+\raggedright
 \thispagestyle{empty}
 {\Large\bfseries\sffamily ${ title }}
 \vskip 5em
@@ -32,7 +33,7 @@ Last revision: \emph{\today}
 
 \vfill
 ${ if(description) }
-\textbf{\sffamily Abstract: }${ description }
+${ description }
 ${ endif }
 \vfill
 
