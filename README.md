@@ -23,14 +23,18 @@ render (mostly) like a normal README file.
 
 # Deploying the template
 
+The process of deploying this template has been *greatly* streamlined from
+previous versions:
+
 - Click on the "Use this template" button
-- Edit this README!
-- ~Add an `ACCESS_TOKEN` secret to your repository~
-- Trigger a build by pushing a commit - the builds are only active on the `main` (**not**  `master`) branch, and on pull requests
-- Go to `http://you.github.io/repo-name/` to view the html version and the PDFs
+- Edit `README.md` with your own text, commit, and push
+- This push will trigger the first build - the builds are only active on the `main` branch (*not* `master`!), and on pull requests
+- Go to `http://you.github.io/repo-name/` to view the html version, and get access to the PDFs
 - Add your references to the `references.bib` file
 - Edit the `metadata.json` file to add the title, abstract, authors
-- Edit the `manuscript.md` file to make changes to your text
+
+In particular, note that *you do not need* to create a personnal access token to
+deploy to `gh-pages` (from where the website is served).
 
 # The metadata file
 
