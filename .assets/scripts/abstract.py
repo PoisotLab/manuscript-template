@@ -1,5 +1,4 @@
 import json
-from types import MethodDescriptorType
 
 with open("metadata.json") as mdfile:
     metadata = json.load(mdfile)
