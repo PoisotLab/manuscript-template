@@ -13,10 +13,10 @@ ${ _draft() }
 
 ${ authors:_render_authors()[\quad ] }
 
-${ institutions:_list_institutions()[\quad ] }
+${ institutions:_render_institutions()[\quad ] }
 
 ${ if(metadata.equalcontributions) }
-${ metadata.equalcontributions:_list_institutions()[; ] }\\
+${ metadata.equalcontributions:_render_institutions()[; ] }\\
 ${ endif }
 
 \textbf{Correspondance to:}\\

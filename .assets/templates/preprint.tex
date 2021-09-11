@@ -20,9 +20,9 @@ ${ _preprint() }
 {\small
 ${ authors:_render_authors()[, ] }
 \vskip 1em
-${ institutions:_list_institutions()[; ] }\\
+${ institutions:_render_institutions()[; ] }\\
 ${ if(metadata.equalcontributions) }
-${ metadata.equalcontributions:_list_institutions()[; ] }\\
+${ metadata.equalcontributions:_render_institutions()[; ] }\\
 ${ endif }
 \vskip 1em
 \textbf{Correspondance to:}\\
