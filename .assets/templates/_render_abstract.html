@@ -2,12 +2,12 @@ ${ if(abstract} }
 ${ abstract }
 ${ elseif(itemized-abstract) }
 <ol>
-    ${ for(itemized-abstract)}
+    ${ for(itemized-abstract) }
         <li>${ it }</li>
     ${ endfor }
 </ol>
 ${ elseif(structured-abstract) }
-    ${ for(structured-abstract)}
+    ${ for(structured-abstract) }
         <b>${ it.first }</b>&nbsp;&nbsp;&nbsp;${ it.last }<br />
     ${ endfor }
 ${ endif }
