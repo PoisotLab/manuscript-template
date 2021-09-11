@@ -8,7 +8,13 @@ end), and a "preprint" style PDF (with slightly more reader-friendly
 pagination).
 
 The core bit of configuration is the `metadata.json` file, which handles
-information about authorship, affiliations, the abstract, keywords, etc.
+information about authorship, affiliations, the abstract, keywords, etc. All
+documents will be deployed to `gh-pages` *only* on push events from the `main`
+branch. All of the artifacts will be built when doing pull requests, so you can
+check that merging a branch is *not* going to cause the compilation of the
+documents to fail; indeed, you can download the artifacts produced during the
+run, to check the PDF and html files. The website is only updated from the
+`main` branch.
 
 # Deploying the template
 
@@ -40,8 +46,8 @@ some point).
 
 ## Authorship
 
-Authors are listed as objects in the `authors` block (whose name was borrowed
-from the `.zenodo.json` file format). Each author is specified as follows:
+Authors are listed as objects in the `authors` block. Each author is specified
+as follows:
 
 ~~~json
 {
@@ -100,44 +106,28 @@ The `citationstyle` key corresponds to the name, with `.csl` ommited, of a CSL
 stylesheet stored in the [citation style language][csl] repository. Note that
 there is no difference between main and dependent styles, the build engine will
 take the correct steps to get the correct style. The default is
-`"citationstyle": "ecology-letters"`.
+`"citationstyle": "ecology-letters"`. There is a longer section about references
+management later on.
 
 [csl]: https://github.com/citation-style-language/
-# Usage examples
-
-For example, the following equation
-
-$$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)$$ {#eq:eq1}
-
-is produced using
-
-~~~latex
-$$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)$$ {#eq:eq1}
-~~~
-
-and can be referenced using `@eq:eq1`, which will result in @eq:eq1.
-
-All documents will be deployed to `gh-pages` *only* on push events from the
-`master` branch. All of the artifacts will be built when doing pull requests, so
-you can check that merging a branch is *not* going to cause the compilation of
-the documents to fail; indeed, you can download the artifacts produced during
-the run, to check the PDF and html files.
-
-# Using references
+# References management
 
 The references are managed by `pandoc`. Note that we *do not* use
 `pandoc-citeproc`, which was an external module for older `pandoc` versions.
-References *must* be stored in a `references.bib` file. We use
-[Zotero](https://www.zotero.org/) for references management, and for the lab's
-manuscripts, we work from folders in a shared library (with a folder for every
-manuscript).
+References *must* be stored in a `references.bib` file, and that it would make
+sense to order it alphabetically by key.
 
-We use the [Better BibTeX](https://retorque.re/zotero-better-bibtex/) plugin for
-citation key generations, and auto-export of the shared library to the
-`references.bib` file. We use a citation key format meant to convey information
-on the author (first author full name), date (complet year), and title (first
-three letters of the first two non-stop words). It must be set in the Better
-BibTeX preferences as (you might need to remove the line changes):
+We use [Zotero](https://www.zotero.org/) for references management, and for the
+lab's manuscripts, we work from folders in a shared library (with a folder for
+every manuscript).
+
+It is recommedned to use the [Better
+BibTeX](https://retorque.re/zotero-better-bibtex/) plugin for citation key
+generations, and auto-export of the shared library to the `references.bib` file.
+We use a citation key format meant to convey information on the author (first
+author full name), date (complet year), and title (first three letters of the
+first two non-stop words). It must be set in the Better BibTeX preferences as
+(you might need to remove the line changes):
 
 ~~~
 [auth:fold]
@@ -158,7 +148,28 @@ The citations are done using the normal markdown syntax, where
 `@Elton1927AniEco` produces @Elton1927AniEco, and `[@Camerano1880EquViv]`
 produces [@Camerano1880EquViv].
 
-# Tables
+# Figures, Tables, and other floats
+
+Note that you can wrap the text of legends for both figures and tables. This
+avoids the issue of having very long lines.
+
+## Mathematics
+
+The following equation
+
+$$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)$$ {#eq:eq1}
+
+is produced using
+
+~~~latex
+$$J'(p) = \frac{1}{\text{log}(S)}\times ... $$ {#eq:eq1}
+~~~
+
+and can be referenced using `@eq:eq1`, which will result in @eq:eq1. Note that
+because we use `pandoc-crossref`, the label "eq." will be generated
+automatically.
+
+## Tables
 
 Table legends go on the line after the table itself. To generate a reference to
 the table, use `{#tbl:id}` -- then, in the text, you can use `{@tbl:id}` to
