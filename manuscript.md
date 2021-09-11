@@ -79,12 +79,15 @@ resolution images, rather than PDFs, or at least to have multiple versions
 available.
 
 ~~~
-![This is the legend of the figure](figures/biomes.png){#fig:biomes}
+![This is the legend of the figure...](figures/figure.png){#fig:figure}
 ~~~
 
-![This is the legend of the figure](figures/biomes.png){#fig:biomes}
+![This is the legend of the figure, which will be shown in the margin in
+preprint mode, and underneath the figure in draft mode. The legend can contain
+references, etc. It is advised to use a resolution of at least 600dpi for the
+figures.](figures/figure.png){#fig:figure}
 
-We can now use `@fig:biomes` to refer to @fig:biomes.
+We can now use `@fig:figure` to refer to @fig:figure.
 
 # Example text
 
