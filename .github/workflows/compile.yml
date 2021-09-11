@@ -111,4 +111,4 @@ jobs:
         uses: maxheld83/ghpages@v0.3.0
         env:
           BUILD_DIR: "dist/"
-          GH_PAT: ${{ secrets.ACCESS_TOKEN }}
+          GH_PAT: ${{ secrets.GITHUB_TOKEN }}

@@ -25,7 +25,7 @@ render (mostly) like a normal README file.
 
 - Click on the "Use this template" button
 - Edit this README!
-- Add an `ACCESS_TOKEN` secret to your repository
+- ~Add an `ACCESS_TOKEN` secret to your repository~
 - Trigger a build by pushing a commit - the builds are only active on the `main` (**not**  `master`) branch, and on pull requests
 - Go to `http://you.github.io/repo-name/` to view the html version and the PDFs
 - Add your references to the `references.bib` file
