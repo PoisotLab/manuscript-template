@@ -1,13 +1,17 @@
-${ if(abstract} }%
-${ abstract }
-${ elseif(itemized-abstract) }
+${ if(it.regular) }
+${ it.content }
+${ endif }
+
+${ if(it.itemized) }
 \begin{enumerate}
-    ${ for(itemized-abstract)}
-    \item ${ it }
-    ${ endfor } 
+${ for(it.content) }
+    \item${ it }%
+${ endfor }
 \end{enumerate}
-${ elseif(structured-abstract) }
-    ${ for(structured-abstract) }
-        \textbf{${ it.first }}\hskip 1em ${ it.last }\\%
+${ endif }
+
+${ if(it.structured) }
+    ${ for(it.content) }
+    {\bfserie ${ it.key }}\hfill 2em ${ it.value }\\%
     ${ endfor }
 ${ endif }
