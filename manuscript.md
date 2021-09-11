@@ -12,6 +12,48 @@ information about authorship, affiliations, the abstract, keywords, etc.
 
 # The metadata file
 
+## General information
+
+The first three fields are the title, language, and license. It's probably
+advisable not to change these, and there are chances that the logo on the PDF
+will not capture the values made here (this will have to be, maybe, fixed at
+some point).
+
+~~~json
+{
+    "title": "Preprint template",
+    "license": "CC-BY",
+    "language": "en"
+}
+~~~
+
+## Authorship
+
+Authors are listed as objects in the `creators` block (whose name was borrowed
+from the `.zenodo.json` file format). Each author is specified as follows:
+
+~~~json
+{
+      "familyname": "Bob",
+      "givennames": "Alice",
+      "email": "alice.bob@u.edu",
+      "orcid": "0000-0000-0000-0001",
+      "affiliations": [
+        "Affiliation 1",
+        "Affiliation 2"
+      ],
+      "status": ["corresponding", "equal"]
+    }
+~~~
+
+The `email` field is recommended for all authors. The `status` field is only
+useful for the corresponding author, and to denote equal contributions. These
+informations are rendered on the initial page. If an `orcid` is given, it will
+be linked on the HTML and PDF versions.
+
+Note that there is *no need* to number the affiliations - a small python script
+will take care of this automatically.
+
 ## Abstract
 
 This template supports three types of abstracts, indicated in the metadata file
