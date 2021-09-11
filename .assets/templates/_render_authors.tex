@@ -3,4 +3,4 @@ ${ if(it.orcid) }%
 ${ else }%
 ${ it.givennames }\,${ it.familyname }%
 ${ endif }%
-\,\textsuperscript{${ it.affilcode:_single_institution()[,] }}%
+\,\textsuperscript{${ for(it.affilcode) }${ it.affilcode }${ sep },${ endfor }}%
