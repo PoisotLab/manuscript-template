@@ -1,0 +1,12 @@
+<span class="header--author">
+${ if(it.orcid) }
+<a href="https://orcid.org/${ it.orcid }" target="_blank">
+    ${ it.givennames } ${ it.familyname }
+</a>
+${ else }
+${ it.givennames } ${ it.familyname }
+${ endif }
+${ for(it.affilcode) }
+<sup class="affilcode">${ it.affilcode }</sup>
+${ endfor }
+</span>

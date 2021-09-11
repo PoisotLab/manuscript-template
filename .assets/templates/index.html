@@ -36,20 +36,7 @@
         <div class="container">
             <div class="header--title">${ title }</div>
             <div class="header--authors">
-                ${ for(authors)}
-                <span class="header--author">
-                    ${ if(it.orcid) }
-                    <a href="https://orcid.org/${ it.orcid }" target="_blank">
-                        ${ it.givennames } ${ it.familyname }
-                    </a>
-                    ${ else }
-                    ${ it.givennames } ${ it.familyname }
-                    ${ endif }
-                    ${ for(it.affilcode) }
-                        <sup class="affilcode">${ it.affilcode }</sup>
-                    ${ endfor }
-                </span>
-                ${ endfor }
+                ${ authors:_render_authors.html() }
             </div>
         </div>
     </header>
