@@ -10,6 +10,17 @@ pagination).
 The core bit of configuration is the `metadata.json` file, which handles
 information about authorship, affiliations, the abstract, keywords, etc.
 
+# Deploying the template
+
+- Click on the "Use this template" button
+- Edit this README!
+- Add an `ACCESS_TOKEN` secret to your repository
+- Trigger a build by pushing a commit - the builds are only active on the `main` (**not**  `master`) branch, and on pull requests
+- Go to `http://you.github.io/repo-name/` to view the html version and the PDFs
+- Add your references to the `references.bib` file
+- Edit the `metadata.json` file to add the title, abstract, authors
+- Edit the `manuscript.md` file to make changes to your text
+
 # The metadata file
 
 ## General information
