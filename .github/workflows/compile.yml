@@ -106,8 +106,8 @@ jobs:
         with:
           name: "manuscript"
           path: dist
-      - name: "GitHub Pages deployment"
-        if: always()
-        uses: maxheld83/ghpages@v0.3.0
-        env:
-          BUILD_DIR: "dist/"
+      - name: "Deploy!"
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.
