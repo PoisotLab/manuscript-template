@@ -46,6 +46,13 @@ A `structured-abstract` is an array of 2-elements array of strings:
 
 ## Citation style
 
+The `citationstyle` key corresponds to the name, with `.csl` ommited, of a CSL
+stylesheet stored in the [citation style language][csl] repository. Note that
+there is no difference between main and dependent styles, the build engine will
+take the correct steps to get the correct style. The default is
+`"citationstyle": "ecology-letters"`.
+
+[csl]: https://github.com/citation-style-language/
 # Usage examples
 
 For example, the following equation
