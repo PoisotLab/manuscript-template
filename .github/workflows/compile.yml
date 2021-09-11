@@ -50,11 +50,11 @@ jobs:
           cp .assets/logo.png dist/
           cp author_template.tsv dist/
       - name: Build the website
-        run: pandoc manuscript.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/index.html
+        run: pandoc README.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/index.html
       - name: Build the tex files
         run: |
-          pandoc manuscript.md -s -o dist/draft.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/draft.tex
-          pandoc manuscript.md -s -o dist/preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/preprint.tex
+          pandoc README.md -s -o dist/draft.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/draft.tex
+          pandoc README.md -s -o dist/preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/preprint.tex
       - name: Save artifacts
         if: always()
         uses: actions/upload-artifact@master
