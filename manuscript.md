@@ -1,9 +1,14 @@
----
-bibliography: [references.bib]
----
+This template uses `pandoc` (and a few additional python glue scripts) to
+facilitate the production of scientific articles using a standard markdown file.
+The objective is to ensure that standard markdown (with the important exception
+of the `pandoc-crossref` citation markup) will be rendered into an interactive
+website (which allows collaborative annotations with the `hypothes.is`
+platform), a "draft" style PDF (double-spaced, numbered lines, figures at the
+end), and a "preprint" style PDF (with slightly more reader-friendly
+pagination).
 
-This template uses recent versions of `pandoc` and `pandoc-crossref` to
-facilitate the referencing of equations, figures, and tables within the text.
+The core bit of configuration is the `metadata.json` file, which handles
+information about authorship, affiliations, the abstract, keywords, etc.
 
 # The metadata file
 
