@@ -40,7 +40,7 @@ some point).
 
 ## Authorship
 
-Authors are listed as objects in the `creators` block (whose name was borrowed
+Authors are listed as objects in the `authors` block (whose name was borrowed
 from the `.zenodo.json` file format). Each author is specified as follows:
 
 ~~~json

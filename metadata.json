@@ -2,7 +2,7 @@
   "title": "Preprint template",
   "license": "CC-BY",
   "language": "en",
-  "creators": [
+  "authors": [
     {
       "affiliations": [
         "Université de Montréal",
@@ -34,10 +34,10 @@
       "status": ["equal"]
     }
   ],
-  "structured-abstract": [
-    ["Purpose", "This template provides a series of scripts to render a markdown document into an interactive website and a series of PDFs."],
-    ["But why?", "It makes collaborating on text with GitHub easier, and means that we never need to think about the output."],
-    ["How does it works?", "GitHub actions and a series of python scritpts. The markdown is handled with `pandoc`."]
+  "abstract": [
+    "This template provides a series of scripts to render a markdown document into an interactive website and a series of PDFs.",
+    "It makes collaborating on text with GitHub easier, and means that we never need to think about the output.",
+    "GitHub actions and a series of python scritpts. The markdown is handled with `pandoc`."
   ],
   "keywords": [
     "pandoc",

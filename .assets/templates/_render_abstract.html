@@ -1,13 +1,10 @@
-${ if(abstract} }
-${ abstract }
-${ elseif(itemized-abstract) }
-<ol>
-    ${ for(itemized-abstract) }
-        <li>${ it }</li>
-    ${ endfor }
-</ol>
-${ elseif(structured-abstract) }
-    ${ for(structured-abstract) }
-        <b>${ it.first }</b>&nbsp;&nbsp;&nbsp;${ it.last }<br />
-    ${ endfor }
+${ if(abstractdata} }
+    ${ if(it.regular) }
+        ${ it.content }
+    ${ endif }
+    ${ if(it.itemized) }
+        ${ for(it.content) }
+            LOL ${ it } LOL
+        ${ endfor }
+    ${ endif }
 ${ endif }
