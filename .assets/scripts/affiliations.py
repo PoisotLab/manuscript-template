@@ -9,44 +9,44 @@ biorxiv = open("author_template.tsv", "w")
 biorxiv.write("Email	Institution	First Name	Middle Name(s)/Initial(s)	Last Name	Suffix	Corresponding Author	Home Page URL	Collaborative Group/Consortium	ORCiD\n")
 
 # Fields to remove
-creators = metadata["creators"]
+authors = metadata["authors"]
 affiliation_to_number = {}
 
-for creator in creators:
-    affiliations = creator["affiliations"]
+for author in authors:
+    affiliations = author["affiliations"]
     for affiliation in affiliations:
         if not (affiliation in affiliation_to_number.keys()):
             affiliation_to_number[affiliation] = len(affiliation_to_number) + 1
     # BIORXIV info block
-    if "email" in creator.keys():
-        biorxiv.write(creator["email"])
+    if "email" in author.keys():
+        biorxiv.write(author["email"])
     biorxiv.write("\t")
     # Institution
     biorxiv.write(affiliations[0])
     biorxiv.write("\t")
     # Name
-    biorxiv.write(creator["givennames"])
+    biorxiv.write(author["givennames"])
     biorxiv.write("\t")
     biorxiv.write("\t")
-    biorxiv.write(creator["familyname"])
+    biorxiv.write(author["familyname"])
     biorxiv.write("\t")
     biorxiv.write("\t")
     biorxiv.write("\t")
     biorxiv.write("\t")
     biorxiv.write("\t")
-    if "orcid" in creator.keys():
-        biorxiv.write(creator["orcid"])
+    if "orcid" in author.keys():
+        biorxiv.write(author["orcid"])
     biorxiv.write("\n")
     
 biorxiv.close()
 
-for creator in creators:
-    creator["affilcode"] = [affiliation_to_number[affiliation]
-                            for affiliation in creator["affiliations"]]
-    creator.pop("affiliations", None)
+for author in authors:
+    author["affilcode"] = [affiliation_to_number[affiliation]
+                            for affiliation in author["affiliations"]]
+    author.pop("affiliations", None)
 
 affiliations = {}
-affiliations["authors"] = creators
+affiliations["authors"] = authors
 affiliations["institutions"] = [{"id": v, "name": k} for k, v in sorted(
     affiliation_to_number.items(), key=lambda item: item[1])]
 
@@ -55,15 +55,15 @@ affiliations["metadata"]["corresponding"] = []
 
 # Check authorship and correspondance
 toadd = True
-for creator in affiliations["authors"]:
-    if "status" in creator.keys():
-        if "equal" in creator["status"]:
-            creator["affilcode"].append("‡")
+for author in affiliations["authors"]:
+    if "status" in author.keys():
+        if "equal" in author["status"]:
+            author["affilcode"].append("‡")
             if toadd:
                 affiliations["metadata"]["equalcontributions"] = {"id": "‡", "name": "These authors contributed equally to the work"}
                 toadd = False
-        if "corresponding" in creator["status"]:
-            affiliations["metadata"]["corresponding"].append({"given": creator["givennames"], "family": creator["familyname"], "email": creator["email"]})
+        if "corresponding" in author["status"]:
+            affiliations["metadata"]["corresponding"].append({"given": author["givennames"], "family": author["familyname"], "email": author["email"]})
 
 with open("affiliations.json", "w") as outfile:
     json.dump(affiliations, outfile, sort_keys=False,

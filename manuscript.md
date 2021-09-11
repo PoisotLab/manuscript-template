@@ -1,9 +1,110 @@
----
-bibliography: [references.bib]
----
+This template uses `pandoc` (and a few additional python glue scripts) to
+facilitate the production of scientific articles using a standard markdown file.
+The objective is to ensure that standard markdown (with the important exception
+of the `pandoc-crossref` citation markup) will be rendered into an interactive
+website (which allows collaborative annotations with the `hypothes.is`
+platform), a "draft" style PDF (double-spaced, numbered lines, figures at the
+end), and a "preprint" style PDF (with slightly more reader-friendly
+pagination).
 
-This template uses recent versions of `pandoc` and `pandoc-crossref` to
-facilitate the referencing of equations, figures, and tables within the text.
+The core bit of configuration is the `metadata.json` file, which handles
+information about authorship, affiliations, the abstract, keywords, etc.
+
+# Deploying the template
+
+- Click on the "Use this template" button
+- Edit this README!
+- Add an `ACCESS_TOKEN` secret to your repository
+- Trigger a build by pushing a commit - the builds are only active on the `main` (**not**  `master`) branch, and on pull requests
+- Go to `http://you.github.io/repo-name/` to view the html version and the PDFs
+- Add your references to the `references.bib` file
+- Edit the `metadata.json` file to add the title, abstract, authors
+- Edit the `manuscript.md` file to make changes to your text
+
+# The metadata file
+
+## General information
+
+The first three fields are the title, language, and license. It's probably
+advisable not to change these, and there are chances that the logo on the PDF
+will not capture the values made here (this will have to be, maybe, fixed at
+some point).
+
+~~~json
+{
+    "title": "Preprint template",
+    "license": "CC-BY",
+    "language": "en"
+}
+~~~
+
+## Authorship
+
+Authors are listed as objects in the `authors` block (whose name was borrowed
+from the `.zenodo.json` file format). Each author is specified as follows:
+
+~~~json
+{
+      "familyname": "Bob",
+      "givennames": "Alice",
+      "email": "alice.bob@u.edu",
+      "orcid": "0000-0000-0000-0001",
+      "affiliations": [
+        "Affiliation 1",
+        "Affiliation 2"
+      ],
+      "status": ["corresponding", "equal"]
+    }
+~~~
+
+The `email` field is recommended for all authors. The `status` field is only
+useful for the corresponding author, and to denote equal contributions. These
+informations are rendered on the initial page. If an `orcid` is given, it will
+be linked on the HTML and PDF versions.
+
+Note that there is *no need* to number the affiliations - a small python script
+will take care of this automatically.
+
+## Abstract
+
+This template supports three types of abstracts, indicated in the metadata file
+as `abstract`:
+
+A regular `abstract` is defined as
+
+~~~json
+"abstract": "A very long string"
+~~~
+
+An itemized abstract is an array of strings, each representing a bullet point:
+
+~~~json
+"abstract": [
+    "Point 1",
+    "Point 2"
+]
+~~~
+
+A structured abstract is an object with key-value pairs :
+
+~~~json
+"abstract": {
+    "Location": "Worldwide",
+    "Organisms": "Mammals"
+}
+~~~
+
+## Citation style
+
+The `citationstyle` key corresponds to the name, with `.csl` ommited, of a CSL
+stylesheet stored in the [citation style language][csl] repository. Note that
+there is no difference between main and dependent styles, the build engine will
+take the correct steps to get the correct style. The default is
+`"citationstyle": "ecology-letters"`.
+
+[csl]: https://github.com/citation-style-language/
+# Usage examples
+
 For example, the following equation
 
 $$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)$$ {#eq:eq1}
@@ -34,11 +135,15 @@ manuscript).
 We use the [Better BibTeX](https://retorque.re/zotero-better-bibtex/) plugin for
 citation key generations, and auto-export of the shared library to the
 `references.bib` file. We use a citation key format meant to convey information
-on the author, date, year, and title. It must be set in the Better BibTeX
-preferences as
+on the author (first author full name), date (complet year), and title (first
+three letters of the first two non-stop words). It must be set in the Better
+BibTeX preferences as (you might need to remove the line changes):
 
 ~~~
-[auth:fold][year][title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize][title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]
+[auth:fold]
+[year]
+[title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize]
+[title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]
 ~~~
 
 It is a good idea to configure Better BibTeX to auto-export on change, and to

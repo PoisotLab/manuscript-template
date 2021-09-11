@@ -1,0 +1,20 @@
+${ if(it.regular) }
+${ it.content }
+${ endif }
+
+${ if(it.itemized) }
+<ol>
+${ for(it.content) }
+    <li>${ it }</li>
+${ endfor }
+</ol>
+${ endif }
+
+${ if(it.structured) }
+<dl>
+    ${ for(it.content) }
+    <dt>${ it.key }</dt>
+    <dd>${ it.value }</dd>
+    ${ endfor }
+</dl>
+${ endif }

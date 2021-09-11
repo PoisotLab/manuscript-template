@@ -1,0 +1,17 @@
+${ if(it.regular) }
+${ it.content }
+${ endif }
+
+${ if(it.itemized) }
+\begin{enumerate}
+${ for(it.content) }
+    \item${ it }%
+${ endfor }
+\end{enumerate}
+${ endif }
+
+${ if(it.structured) }
+    ${ for(it.content) }
+    {\bfseries ${ it.key }}\qquad ${ it.value }\\%
+    ${ endfor }
+${ endif }
