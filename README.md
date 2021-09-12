@@ -40,16 +40,11 @@ deploy to `gh-pages` (from where the website is served).
 
 ## General information
 
-The first three fields are the title, language, and license. It's probably
-advisable not to change these, and there are chances that the logo on the PDF
-will not capture the values made here (this will have to be, maybe, fixed at
-some point).
+The title is a field in the `metadata.json`:
 
 ~~~json
 {
-    "title": "Preprint template",
-    "license": "CC-BY",
-    "language": "en"
+    "title": "Preprint template"
 }
 ~~~
 

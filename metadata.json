@@ -1,7 +1,5 @@
 {
   "title": "Template to prepare preprints and manuscripts using markdown and github actions",
-  "license": "CC-BY",
-  "language": "en",
   "authors": [
     {
       "affiliations": [
