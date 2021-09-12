@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="" dir="ltr">
 
 <head>
     <meta charset="utf-8">
@@ -229,12 +229,10 @@
             <p>In particular, note that <em>you do not need</em> to create a personnal access token to deploy to <code>gh-pages</code> (from where the website is served).</p>
             <h1 id="the-metadata-file">The metadata file</h1>
             <h2 id="general-information">General information</h2>
-            <p>The first three fields are the title, language, and license. It’s probably advisable not to change these, and there are chances that the logo on the PDF will not capture the values made here (this will have to be, maybe, fixed at some point).</p>
+            <p>The title is a field in the <code>metadata.json</code>:</p>
             <div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-            <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Preprint template&quot;</span><span class="fu">,</span></span>
-            <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;license&quot;</span><span class="fu">:</span> <span class="st">&quot;CC-BY&quot;</span><span class="fu">,</span></span>
-            <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;language&quot;</span><span class="fu">:</span> <span class="st">&quot;en&quot;</span></span>
-            <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Preprint template&quot;</span></span>
+            <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
             <h2 id="authorship">Authorship</h2>
             <p>Authors are listed as objects in the <code>authors</code> block. Each author is specified as follows:</p>
             <div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
