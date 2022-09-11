@@ -17,7 +17,11 @@ end
 
 for author in authors
     author["affilcode"] =
-        sort([affiliation_to_number[affiliation] for affiliation in author["affiliations"]])
+        sort(
+            Any[
+                affiliation_to_number[affiliation] for affiliation in author["affiliations"]
+            ],
+        )
     delete!(author, "affiliations")
 end
 
@@ -29,4 +33,35 @@ while ~isempty(affiliation_to_number)
     name = collect(keys(affiliation_to_number))[idx]
     delete!(affiliation_to_number, name)
     push!(affiliations["institutions"], Dict(["id" => id, "name" => name]))
+end
+
+affiliations["metadata"] = Dict()
+affiliations["metadata"]["corresponding"] = []
+
+add_equal_sign = true
+for author in affiliations["authors"]
+    if haskey(author, "status")
+        if "equal" in author["status"]
+            push!(author["affilcode"], "‡")
+            if add_equal_sign
+                affiliations["metadata"]["equalcontributions"] =
+                    Dict(["id" => "‡", "name" => "Equal contributions"])
+                add_equal_sign = false
+            end
+        end
+        if "corresponding" in author["status"]
+            push!(affiliations["metadata"]["corresponding"],
+                Dict([
+                    "given" => author["givennames"],
+                    "family" => author["familyname"],
+                    "email" => author["email"],
+                ]),
+            )
+        end
+    end
+end
+
+# Write the file
+open("affiliations.json", "w") do json_file
+    return JSON.print(json_file, affiliations, 4)
 end
