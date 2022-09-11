@@ -1,7 +1,3 @@
-import subprocess
-import json
-import os
-
 with open("metadata.json") as jsfile:
     metadata = json.load(jsfile)
 
@@ -17,26 +13,6 @@ for author in authors:
     for affiliation in affiliations:
         if not (affiliation in affiliation_to_number.keys()):
             affiliation_to_number[affiliation] = len(affiliation_to_number) + 1
-    # BIORXIV info block
-    if "email" in author.keys():
-        biorxiv.write(author["email"])
-    biorxiv.write("\t")
-    # Institution
-    biorxiv.write(affiliations[0])
-    biorxiv.write("\t")
-    # Name
-    biorxiv.write(author["givennames"])
-    biorxiv.write("\t")
-    biorxiv.write("\t")
-    biorxiv.write(author["familyname"])
-    biorxiv.write("\t")
-    biorxiv.write("\t")
-    biorxiv.write("\t")
-    biorxiv.write("\t")
-    biorxiv.write("\t")
-    if "orcid" in author.keys():
-        biorxiv.write(author["orcid"])
-    biorxiv.write("\n")
     
 biorxiv.close()
 

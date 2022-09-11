@@ -12,15 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6]
-        pandoc-version: [2.11.0.4]
-        crossref-version: [0.3.8.3a]
+        julia-version: [1.8]
+        pandoc-version: [2.19.2]
+        crossref-version: [0.3.13.0]
     steps:
       - uses: actions/checkout@v2
-      - name: Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
+      - name: Julia ${{ matrix.julia-version }}
+        uses: julia-actions/setup-julia@v1
         with:
-          python-version: ${{ matrix.python-version }}
+          version: ${{ matrix.julia-version }}
+          arch: 'x64'
+      - name: Julia packages
+        uses: julia-actions/julia-buildpkg@v1
       - name: Download and install pandoc
         run: |
           wget https://github.com/jgm/pandoc/releases/download/${{ matrix.pandoc-version }}/pandoc-${{ matrix.pandoc-version }}-1-amd64.deb
@@ -35,20 +38,19 @@ jobs:
           export LANG=en_US.UTF-8
           pandoc references.bib -t csljson -o references.json
       - name: Cleanup the bibliography
-        run: python .assets/scripts/bibliography.py
+        run: julia --project .assets/scripts/bibliography.jl
       - name: Cleanup the affiliations
-        run: python .assets/scripts/affiliations.py
+        run: julia --project .assets/scripts/affiliations.jl
       - name: Get the citation style file
-        run: python .assets/scripts/citationstyle.py
+        run: julia --project .assets/scripts/citationstyle.jl
       - name: Format the abstract
-        run: python .assets/scripts/abstract.py
+        run: julia --project .assets/scripts/abstract.jl
       - name: Prepare the output
         run: |
           mkdir -p dist
           cp -r figures dist/
           cp references.json dist/
           cp .assets/logo.png dist/
-          cp author_template.tsv dist/
       - name: Build the website
         run: pandoc README.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/index.html
       - name: Build the tex files
