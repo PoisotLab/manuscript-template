@@ -1,6 +1,6 @@
 import JSON
 
-metadata = JSON.parsefile(joinpath(pwd(), "references.json"))
+references = JSON.parsefile(joinpath(pwd(), "references.json"))
 
 fields_to_drop = [
     "source",
