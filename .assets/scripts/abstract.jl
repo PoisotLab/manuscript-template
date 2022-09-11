@@ -5,8 +5,8 @@ metadata = JSON.parsefile(joinpath(pwd(), "metadata.json"))
 
 # Dispatch on abstract type
 function format_abstract(abstract::Dict{String, Any})
-    data = Dict{String,Any}(["structured" => true])
-    data["content"] = [Dict(["key" => key, "value" => value]) for (key,value) in abstract]
+    data = Dict{String, Any}(["structured" => true])
+    data["content"] = [Dict(["key" => key, "value" => value]) for (key, value) in abstract]
     return data
 end
 
@@ -24,5 +24,5 @@ end
 
 # Write the file
 open("abstract.json", "w") do json_file
-    JSON.print(json_file, format_abstract(metadata["abstract"]), 4)
+    return JSON.print(json_file, format_abstract(metadata["abstract"]), 4)
 end
