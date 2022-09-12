@@ -55,7 +55,7 @@ jobs:
           cp .assets/logo.png dist/
       - name: Get the filename in a variable
         id: filename
-        run: echo "::set-output name=filename::$(echo filename)"
+        run: echo "::set-output name=filename::$(cat filename)"
       - name: Build the website
         run: pandoc README.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --metadata-file=filename.json --template=.assets/templates/index.html
       - name: Build the tex files
