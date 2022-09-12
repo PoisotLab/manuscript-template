@@ -6,7 +6,5 @@ ${ if(it.orcid) }
 ${ else }
 ${ it.givennames } ${ it.familyname }
 ${ endif }
-${ for(it.affiliation) }
-<sup class="affiliation">${ it.affiliation }</sup>
-${ endfor }
+<sup class="affiliation">${ it.affiliation[,] }</sup>
 </span>
