@@ -67,6 +67,19 @@ jobs:
       - name: Build the preprint
         run: |
           pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}_preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/preprint.tex
+      - name: Build a raw file for word counting
+        run: |
+          pandoc README.md -s -o rawtext.txt -t plain -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json -M suppress-bibliography=true 
+      - name: "Word count in the build folder"
+        id: word-count
+        if: github.event_name == 'pull_request'
+        run: echo "::set-output name=count::Current word count is $(wc -w rawtext.txt | cut -d' ' -f1)"
+      - name: "Comment on wordcount"
+        uses: thollander/actions-comment-pull-request@v1
+        if: github.event_name == 'pull_request'
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: ${{ steps.word-count.outputs.count }}
       - name: Save artifacts
         if: always()
         uses: actions/upload-artifact@master
