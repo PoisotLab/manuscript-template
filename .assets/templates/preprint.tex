@@ -22,8 +22,8 @@ ${ _preprint() }
 ${ authors:_render_authors()[, ] }
 \vskip 1em
 ${ institutions:_render_institutions()[; ] }\\
-${ if(metadata.equalcontributions) }
-${ metadata.equalcontributions:_render_institutions()[; ] }\\
+${ if(metadata.equal) }
+${ metadata.equal:_render_institutions()[; ] }\\
 ${ endif }
 \vskip 1em
 \textbf{Correspondance to:}\\
@@ -44,7 +44,7 @@ ${ for(keywords) }${ it }\\${ endfor }}
 }
 $endif$
 
-${ abstractdata:_render_abstract.tex() }
+${ abstract:_render_abstract.tex() }
 
 \vskip 2em
 \makebox[0pt][l]{\colorRule[CCCCCC]{2.0\textwidth}{0.5pt}}
