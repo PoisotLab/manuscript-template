@@ -88,7 +88,7 @@ jobs:
           path: dist
       - name: Get the filename in a variable
         id: filename
-        run: echo "::set-output name=filename::$(cat filename)"
+        run: echo "::set-output name=filename::$(cat dist/filename)"
       - name: Build the preprint pdf file
         uses: xu-cheng/latex-action@master
         with:
@@ -105,7 +105,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: "raw_files"
+          name: "${{ steps.filename.outputs.filename }}"
           path: dist
   deploy:
     name: Deploy to gh-pages
@@ -124,3 +124,7 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
+      - name: Remove raw files
+        uses: geekyeggo/delete-artifact@v1
+        with:
+          name: "raw_files"
