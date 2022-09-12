@@ -124,7 +124,12 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
-      - name: Remove raw files
-        uses: geekyeggo/delete-artifact@v1
-        with:
-          name: "raw_files"
+  cleanup:
+      name: Cleanup the old files
+      needs: [deploy, build]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Remove raw files
+          uses: geekyeggo/delete-artifact@v1
+          with:
+            name: "raw_files"
