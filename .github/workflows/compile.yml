@@ -47,6 +47,8 @@ jobs:
         run: julia --project .assets/scripts/abstract.jl
       - name: Generate the manuscript shortname
         run: julia --project .assets/scripts/filename.jl
+      - name: Collapse metadata
+        run: julia --project .assets/scripts/metadata.jl
       - name: Prepare the output
         run: |
           mkdir -p dist
