@@ -46,7 +46,7 @@ for author in affiliations["authors"]
             if add_equal_sign
                 affiliations["metadata"]["equalcontributions"] =
                     Dict(["id" => "‡", "name" => "Equal contributions"])
-                add_equal_sign = false
+                global add_equal_sign = false
             end
         end
         if "corresponding" in author["status"]
