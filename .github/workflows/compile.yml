@@ -45,18 +45,23 @@ jobs:
         run: julia --project .assets/scripts/citationstyle.jl
       - name: Format the abstract
         run: julia --project .assets/scripts/abstract.jl
+      - name: Generate the manuscript shortname
+        run: julia --project .assets/scripts/filename.jl
       - name: Prepare the output
         run: |
           mkdir -p dist
           cp -r figures dist/
           cp references.json dist/
           cp .assets/logo.png dist/
+      - name: Get the filename in a variable
+        id: filename
+        run: echo "::set-output name=filename::$(echo filename)"
       - name: Build the website
-        run: pandoc README.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/index.html
+        run: pandoc README.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --metadata-file=filename.json --template=.assets/templates/index.html
       - name: Build the tex files
         run: |
-          pandoc README.md -s -o dist/draft.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/draft.tex
-          pandoc README.md -s -o dist/preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/preprint.tex
+          pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}_draft.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/draft.tex
+          pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}_.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=metadata.json --metadata-file=affiliations.json --metadata-file=abstract.json --template=.assets/templates/preprint.tex
       - name: Save artifacts
         if: always()
         uses: actions/upload-artifact@master
