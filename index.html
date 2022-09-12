@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Template to prepare preprints and manuscripts using markdown and github actions</title>
+    <title>Template to prepare preprints and manuscripts using markdown
+and github actions</title>
     <script src="https://hypothes.is/embed.js" async></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
@@ -170,24 +171,25 @@
 <body>
     <header>
         <div class="container">
-            <div class="header--title">Template to prepare preprints and manuscripts using markdown and github actions</div>
+            <div class="header--title">Template to prepare preprints and
+manuscripts using markdown and github actions</div>
             <div class="header--authors">
                 <span class="header--author">
                 <a href="https://orcid.org/0000-0002-0735-5184" target="_blank">
                     Timothée Poisot
                 </a>
-                <sup class="affilcode">1</sup>
-                <sup class="affilcode">2</sup>
-                <sup class="affilcode">‡</sup>
+                <sup class="affilcode"></sup>
+                <sup class="affilcode"></sup>
+                <sup class="affilcode"></sup>
                 </span><span class="header--author">
                 Peregrin Took
-                <sup class="affilcode">3</sup>
-                <sup class="affilcode">4</sup>
+                <sup class="affilcode"></sup>
+                <sup class="affilcode"></sup>
                 </span><span class="header--author">
                 Merriadoc Brandybuck
-                <sup class="affilcode">5</sup>
-                <sup class="affilcode">4</sup>
-                <sup class="affilcode">‡</sup>
+                <sup class="affilcode"></sup>
+                <sup class="affilcode"></sup>
+                <sup class="affilcode"></sup>
                 </span>
             </div>
         </div>
@@ -196,16 +198,6 @@
     <main class="container">
         <section class="abstract">
             
-
-            <dl>
-                    <dt>Purpose</dt>
-                <dd>This template provides a series of scripts to render a markdown document into an interactive website and a series of PDFs.</dd>
-                    <dt>Motivation</dt>
-                <dd>It makes collaborating on text with GitHub easier, and means that we never need to think about the output.</dd>
-                    <dt>Internals</dt>
-                <dd>GitHub actions and a series of python scritpts. The markdown is handled with <code>pandoc</code>.</dd>
-                </dl>
-
             <div class="artifacts">
                 <a href="draft.pdf" title="Draft PDF" target="_blank">draft</a>
                 <a href="preprint.pdf" title="Preprint PDF" target="_blank">preprint</a>
@@ -213,81 +205,186 @@
         </section>
         
         <article>
-            <p>This template uses <code>pandoc</code> (and a few additional python glue scripts) to facilitate the production of scientific articles using a standard markdown file. The objective is to ensure that standard markdown (with the important exception of the <code>pandoc-crossref</code> citation markup) will be rendered into an interactive website (which allows collaborative annotations with the <code>hypothes.is</code> platform), a “draft” style PDF (double-spaced, numbered lines, figures at the end), and a “preprint” style PDF (with slightly more reader-friendly pagination).</p>
-            <p>The core bit of configuration is the <code>metadata.json</code> file, which handles information about authorship, affiliations, the abstract, keywords, etc. All documents will be deployed to <code>gh-pages</code> <em>only</em> on push events from the <code>main</code> branch. All of the artifacts will be built when doing pull requests, so you can check that merging a branch is <em>not</em> going to cause the compilation of the documents to fail; indeed, you can download the artifacts produced during the run, to check the PDF and html files. The website is only updated from the <code>main</code> branch.</p>
-            <p>The workflow is <em>very</em> GitHub based, and so the manuscript file <em>is</em> the <code>README.md</code> - this is not going to be a huge issue as 90% of the markdown is standard, with the exception of the citations and mathematics, so this will render (mostly) like a normal README file.</p>
+            <p>This template uses <code>pandoc</code> (and a few
+            additional python glue scripts) to facilitate the production
+            of scientific articles using a standard markdown file. The
+            objective is to ensure that standard markdown (with the
+            important exception of the <code>pandoc-crossref</code>
+            citation markup) will be rendered into an interactive
+            website (which allows collaborative annotations with the
+            <code>hypothes.is</code> platform), a “draft” style PDF
+            (double-spaced, numbered lines, figures at the end), and a
+            “preprint” style PDF (with slightly more reader-friendly
+            pagination).</p>
+            <p>The core bit of configuration is the
+            <code>metadata.json</code> file, which handles information
+            about authorship, affiliations, the abstract, keywords, etc.
+            All documents will be deployed to <code>gh-pages</code>
+            <em>only</em> on push events from the <code>main</code>
+            branch. All of the artifacts will be built when doing pull
+            requests, so you can check that merging a branch is
+            <em>not</em> going to cause the compilation of the documents
+            to fail; indeed, you can download the artifacts produced
+            during the run, to check the PDF and html files. The website
+            is only updated from the <code>main</code> branch.</p>
+            <p>The workflow is <em>very</em> GitHub based, and so the
+            manuscript file <em>is</em> the <code>README.md</code> -
+            this is not going to be a huge issue as 90% of the markdown
+            is standard, with the exception of the citations and
+            mathematics, so this will render (mostly) like a normal
+            README file.</p>
             <h1 id="deploying-the-template">Deploying the template</h1>
-            <p>The process of deploying this template has been <em>greatly</em> streamlined from previous versions:</p>
+            <p>The process of deploying this template has been
+            <em>greatly</em> streamlined from previous versions:</p>
             <ul>
             <li>Click on the “Use this template” button</li>
-            <li>Edit <code>README.md</code> with your own text, commit, and push</li>
-            <li>This push will trigger the first build - the builds are only active on the <code>main</code> branch (<em>not</em> <code>master</code>!), and on pull requests</li>
-            <li>Go to <code>http://you.github.io/repo-name/</code> to view the html version, and get access to the PDFs</li>
-            <li>Add your references to the <code>references.bib</code> file</li>
-            <li>Edit the <code>metadata.json</code> file to add the title, abstract, authors</li>
+            <li>Edit <code>README.md</code> with your own text, commit,
+            and push</li>
+            <li>This push will trigger the first build - the builds are
+            only active on the <code>main</code> branch (<em>not</em>
+            <code>master</code>!), and on pull requests</li>
+            <li>Go to <code>http://you.github.io/repo-name/</code> to
+            view the html version, and get access to the PDFs</li>
+            <li>Add your references to the <code>references.bib</code>
+            file</li>
+            <li>Edit the <code>metadata.json</code> file to add the
+            title, abstract, authors</li>
             </ul>
-            <p>In particular, note that <em>you do not need</em> to create a personnal access token to deploy to <code>gh-pages</code> (from where the website is served).</p>
+            <p>In particular, note that <em>you do not need</em> to
+            create a personnal access token to deploy to
+            <code>gh-pages</code> (from where the website is
+            served).</p>
             <h1 id="the-metadata-file">The metadata file</h1>
             <h2 id="general-information">General information</h2>
-            <p>The title is a field in the <code>metadata.json</code>:</p>
-            <div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-            <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Preprint template&quot;</span></span>
-            <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <p>The title is a field in the
+            <code>metadata.json</code>:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Preprint template&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
             <h2 id="authorship">Authorship</h2>
-            <p>Authors are listed as objects in the <code>authors</code> block. Each author is specified as follows:</p>
-            <div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-            <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;familyname&quot;</span><span class="fu">:</span> <span class="st">&quot;Bob&quot;</span><span class="fu">,</span></span>
-            <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;givennames&quot;</span><span class="fu">:</span> <span class="st">&quot;Alice&quot;</span><span class="fu">,</span></span>
-            <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;alice.bob@u.edu&quot;</span><span class="fu">,</span></span>
-            <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;orcid&quot;</span><span class="fu">:</span> <span class="st">&quot;0000-0000-0000-0001&quot;</span><span class="fu">,</span></span>
-            <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;affiliations&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
-            <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Affiliation 1&quot;</span><span class="ot">,</span></span>
-            <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Affiliation 2&quot;</span></span>
-            <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
-            <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;corresponding&quot;</span><span class="ot">,</span> <span class="st">&quot;equal&quot;</span><span class="ot">]</span></span>
-            <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code></pre></div>
-            <p>The <code>email</code> field is recommended for all authors. The <code>status</code> field is only useful for the corresponding author, and to denote equal contributions. These informations are rendered on the initial page. If an <code>orcid</code> is given, it will be linked on the HTML and PDF versions.</p>
-            <p>Note that there is <em>no need</em> to number the affiliations - a small python script will take care of this automatically.</p>
+            <p>Authors are listed as objects in the <code>authors</code>
+            block. Each author is specified as follows:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;familyname&quot;</span><span class="fu">:</span> <span class="st">&quot;Bob&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;givennames&quot;</span><span class="fu">:</span> <span class="st">&quot;Alice&quot;</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;alice.bob@u.edu&quot;</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;orcid&quot;</span><span class="fu">:</span> <span class="st">&quot;0000-0000-0000-0001&quot;</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;affiliations&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Affiliation 1&quot;</span><span class="ot">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Affiliation 2&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;corresponding&quot;</span><span class="ot">,</span> <span class="st">&quot;equal&quot;</span><span class="ot">]</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code></pre></div>
+            <p>The <code>email</code> field is recommended for all
+            authors. The <code>status</code> field is only useful for
+            the corresponding author, and to denote equal contributions.
+            These informations are rendered on the initial page. If an
+            <code>orcid</code> is given, it will be linked on the HTML
+            and PDF versions.</p>
+            <p>Note that there is <em>no need</em> to number the
+            affiliations - a small python script will take care of this
+            automatically.</p>
             <h2 id="abstract">Abstract</h2>
-            <p>This template supports three types of abstracts, indicated in the metadata file as <code>abstract</code>:</p>
+            <p>This template supports three types of abstracts,
+            indicated in the metadata file as <code>abstract</code>:</p>
             <p>A regular <code>abstract</code> is defined as</p>
-            <div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;abstract&quot;:</span> <span class="er">&quot;A</span> <span class="er">very</span> <span class="er">long</span> <span class="er">string&quot;</span></span></code></pre></div>
-            <p>An itemized abstract is an array of strings, each representing a bullet point:</p>
-            <div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;abstract&quot;:</span> <span class="ot">[</span></span>
-            <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Point 1&quot;</span><span class="ot">,</span></span>
-            <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Point 2&quot;</span></span>
-            <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div>
-            <p>A structured abstract is an object with key-value pairs :</p>
-            <div class="sourceCode" id="cb5"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;abstract&quot;:</span> <span class="fu">{</span></span>
-            <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;Location&quot;</span><span class="fu">:</span> <span class="st">&quot;Worldwide&quot;</span><span class="fu">,</span></span>
-            <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;Organisms&quot;</span><span class="fu">:</span> <span class="st">&quot;Mammals&quot;</span></span>
-            <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;abstract&quot;:</span> <span class="er">&quot;A</span> <span class="er">very</span> <span class="er">long</span> <span class="er">string&quot;</span></span></code></pre></div>
+            <p>An itemized abstract is an array of strings, each
+            representing a bullet point:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;abstract&quot;:</span> <span class="ot">[</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Point 1&quot;</span><span class="ot">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Point 2&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div>
+            <p>A structured abstract is an object with key-value pairs
+            :</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;abstract&quot;:</span> <span class="fu">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;Location&quot;</span><span class="fu">:</span> <span class="st">&quot;Worldwide&quot;</span><span class="fu">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;Organisms&quot;</span><span class="fu">:</span> <span class="st">&quot;Mammals&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
             <h2 id="citation-style">Citation style</h2>
-            <p>The <code>citationstyle</code> key corresponds to the name, with <code>.csl</code> ommited, of a CSL stylesheet stored in the <a href="https://github.com/citation-style-language/">citation style language</a> repository. Note that there is no difference between main and dependent styles, the build engine will take the correct steps to get the correct style. The default is <code>"citationstyle": "ecology-letters"</code>. There is a longer section about references management later on.</p>
+            <p>The <code>citationstyle</code> key corresponds to the
+            name, with <code>.csl</code> ommited, of a CSL stylesheet
+            stored in the <a
+            href="https://github.com/citation-style-language/">citation
+            style language</a> repository. Note that there is no
+            difference between main and dependent styles, the build
+            engine will take the correct steps to get the correct style.
+            The default is
+            <code>"citationstyle": "ecology-letters"</code>. There is a
+            longer section about references management later on.</p>
             <h1 id="references-management">References management</h1>
-            <p>The references are managed by <code>pandoc</code>. Note that we <em>do not</em> use <code>pandoc-citeproc</code>, which was an external module for older <code>pandoc</code> versions. References <em>must</em> be stored in a <code>references.bib</code> file, and that it would make sense to order it alphabetically by key.</p>
-            <p>We use <a href="https://www.zotero.org/">Zotero</a> for references management, and for the lab’s manuscripts, we work from folders in a shared library (with a folder for every manuscript).</p>
-            <p>It is recommedned to use the <a href="https://retorque.re/zotero-better-bibtex/">Better BibTeX</a> plugin for citation key generations, and auto-export of the shared library to the <code>references.bib</code> file. We use a citation key format meant to convey information on the author (first author full name), date (complet year), and title (first three letters of the first two non-stop words). It must be set in the Better BibTeX preferences as (you might need to remove the line changes):</p>
+            <p>The references are managed by <code>pandoc</code>. Note
+            that we <em>do not</em> use <code>pandoc-citeproc</code>,
+            which was an external module for older <code>pandoc</code>
+            versions. References <em>must</em> be stored in a
+            <code>references.bib</code> file, and that it would make
+            sense to order it alphabetically by key.</p>
+            <p>We use <a href="https://www.zotero.org/">Zotero</a> for
+            references management, and for the lab’s manuscripts, we
+            work from folders in a shared library (with a folder for
+            every manuscript).</p>
+            <p>It is recommedned to use the <a
+            href="https://retorque.re/zotero-better-bibtex/">Better
+            BibTeX</a> plugin for citation key generations, and
+            auto-export of the shared library to the
+            <code>references.bib</code> file. We use a citation key
+            format meant to convey information on the author (first
+            author full name), date (complet year), and title (first
+            three letters of the first two non-stop words). It must be
+            set in the Better BibTeX preferences as (you might need to
+            remove the line changes):</p>
             <pre><code>[auth:fold]
-            [year]
-            [title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize]
-            [title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]</code></pre>
-            <p>It is a good idea to configure Better BibTeX to auto-export on change, and to remove a lot of fields that are not strictly speaking required for references. The list of fields we usually ignore is:</p>
+[year]
+[title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize]
+[title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]</code></pre>
+            <p>It is a good idea to configure Better BibTeX to
+            auto-export on change, and to remove a lot of fields that
+            are not strictly speaking required for references. The list
+            of fields we usually ignore is:</p>
             <pre><code>abstract,copyright,annotation,file,pmid,month,shorttitle,keywords</code></pre>
-            <p>The citations are done using the normal markdown syntax, where <code>@Elton1927AniEco</code> produces <span class="citation" data-cites="Elton1927AniEco">Elton (1927)</span>, and <code>[@Camerano1880EquViv]</code> produces <span class="citation" data-cites="Camerano1880EquViv">(Camerano 1880)</span>.</p>
-            <h1 id="figures-tables-and-other-floats">Figures, Tables, and other floats</h1>
-            <p>Note that you can wrap the text of legends for both figures and tables. This avoids the issue of having very long lines.</p>
+            <p>The citations are done using the normal markdown syntax,
+            where <code>@Elton1927AniEco</code> produces <span
+            class="citation" data-cites="Elton1927AniEco">Elton
+            (1927)</span>, and <code>[@Camerano1880EquViv]</code>
+            produces <span class="citation"
+            data-cites="Camerano1880EquViv">(Camerano 1880)</span>.</p>
+            <h1 id="figures-tables-and-other-floats">Figures, Tables,
+            and other floats</h1>
+            <p>Note that you can wrap the text of legends for both
+            figures and tables. This avoids the issue of having very
+            long lines.</p>
             <h2 id="mathematics">Mathematics</h2>
             <p>The following equation</p>
-            <p><span id="eq:eq1"><span class="math display">$$J'(p) = \frac{1}{\text{log}(S)}\times\left(-\sum p \times \text{log}(p)\right)\qquad(1)$$</span></span></p>
+            <p><span id="eq:eq1"><span class="math display">$$J'(p) =
+            \frac{1}{\text{log}(S)}\times\left(-\sum p \times
+            \text{log}(p)\right)\qquad{(1)}$$</span></span></p>
             <p>is produced using</p>
-            <div class="sourceCode" id="cb8"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$J&#39;(p) = </span><span class="sc">\frac</span><span class="ss">{1}{</span><span class="sc">\text</span>{log}<span class="ss">(S)}</span><span class="sc">\times</span><span class="ss"> ... $$</span> {#eq:eq1}</span></code></pre></div>
-            <p>and can be referenced using <code>@eq:eq1</code>, which will result in eq. 1. Note that because we use <code>pandoc-crossref</code>, the label “eq.” will be generated automatically.</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode latex"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$J&#39;(p) = </span><span class="sc">\frac</span><span class="ss">{1}{</span><span class="sc">\text</span>{log}<span class="ss">(S)}</span><span class="sc">\times</span><span class="ss"> ... $$</span> {#eq:eq1}</span></code></pre></div>
+            <p>and can be referenced using <code>@eq:eq1</code>, which
+            will result in eq. 1. Note that because we use
+            <code>pandoc-crossref</code>, the label “eq.” will be
+            generated automatically.</p>
             <h2 id="tables">Tables</h2>
-            <p>Table legends go on the line after the table itself. To generate a reference to the table, use <code>{#tbl:id}</code> – then, in the text, you can use <code>{@tbl:id}</code> to refer to the table. For example, the table below is tbl. 1. You can remove the <em>table</em> in front by using <code>!@tbl:id</code>, or force it to be capitalized with <code>\*tbl:id</code>.</p>
+            <p>Table legends go on the line after the table itself. To
+            generate a reference to the table, use
+            <code>{#tbl:id}</code> – then, in the text, you can use
+            <code>{@tbl:id}</code> to refer to the table. For example,
+            the table below is tbl. 1. You can remove the <em>table</em>
+            in front by using <code>!@tbl:id</code>, or force it to be
+            capitalized with <code>\*tbl:id</code>.</p>
             <div id="tbl:id">
             <table>
-            <caption>Table 1: This is a table, and its identifier is <code>id</code> – we can refer to it using <code>{@tbl:id}</code>. Note that even if the table legend is written below the table itself, it will appear on top in the PDF document.</caption>
+            <caption>Table 1: This is a table, and its identifier is
+            <code>id</code> – we can refer to it using
+            <code>{@tbl:id}</code>. Note that even if the table legend
+            is written below the table itself, it will appear on top in
+            the PDF document.</caption>
             <thead>
             <tr class="header">
             <th style="text-align: right;">Sepal.Length</th>
@@ -323,30 +420,121 @@
             </table>
             </div>
             <h1 id="figures">Figures</h1>
-            <p>Figures can have a legend – all figures <em>must</em> be in the <code>figures/</code> folder of the project, as it is also used for the website. We recommend to use good resolution images, rather than PDFs, or at least to have multiple versions available.</p>
+            <p>Figures can have a legend – all figures <em>must</em> be
+            in the <code>figures/</code> folder of the project, as it is
+            also used for the website. We recommend to use good
+            resolution images, rather than PDFs, or at least to have
+            multiple versions available.</p>
             <pre><code>![This is the legend of the figure...](figures/figure.png){#fig:figure}</code></pre>
             <figure>
-            <img src="figures/figure.png" id="fig:figure" alt="Figure 1: This is the legend of the figure, which will be shown in the margin in preprint mode, and underneath the figure in draft mode. The legend can contain references, etc. It is advised to use a resolution of at least 600dpi for the figures." /><figcaption aria-hidden="true">Figure 1: This is the legend of the figure, which will be shown in the margin in preprint mode, and underneath the figure in draft mode. The legend can contain references, etc. It is advised to use a resolution of at least 600dpi for the figures.</figcaption>
+            <img src="figures/figure.png" id="fig:figure"
+            alt="Figure 1: This is the legend of the figure, which will be shown in the margin in preprint mode, and underneath the figure in draft mode. The legend can contain references, etc. It is advised to use a resolution of at least 600dpi for the figures." />
+            <figcaption aria-hidden="true">Figure 1: This is the legend
+            of the figure, which will be shown in the margin in preprint
+            mode, and underneath the figure in draft mode. The legend
+            can contain references, etc. It is advised to use a
+            resolution of at least 600dpi for the figures.</figcaption>
             </figure>
-            <p>We can now use <code>@fig:figure</code> to refer to fig. 1.</p>
+            <p>We can now use <code>@fig:figure</code> to refer to
+            fig. 1.</p>
             <h1 id="example-text">Example text</h1>
-            <p>Connectance, defined as the ratio of realized interactions on the total number of potential interactions, is one of the most common descriptor of network structure. In a bipartite network with <span class="math inline"><em>T</em></span> species at the top, and <span class="math inline"><em>B</em></span> at the bottom, having a total of <span class="math inline"><em>L</em></span> interactions, it is defined as <span class="math inline"><em>C</em><em>o</em> = <em>L</em>/(<em>T</em> × <em>B</em>)</span>. Connectance has a lower bound, as the network cannot have fewer interactions that the number of species in its more speciose level – the minimal connectance is therefore <span class="math inline"><em>c</em><sub><em>m</em></sub> = max(<em>T</em>, <em>B</em>)</span>. This makes the connectance of networks of different sizes difficult to compare, especially since bipartite networks tends to have a low connectance. For this reason, we used a corrected version of connectance, defined as</p>
-            <p><span id="eq:cstar"><span class="math display">$$Co^\star=\frac{L-c_m}{T\times B-c_m} \,.\qquad(2)$$</span></span></p>
+            <p>Connectance, defined as the ratio of realized
+            interactions on the total number of potential interactions,
+            is one of the most common descriptor of network structure.
+            In a bipartite network with <span
+            class="math inline"><em>T</em></span> species at the top,
+            and <span class="math inline"><em>B</em></span> at the
+            bottom, having a total of <span
+            class="math inline"><em>L</em></span> interactions, it is
+            defined as <span
+            class="math inline"><em>C</em><em>o</em> = <em>L</em>/(<em>T</em>×<em>B</em>)</span>.
+            Connectance has a lower bound, as the network cannot have
+            fewer interactions that the number of species in its more
+            speciose level – the minimal connectance is therefore <span
+            class="math inline"><em>c</em><sub><em>m</em></sub> = max(<em>T</em>,<em>B</em>)</span>.
+            This makes the connectance of networks of different sizes
+            difficult to compare, especially since bipartite networks
+            tends to have a low connectance. For this reason, we used a
+            corrected version of connectance, defined as</p>
+            <p><span id="eq:cstar"><span
+            class="math display">$$Co^\star=\frac{L-c_m}{T\times B-c_m}
+            \,.\qquad{(2)}$$</span></span></p>
             <h2 id="this-is-a-subsection">This is a subsection</h2>
-            <p>This takes values between 0 (the network has the minimal number of interactions) and 1 (all species are connected), but is robust to variations in species richness.</p>
-            <h2 id="this-is-another-subsection">This is another subsection</h2>
-            <p>This takes values between 0 (the network has the minimal number of interactions) and 1 (all species are connected), but is robust to variations in species richness.</p>
-            <h2 id="some-non-standard-maths">Some non-standard maths</h2>
-            <p>The phylogenetic reconstruction of <span class="math inline">$\hat{\mathscr{L}}$</span> and <span class="math inline">$\hat{\mathscr{R}}$</span> has an associated uncertainty, represented by the breadth of the uniform distribution associated to each of their entries. Therefore, we can use this information to assemble a <em>probabilistic</em> metaweb in the sense of <span class="citation" data-cites="Poisot2016StrPro">(<strong>Poisot2016StrPro?</strong>)</span>, <em>i.e.</em> in which every interaction is represented as a single, independent, Bernoulli event of probability <span class="math inline"><em>p</em></span>.</p>
-            <p>Specifically, we have adopted the following approach. For every entry in <span class="math inline">$\hat{\mathscr{L}}$</span> and <span class="math inline">$\hat{\mathscr{R}}$</span>, we draw a value from its distribution. This results in one instance of the possible left (<span class="math inline">$\hat{\mathscr{l}}$</span>) and right (<span class="math inline">$\hat{\mathscr{r}}$</span>) subspaces for the Canadian metaweb. These can be multiplied, to produce one matrix of real values. Because the entries in <span class="math inline">$\hat{\mathscr{l}}$</span> and <span class="math inline">$\hat{\mathscr{r}}$</span> are in the same space where <span class="math inline">ℒ</span> and <span class="math inline">ℛ</span> were originally predicted, it follows that the threshold <span class="math inline"><em>ρ</em></span> estimated for the European metaweb also applies. We use this information to produce one random Canadian metaweb, <span class="math inline">$N = \hat{\mathscr{L}}$</span><span class="math inline">$\hat{\mathscr{R}}' \ge \rho$</span>.</p>
-            <p>Because the intervals around some trait values can be broad <span class="citation" data-cites="Garland1999IntPhy">(in fact, probably broader than what they would actually be, see <em>e.g.</em> <strong>Garland1999IntPhy?</strong>)</span>, we repeat the above process <span class="math inline">2 × 10<sup>5</sup></span> times, which results in a probabilistic metaweb <span class="math inline"><em>P</em></span>, where the probability of an interaction (here conveying our degree of trust that it exists given the inferred trait distributions) is given by the number of times where it appears across all random draws <span class="math inline"><em>N</em></span>, divided by the number of samples. An interaction with <span class="math inline"><em>P</em><sub><em>i</em>, <em>j</em></sub> = 1</span> means that these two species were predicted to interact in all <span class="math inline">2 × 10<sup>5</sup></span> random draws, etc..</p>
+            <p>This takes values between 0 (the network has the minimal
+            number of interactions) and 1 (all species are connected),
+            but is robust to variations in species richness.</p>
+            <h2 id="this-is-another-subsection">This is another
+            subsection</h2>
+            <p>This takes values between 0 (the network has the minimal
+            number of interactions) and 1 (all species are connected),
+            but is robust to variations in species richness.</p>
+            <h2 id="some-non-standard-maths">Some non-standard
+            maths</h2>
+            <p>The phylogenetic reconstruction of <span
+            class="math inline">$\hat{\mathscr{L}}$</span> and <span
+            class="math inline">$\hat{\mathscr{R}}$</span> has an
+            associated uncertainty, represented by the breadth of the
+            uniform distribution associated to each of their entries.
+            Therefore, we can use this information to assemble a
+            <em>probabilistic</em> metaweb in the sense of <span
+            class="citation"
+            data-cites="Poisot2016StrPro">(<strong>Poisot2016StrPro?</strong>)</span>,
+            <em>i.e.</em> in which every interaction is represented as a
+            single, independent, Bernoulli event of probability <span
+            class="math inline"><em>p</em></span>.</p>
+            <p>Specifically, we have adopted the following approach. For
+            every entry in <span
+            class="math inline">$\hat{\mathscr{L}}$</span> and <span
+            class="math inline">$\hat{\mathscr{R}}$</span>, we draw a
+            value from its distribution. This results in one instance of
+            the possible left (<span
+            class="math inline">$\hat{\mathscr{l}}$</span>) and right
+            (<span class="math inline">$\hat{\mathscr{r}}$</span>)
+            subspaces for the Canadian metaweb. These can be multiplied,
+            to produce one matrix of real values. Because the entries in
+            <span class="math inline">$\hat{\mathscr{l}}$</span> and
+            <span class="math inline">$\hat{\mathscr{r}}$</span> are in
+            the same space where <span class="math inline">ℒ</span> and
+            <span class="math inline">ℛ</span> were originally
+            predicted, it follows that the threshold <span
+            class="math inline"><em>ρ</em></span> estimated for the
+            European metaweb also applies. We use this information to
+            produce one random Canadian metaweb, <span
+            class="math inline">$N = \hat{\mathscr{L}}$</span><span
+            class="math inline">$\hat{\mathscr{R}}' \ge
+            \rho$</span>.</p>
+            <p>Because the intervals around some trait values can be
+            broad <span class="citation"
+            data-cites="Garland1999IntPhy">(in fact, probably broader
+            than what they would actually be, see <em>e.g.</em>
+            <strong>Garland1999IntPhy?</strong>)</span>, we repeat the
+            above process <span
+            class="math inline">2 × 10<sup>5</sup></span> times, which
+            results in a probabilistic metaweb <span
+            class="math inline"><em>P</em></span>, where the probability
+            of an interaction (here conveying our degree of trust that
+            it exists given the inferred trait distributions) is given
+            by the number of times where it appears across all random
+            draws <span class="math inline"><em>N</em></span>, divided
+            by the number of samples. An interaction with <span
+            class="math inline"><em>P</em><sub><em>i</em>, <em>j</em></sub> = 1</span>
+            means that these two species were predicted to interact in
+            all <span class="math inline">2 × 10<sup>5</sup></span>
+            random draws, etc..</p>
             <h1 class="unnumbered" id="references">References</h1>
-            <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-            <div id="ref-Camerano1880EquViv" class="csl-entry" role="doc-biblioentry">
-            Camerano, L. (1880). Dell’equilibrio dei viventi merce la reciproca distruzione. <em>Atti Della R. Accad. Delle Sci. Torino</em>, 15, 393–414.
+            <div id="refs"
+            class="references csl-bib-body hanging-indent"
+            role="doc-bibliography">
+            <div id="ref-Camerano1880EquViv" class="csl-entry"
+            role="doc-biblioentry">
+            Camerano, L. (1880). Dell’equilibrio dei viventi merce la
+            reciproca distruzione. <em>Atti Della R. Accad. Delle Sci.
+            Torino</em>, 15, 393–414.
             </div>
-            <div id="ref-Elton1927AniEco" class="csl-entry" role="doc-biblioentry">
-            Elton, C.S. (1927). <em>Animal ecology</em>. University of Chicago Press.
+            <div id="ref-Elton1927AniEco" class="csl-entry"
+            role="doc-biblioentry">
+            Elton, C.S. (1927). <em>Animal ecology</em>. University of
+            Chicago Press.
             </div>
             </div>
         </article>
@@ -355,9 +543,13 @@
     <footer>
         <div class="container">
             <h2>Affiliations</h2> 
-            <sup>1</sup>&nbsp;Université de Montréal; <sup>2</sup>&nbsp;Québec Centre for Biodiversity Sciences; <sup>3</sup>&nbsp;Inn of the Prancing Pony; <sup>4</sup>&nbsp;Fellowship of the Ring; <sup>5</sup>&nbsp;Green Dragon Inn
+            <sup>1</sup>&nbsp;Université de
+            Montréal; <sup>2</sup>&nbsp;Québec Centre for Biodiversity
+            Sciences; <sup>3</sup>&nbsp;Inn of the Prancing
+            Pony; <sup>4</sup>&nbsp;Fellowship of the
+            Ring; <sup>5</sup>&nbsp;Green Dragon Inn
             <br />
-            <sup>‡</sup>&nbsp;These authors contributed equally to the work
+            <sup>‡</sup>&nbsp;Equal contributions
         </div>
     </footer>
     

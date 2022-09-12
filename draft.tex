@@ -164,13 +164,13 @@ using markdown and github actions}
 %
 \href{https://orcid.org/0000-0002-0735-5184}{Timothée\,Poisot}%
 %
-\,\textsuperscript{1,2,‡}\quad %
+\,\textsuperscript{,,}\quad %
 Peregrin\,Took%
 %
-\,\textsuperscript{3,4}\quad %
+\,\textsuperscript{,}\quad %
 Merriadoc\,Brandybuck%
 %
-\,\textsuperscript{5,4,‡}
+\,\textsuperscript{,,}
 
 \textsuperscript{1}\,Université de
 Montréal\quad \textsuperscript{2}\,Québec Centre for Biodiversity
@@ -178,7 +178,7 @@ Sciences\quad \textsuperscript{3}\,Inn of the Prancing
 Pony\quad \textsuperscript{4}\,Fellowship of the
 Ring\quad \textsuperscript{5}\,Green Dragon Inn
 
-\textsuperscript{‡}\,These authors contributed equally to the work\\
+\textsuperscript{‡}\,Equal contributions\\
 
 \textbf{Correspondance to:}\\
 Timothée Poisot --- \texttt{timothee.poisot@umontreal.ca}\\
@@ -192,16 +192,6 @@ Last revision: \emph{\today}
 
 \vfill
 
-
-        {\bfseries Purpose:}\,This template provides a series of scripts
-to render a markdown document into an interactive website and a series
-of PDFs.\\%
-        {\bfseries Motivation:}\,It makes collaborating on text with
-GitHub easier, and means that we never need to think about the
-output.\\%
-        {\bfseries Internals:}\,GitHub actions and a series of python
-scritpts. The markdown is handled with \texttt{pandoc}.\\%
-    
 \vfill
 
 \clearpage
@@ -442,20 +432,18 @@ front by using \texttt{!@tbl:id}, or force it to be capitalized with
 \texttt{id} -- we can refer to it using \texttt{\{@tbl:id\}}. Note that
 even if the table legend is written below the table itself, it will
 appear on top in the PDF document.}\tabularnewline
-\toprule
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width &
-Species\tabularnewline
-\midrule
+\toprule()
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\
+\midrule()
 \endfirsthead
-\toprule
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width &
-Species\tabularnewline
-\midrule
+\toprule()
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\
+\midrule()
 \endhead
-5.1 & 3.5 & 1.4 & 0.2 & setosa\tabularnewline
-5.0 & 3.6 & 1.4 & 0.2 & setosa\tabularnewline
-5.4 & 3.9 & 1.7 & 0.4 & setosa\tabularnewline
-\bottomrule
+5.1 & 3.5 & 1.4 & 0.2 & setosa \\
+5.0 & 3.6 & 1.4 & 0.2 & setosa \\
+5.4 & 3.9 & 1.7 & 0.4 & setosa \\
+\bottomrule()
 \end{longtable}
 
 \hypertarget{figures}{%
@@ -556,12 +544,12 @@ means that these two species were predicted to interact in all
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\hypertarget{ref-Camerano1880EquViv}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Camerano1880EquViv}{}}%
 Camerano, L. (1880). Dell'equilibrio dei viventi merce la reciproca
 distruzione. \emph{Atti Della R. Accad. Delle Sci. Torino}, 15,
 393--414.
 
-\leavevmode\hypertarget{ref-Elton1927AniEco}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Elton1927AniEco}{}}%
 Elton, C.S. (1927). \emph{Animal ecology}. University of Chicago Press.
 
 \end{CSLReferences}

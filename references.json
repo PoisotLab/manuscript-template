@@ -1,6 +1,15 @@
 [
     {
-        "DOI": "10.1002/jez.1400610202",
+        "issue": "2",
+        "issued": {
+            "date-parts": [
+                [
+                    1932,
+                    2
+                ]
+            ]
+        },
+        "container-title": "Journal of Experimental Zoology",
         "author": [
             {
                 "family": "Allee",
@@ -11,31 +20,24 @@
                 "given": "Edith S."
             }
         ],
-        "container-title": "Journal of Experimental Zoology",
         "id": "Allee1932StuAni",
-        "issue": "2",
-        "issued": {
-            "date-parts": [
-                [
-                    1932,
-                    2
-                ]
-            ]
-        },
+        "DOI": "10.1002/jez.1400610202",
+        "volume": "61",
         "page": "185-207",
         "title": "Studies in animal aggregations: Mass protection against colloidal silver among goldfishes",
-        "type": "article-journal",
-        "volume": "61"
+        "type": "article-journal"
     },
     {
+        "volume": "15",
         "author": [
             {
                 "family": "Camerano",
                 "given": "Lorenzo"
             }
         ],
-        "container-title": "Atti Della R. Accad. Delle Sci. Torino",
         "id": "Camerano1880EquViv",
+        "page": "393-414",
+        "title": "Dell’equilibrio dei viventi merce la reciproca distruzione",
         "issued": {
             "date-parts": [
                 [
@@ -43,12 +45,11 @@
                 ]
             ]
         },
-        "page": "393-414",
-        "title": "Dell\u2019equilibrio dei viventi merce la reciproca distruzione",
-        "type": "article-journal",
-        "volume": "15"
+        "container-title": "Atti Della R. Accad. Delle Sci. Torino",
+        "type": "article-journal"
     },
     {
+        "publisher": "University of Chicago Press",
         "author": [
             {
                 "family": "Elton",
@@ -56,6 +57,7 @@
             }
         ],
         "id": "Elton1927AniEco",
+        "title": "Animal ecology",
         "issued": {
             "date-parts": [
                 [
@@ -63,19 +65,19 @@
                 ]
             ]
         },
-        "publisher": "University of Chicago Press",
-        "title": "Animal ecology",
         "type": "book"
     },
     {
+        "volume": "41",
         "author": [
             {
                 "family": "Fahrenholz",
                 "given": "H."
             }
         ],
-        "container-title": "Zool. Anz.",
         "id": "Fahrenholz1913EctUnd",
+        "page": "371-374",
+        "title": "Ectoparasiten und abstammungslehre",
         "issued": {
             "date-parts": [
                 [
@@ -83,13 +85,20 @@
                 ]
             ]
         },
-        "page": "371-374",
-        "title": "Ectoparasiten und abstammungslehre",
-        "type": "article-journal",
-        "volume": "41"
+        "container-title": "Zool. Anz.",
+        "type": "article-journal"
     },
     {
-        "DOI": "10.1111/j.1096-3642.1935.tb01680.x",
+        "issue": "3",
+        "issued": {
+            "date-parts": [
+                [
+                    1935,
+                    9
+                ]
+            ]
+        },
+        "container-title": "Proceedings of the Zoological Society of London",
         "author": [
             {
                 "family": "Nicholson",
@@ -100,20 +109,11 @@
                 "given": "V. A."
             }
         ],
-        "container-title": "Proceedings of the Zoological Society of London",
         "id": "Nicholson1935BalAni",
-        "issue": "3",
-        "issued": {
-            "date-parts": [
-                [
-                    1935,
-                    9
-                ]
-            ]
-        },
+        "DOI": "10.1111/j.1096-3642.1935.tb01680.x",
+        "volume": "105",
         "page": "551-598",
-        "title": "The Balance of Animal Populations.Part I.",
-        "type": "article-journal",
-        "volume": "105"
+        "title": "The Balance of Animal Populations..",
+        "type": "article-journal"
     }
 ]
