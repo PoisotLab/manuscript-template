@@ -4,13 +4,13 @@ import JSON
 metadata = JSON.parsefile(joinpath(pwd(), "metadata.json"))
 
 authors = metadata["authors"]
-affiliation_to_number = Dict{String, Integer}()
+affiliation_to_number = Dict{String, String}()
 
 for author in authors
     affiliations = author["affiliations"]
     for affiliation in affiliations
         if ~haskey(affiliation_to_number, affiliation)
-            affiliation_to_number[affiliation] = length(affiliation_to_number) + 1
+            affiliation_to_number[affiliation] = "$(length(affiliation_to_number) + 1)"
         end
     end
 end
