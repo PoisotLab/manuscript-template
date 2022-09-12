@@ -18,8 +18,8 @@ end
 for author in authors
     author["affilcode"] =
         sort(
-            Any[
-                affiliation_to_number[affiliation] for affiliation in author["affiliations"]
+            String[
+                "$(affiliation_to_number[affiliation])" for affiliation in author["affiliations"]
             ],
         )
     delete!(author, "affiliations")
