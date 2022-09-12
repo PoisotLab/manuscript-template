@@ -16,7 +16,7 @@ for author in authors
 end
 
 for author in authors
-    author["affilcode"] =
+    author["affiliation"] =
         sort(
             String[
                 "$(affiliation_to_number[affiliation])" for affiliation in author["affiliations"]
@@ -42,7 +42,7 @@ add_equal_sign = true
 for author in affiliations["authors"]
     if haskey(author, "status")
         if "equal" in author["status"]
-            push!(author["affilcode"], "‡")
+            push!(author["affiliation"], "‡")
             if add_equal_sign
                 affiliations["metadata"]["equalcontributions"] =
                     Dict(["id" => "‡", "name" => "Equal contributions"])
