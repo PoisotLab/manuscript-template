@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1662943367 "preprint.tex" "preprint.pdf" "preprint" 1662943369
+["pdflatex"] 1662943950 "preprint.tex" "preprint.pdf" "preprint" 1662943953
   "/opt/texlive/texdir/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/texlive/texdir/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc" 1558214095 7631 5169ff1acd97ff1c4ab83563c99f96f4 ""
   "/opt/texlive/texdir/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc" 1455745497 9446 fe5580ca6042a44427f18d450942e7d0 ""
@@ -233,11 +233,11 @@
   "/opt/texlive/texdir/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1661995607 4595808 4484cc1ac2dfc982862142b6020d440c ""
   "/opt/texlive/texdir/texmf-var/web2c/pdftex/pdflatex.fmt" 1661995687 2880917 d7e5575f6e7a46666da5246ced5cbde0 ""
   "/opt/texlive/texdir/texmf.cnf" 1661995598 555 bd60ff59e4d560b42d96b004436f91d3 ""
-  "figures/figure.png" 1662943363 328972 0e311e73130376e73cc61ce08197ad32 ""
-  "logo.png" 1662943363 48455 a63f319933b5fbf1cb3d97b6f6857e7e ""
-  "preprint.aux" 1662943369 6544 232785c5d70e692de6714af5d2283d9d "pdflatex"
-  "preprint.out" 1662943369 2181 057577d694057b2cc743e1dad983f64c "pdflatex"
-  "preprint.tex" 1662943363 22206 966439c2502009f8190e43f20fe224cc ""
+  "figures/figure.png" 1662943946 328972 0e311e73130376e73cc61ce08197ad32 ""
+  "logo.png" 1662943946 48455 a63f319933b5fbf1cb3d97b6f6857e7e ""
+  "preprint.aux" 1662943953 6544 232785c5d70e692de6714af5d2283d9d "pdflatex"
+  "preprint.out" 1662943953 2181 057577d694057b2cc743e1dad983f64c "pdflatex"
+  "preprint.tex" 1662943946 22206 966439c2502009f8190e43f20fe224cc ""
   (generated)
   "preprint.aux"
   "preprint.log"

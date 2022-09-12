@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.1)  12 SEP 2022 00:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.1)  12 SEP 2022 00:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1374,7 +1374,7 @@ Package rerunfilecheck Info: File `preprint.out' has not changed.
 Here is how much of TeX's memory you used:
  30969 strings out of 477529
  563107 string characters out of 5827605
- 851381 words of memory out of 5000000
+ 851382 words of memory out of 5000000
  49322 multiletter control sequences out of 15000+600000
  617878 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
