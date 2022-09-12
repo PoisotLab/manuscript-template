@@ -67,7 +67,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: "${{ steps.filename.outputs.filename }}"
+          name: "_raw_files"
           path: dist
   build:
     name: Build the PDFs
@@ -82,7 +82,7 @@ jobs:
       - name: Download dist folder
         uses: actions/download-artifact@v2
         with:
-          name: "manuscript"
+          name: "_raw_files"
           path: dist
       - name: Get the filename in a variable
         id: filename
@@ -103,7 +103,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: "manuscript"
+          name: "${{ steps.filename.outputs.filename }}"
           path: dist
   deploy:
     name: Deploy to gh-pages
@@ -115,7 +115,7 @@ jobs:
       - name: Download dist folder
         uses: actions/download-artifact@v2
         with:
-          name: "manuscript"
+          name: "_raw_files"
           path: dist
       - name: "Deploy!"
         uses: JamesIves/github-pages-deploy-action@4.1.5
