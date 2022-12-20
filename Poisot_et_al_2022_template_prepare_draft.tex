@@ -120,7 +120,7 @@ urlcolor=blue}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
@@ -164,13 +164,13 @@ using markdown and github actions}
 %
 \href{https://orcid.org/0000-0002-0735-5184}{Timothée\,Poisot}%
 %
-\,\textsuperscript{,,}\quad %
+\,\textsuperscript{1,2,‡}\quad %
 Peregrin\,Took%
 %
-\,\textsuperscript{,}\quad %
+\,\textsuperscript{3,4}\quad %
 Merriadoc\,Brandybuck%
 %
-\,\textsuperscript{,,}
+\,\textsuperscript{4,5,‡}
 
 \textsuperscript{1}\,Université de
 Montréal\quad \textsuperscript{2}\,Québec Centre for Biodiversity
@@ -178,10 +178,22 @@ Sciences\quad \textsuperscript{3}\,Inn of the Prancing
 Pony\quad \textsuperscript{4}\,Fellowship of the
 Ring\quad \textsuperscript{5}\,Green Dragon Inn
 
-\textsuperscript{‡}\,Equal contributions\\
 
 \textbf{Correspondance to:}\\
-Timothée Poisot --- \texttt{timothee.poisot@umontreal.ca}\\
+
+\vfill
+
+
+
+        {\bfseries Purpose:}\,This template provides a series of scripts
+to render a markdown document into an interactive website and a series
+of PDFs.\\%
+        {\bfseries Internals:}\,GitHub actions and a series of python
+scritpts. The markdown is handled with \texttt{pandoc}.\\%
+        {\bfseries Motivation:}\,It makes collaborating on text with
+GitHub easier, and means that we never need to think about the
+output.\\%
+    
 
 \vfill
 This work is released by its authors under a CC-BY 4.0 license\hfill\ccby\\
