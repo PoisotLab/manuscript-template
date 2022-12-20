@@ -7,3 +7,6 @@ abstract.json
 .vscode
 .assets/*csl
 Manifest.toml
+filename
+filename.json
+manuscript-metadata.json

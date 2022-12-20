@@ -15,14 +15,18 @@ ${ authors:_render_authors()[\quad ] }
 
 ${ institutions:_render_institutions()[\quad ] }
 
-${ if(metadata.equalcontributions) }
-${ metadata.equalcontributions:_render_institutions()[; ] }\\
+${ if(metadata.authorship.equal) }
+${ metadata.authorship.equal:_render_institutions()[; ] }\\
 ${ endif }
 
 \textbf{Correspondance to:}\\
-${ for(metadata.corresponding) }
-${ metadata.corresponding.given } ${ metadata.corresponding.family } --- \texttt{${ metadata.corresponding.email }}\\
+${ for(metadata.authorship.corresponding) }
+${ metadata.authorship.corresponding.given } ${ metadata.authorship.corresponding.family } --- \texttt{${ metadata.authorship.corresponding.email }}\\
 ${ endfor }
+
+\vfill
+
+${ abstract:_render_abstract.tex() }
 
 \vfill
 This work is released by its authors under a CC-BY 4.0 license\hfill\ccby\\

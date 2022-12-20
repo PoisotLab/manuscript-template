@@ -22,13 +22,13 @@ ${ _preprint() }
 ${ authors:_render_authors()[, ] }
 \vskip 1em
 ${ institutions:_render_institutions()[; ] }\\
-${ if(metadata.equalcontributions) }
-${ metadata.equalcontributions:_render_institutions()[; ] }\\
+${ if(metadata.authorship.equal) }
+${ metadata.authorship.equal:_render_institutions()[; ] }\\
 ${ endif }
 \vskip 1em
 \textbf{Correspondance to:}\\
-${ for(metadata.corresponding) }
-${ metadata.corresponding.given } ${ metadata.corresponding.family } --- \texttt{${ metadata.corresponding.email }}\\
+${ for(metadata.authorship.corresponding) }
+${ metadata.authorship.corresponding.given } ${ metadata.authorship.corresponding.family } --- \texttt{${ metadata.authorship.corresponding.email }}\\
 ${ endfor }
 }
 \end{flushleft}
@@ -44,7 +44,7 @@ ${ for(keywords) }${ it }\\${ endfor }}
 }
 $endif$
 
-${ abstractdata:_render_abstract.tex() }
+${ abstract:_render_abstract.tex() }
 
 \vskip 2em
 \makebox[0pt][l]{\colorRule[CCCCCC]{2.0\textwidth}{0.5pt}}
