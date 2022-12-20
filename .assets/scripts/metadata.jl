@@ -18,4 +18,3 @@ metadata["filename"] = JSON.parsefile(joinpath(pwd(), "filename.json"))["filenam
 open("manuscript-metadata.json", "w") do json_file
     return JSON.print(json_file, metadata, 4)
 end
-
