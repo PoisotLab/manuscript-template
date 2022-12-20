@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         julia-version: [1.8]
-        pandoc-version: [2.18]
-        crossref-version: [0.3.13.0]
+        pandoc-version: [2.19.2]
+        crossref-version: [0.3.14.0]
     steps:
       - uses: actions/checkout@v2
       - name: Julia ${{ matrix.julia-version }}
