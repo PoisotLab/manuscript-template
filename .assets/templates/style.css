@@ -174,3 +174,24 @@ tbody {
     padding-left: 15px;
     text-indent: -15px;
 }
+
+.artifacts {
+    text-align: center;
+    border-radius: 4px;
+    background-color: var(--grey);
+    padding: 1em;
+    margin-top: 4em;
+}
+
+.artifacts a{
+    background-color: var(--structure);
+    text-decoration: none;
+    margin: 0px 2em;
+    color: white;
+    text-transform: capitalize;
+    border-radius: 4px;
+    text-align: center;
+    padding: 4px 4px;
+    width: 6em;
+    display: inline-block;
+}
