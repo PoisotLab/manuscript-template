@@ -1,0 +1,10 @@
+\begin{figure}
+\hypertarget{fig:figure}{%
+\centering
+\includegraphics{figures/figure.png}
+\caption{This is the legend of the figure, which will be shown in the
+margin in preprint mode, and underneath the figure in draft mode. The
+legend can contain references, etc. It is advised to use a resolution of
+at least 600dpi for the figures.}\label{fig:figure}
+}
+\end{figure}
