@@ -255,14 +255,14 @@ the threshold $\rho$ estimated for the European metaweb also applies. We use
 this information to produce one random Canadian metaweb, $N =
 \hat{\mathscr{L}}$$\hat{\mathscr{R}}' \ge \rho$.
 
-Because the intervals around some trait values can be broad [in fact, probably
-broader than what they would actually be, see *e.g.* @Garland1999IntPhy], we
-repeat the above process $2\times 10^5$ times, which results in a probabilistic
-metaweb $P$, where the probability of an interaction (here conveying our degree
-of trust that it exists given the inferred trait distributions) is given by the
-number of times where it appears across all random draws $N$, divided by the
-number of samples. An interaction with $P_{i,j} = 1$ means that these two
-species were predicted to interact in all $2\times 10^5$ random draws, etc..
+Because the intervals around some trait values can be broad (in fact, probably
+broader than what they would actually be), we repeat the above process $2\times
+10^5$ times, which results in a probabilistic metaweb $P$, where the probability
+of an interaction (here conveying our degree of trust that it exists given the
+inferred trait distributions) is given by the number of times where it appears
+across all random draws $N$, divided by the number of samples. An interaction
+with $P_{i,j} = 1$ means that these two species were predicted to interact in
+all $2\times 10^5$ random draws, etc..
 
 
 # References
