@@ -1,10 +1,11 @@
 import JSON
 import Languages
 import Dates
+import Unicode
 
 metadata = JSON.parsefile(joinpath(pwd(), "metadata.json"))
 
-title = lowercase(metadata["title"])
+title = filter(!Unicode.ispunct, lowercase(metadata["title"]))
 title_tokens = setdiff(split(title, " "), Languages.stopwords(Languages.English()))
 title_placeholder = join(title_tokens[1:min(2, length(title_tokens))], "_")
 
