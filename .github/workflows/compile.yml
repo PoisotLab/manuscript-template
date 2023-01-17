@@ -67,6 +67,9 @@ jobs:
       - name: Build the preprint
         run: |
           pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}_preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/preprint.tex
+      - name: Build the Word file
+        run: |
+          pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}.docx -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/template.docx
       - name: Build a raw file for word counting
         run: |
           pandoc README.md -s -o rawtext.txt -t plain -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json -M suppress-bibliography=true 

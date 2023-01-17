@@ -10,3 +10,4 @@ Manifest.toml
 filename
 filename.json
 manuscript-metadata.json
+.~lock*
