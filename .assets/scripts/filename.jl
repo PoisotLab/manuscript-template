@@ -18,7 +18,7 @@ if length(metadata["authors"]) == 1
 elseif length(metadata["authors"]) == 2
     global author_string =
         metadata["authors"][1]["familyname"] * "_and_" *
-        metadata["authors"][1]["familyname"]
+        metadata["authors"][2]["familyname"]
 else
     global author_string =
         metadata["authors"][1]["familyname"] * "_et_al"

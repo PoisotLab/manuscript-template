@@ -22,13 +22,13 @@ ${ _preprint() }
 ${ authors:_render_authors()[, ] }
 \vskip 1em
 ${ institutions:_render_institutions()[; ] }\\
-${ if(metadata.authorship.equal) }
-${ metadata.authorship.equal:_render_institutions()[; ] }\\
+${ if(authorship.equal) }
+${ authorship.equal:_render_institutions()[; ] }\\
 ${ endif }
 \vskip 1em
 \textbf{Correspondance to:}\\
-${ for(metadata.authorship.corresponding) }
-${ metadata.authorship.corresponding.given } ${ metadata.authorship.corresponding.family } --- \texttt{${ metadata.authorship.corresponding.email }}\\
+${ for(authorship.corresponding) }
+${ authorship.corresponding.given } ${ authorship.corresponding.family } --- \texttt{${ authorship.corresponding.email }}\\
 ${ endfor }
 }
 \end{flushleft}
