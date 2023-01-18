@@ -12,9 +12,9 @@ $if(title)$
 <text:p text:style-name="Title">$title$</text:p>
 $endif$
 
-$for(author)$
+${ for(author) }
 <text:p text:style-name="Author">${ author.givennames } ${ author.familyname } ${ author.affiliation[,] }</text:p>
-$endfor$
+${ endfor }
 
 ${ if(abstract.regular) }
 ${ abstract.content }
