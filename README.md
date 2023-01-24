@@ -133,10 +133,7 @@ first two non-stop words). It must be set in the Better BibTeX preferences as
 (you might need to remove the line changes):
 
 ~~~
-[auth:fold]
-[year]
-[title:fold:nopunctordash:skipwords:lower:select=1,1:substring=1,3:capitalize]
-[title:fold:nopunctordash:skipwords:lower:select=2,2:substring=1,3:capitalize]
+auth.fold.fold + year + title.fold.nopunctordash.skipwords.lower.select(1,1).capitalize()
 ~~~
 
 It is a good idea to configure Better BibTeX to auto-export on change, and to
