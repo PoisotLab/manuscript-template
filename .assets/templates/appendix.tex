@@ -1,0 +1,46 @@
+%!TEX TS-program = xelatex
+\documentclass[11pt]{article}
+
+${ _common() }
+${ _pandoc() }
+${ _appendix() }
+
+\begin{document}
+\raggedright
+\thispagestyle{empty}
+{\Large\bfseries\sffamily ${ name }}\\
+{\large\mdseries\sffamily Appendix ${order} to \emph{${ title }}}
+\vskip 5em
+
+${ authors:_render_authors()[\quad ] }
+
+${ institutions:_render_institutions()[\quad ] }
+
+${ if(authorship.equal) }
+${ authorship.equal:_render_institutions()[; ] }\\
+${ endif }
+
+\vfill
+
+${ if(appendix) }
+\subsection*{List of supplementary material}
+\,\newline
+\begin{enumerate}[nosep,noitemsep,left= -2em .. 0pt]
+    ${ appendix:_render_appendix()}
+\end{enumerate}
+${ endif }
+
+\vfill
+This work is released by its authors under a CC-BY 4.0 license\hfill\ccby\\
+Last revision: \emph{\today}
+
+\clearpage
+\thispagestyle{empty}
+
+\vfill
+\clearpage
+\pagestyle{normal}
+
+${ body }
+
+\end{document}

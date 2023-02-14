@@ -11,3 +11,4 @@ filename
 filename.json
 manuscript-metadata.json
 .~lock*
+appendix/*.pdf

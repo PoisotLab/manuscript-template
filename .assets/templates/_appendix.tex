@@ -1,0 +1,32 @@
+\geometry{verbose,letterpaper,tmargin=2.2cm,bmargin=2.2cm,lmargin=2.2cm,rmargin=2.2cm}
+
+\pagestyle{plain}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\singlespacing
+
+\usepackage{enumitem}
+
+\fancypagestyle{normal}
+{
+  \fancyhf{}
+  \fancyfoot[R]{\footnotesize\sffamily\thepage\ of \pageref*{LastPage}}
+}
+
+\usepackage{titlesec}
+\setcounter{secnumdepth}{5}
+
+\titleformat{\section}[block]
+{\normalfont\large\sffamily}
+{\thesection}{.5em}{\titlerule\\[.8ex]\bfseries}
+
+\titleformat{\subsection}[runin]
+{\normalfont\fontseries{b}\selectfont\filright\sffamily}
+{\thesubsection.}{.5em}{}
+
+\titleformat{\subsubsection}[runin]
+{\normalfont\itshape\rmfamily\bfseries}{\thesubsubsection}{1em}{}

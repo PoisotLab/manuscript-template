@@ -52,6 +52,7 @@ jobs:
       - name: Prepare the output
         run: |
           mkdir -p dist
+          mkdir -p dist/appendix
           cp -r figures dist/
           cp references.json dist/
           cp filename dist/
