@@ -42,5 +42,8 @@
     "pandoc-crossref",
     "github actions"
   ],
-  "citationstyle": "ecology-letters"
+  "citationstyle": "ecology-letters",
+  "appendix": {
+    "Some more equations": "sm/s1.md"
+  }
 }
