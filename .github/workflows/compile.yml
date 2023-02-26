@@ -15,7 +15,7 @@ jobs:
         julia-version: [1.8]
         pandoc-version: [2.19.2]
         crossref-version: [0.3.14.0]
-        typesetter-version: [0.0.1]
+        typesetter-version: [0.0.2]
     steps:
       - uses: actions/checkout@v2
       - name: Julia ${{ matrix.julia-version }}
@@ -44,12 +44,8 @@ jobs:
       - name: Get tectonic for typesetting
         run: |
           curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
-      - name: Prepare the metadata
-        run: julia --project=.typesetter .typesetter/scripts/01_metadata.jl
-      - name: Prepare the output
-        run: julia --project=.typesetter .typesetter/scripts/02_folders.jl
-      - name: Build everything
-        run: julia --project=.typesetter .typesetter/scripts/02_folders.jl
+      - name: Run the full project
+        run: julia --project=.typesetter .typesetter/scripts/00_build.jl
       - name: "Word count in the build folder"
         id: word-count
         if: github.event_name == 'pull_request'
