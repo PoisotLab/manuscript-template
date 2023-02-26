@@ -261,4 +261,14 @@ across all random draws $N$, divided by the number of samples. An interaction
 with $P_{i,j} = 1$ means that these two species were predicted to interact in
 all $2\times 10^5$ random draws, etc..
 
+# Things to know
+
+The text can use unicode: for example, this α is written as is in the main text. The previous sentence is written as
+
+~~~ md
+The text can use unicode: for example, this α is written as is in the main text.
+~~~
+
+and so yes, you *can* actually use unicode in code blocks as well.
+
 # References
