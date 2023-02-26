@@ -15,7 +15,7 @@ jobs:
         julia-version: [1.8]
         pandoc-version: [2.19.2]
         crossref-version: [0.3.14.0]
-        typesetter-version: [0.0.2]
+        typesetter-version: [0.0.3]
     steps:
       - uses: actions/checkout@v2
       - name: Julia ${{ matrix.julia-version }}
