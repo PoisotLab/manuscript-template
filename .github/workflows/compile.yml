@@ -23,13 +23,6 @@ jobs:
         with:
           version: ${{ matrix.julia-version }}
           arch: 'x64'      
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "PoisotLab/manuscript-typesetter"
-          tag: "v%{{ matrix.typesetter-version }}"
-          tarBall: true
-          zipBall: true
-          out-file-path: "tmpset"
       - name: Get the typesetter
         run: |
           wget https://github.com/PoisotLab/manuscript-typesetter/releases/download/v${{ matrix.typesetter-version }}/v${{ matrix.typesetter-version }}.tar.gz
