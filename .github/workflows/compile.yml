@@ -33,7 +33,9 @@ jobs:
           wget https://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg2_501otf.zip
           mkdir ~/.local/share/fonts
           unzip tg2_501otf.zip
-          ls
+          ls tg2_501otf
+          mv tg2_501otf/* ~/.local/share/fonts
+          fc-cache -vf
       - name: Julia packages
         uses: julia-actions/julia-buildpkg@v1
         with:
