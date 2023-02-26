@@ -62,12 +62,23 @@ jobs:
         run: echo "::set-output name=filename::$(cat filename)"
       - name: Build the website
         run: pandoc README.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/index.html
-      - name: Build the draft
+      - name: Build the draft tex file
         run: |
           pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}_draft.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/draft.tex
-      - name: Build the preprint
+      - name: Build the preprint tex file
         run: |
           pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}_preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/preprint.tex
+      - name: Check the supp. mat. files
+        id: check_appendix
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "appendix/*.md"
+      - name: Build the supp. mat. if they exist
+        if: steps.check_appendix.outputs.files_exists == 'true'
+        run: |
+          for file in appendix/*.md; do
+            pandoc "$file" -s -o dist/"${{ steps.filename.outputs.filename }}_appendix_${file%.md}".tex --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/appendix.tex
+          done
       - name: Build the LibreOffice file
         run: |
           pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}.odt -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/default.opendocument
@@ -108,7 +119,7 @@ jobs:
       - name: Get the filename in a variable
         id: filename
         run: echo "::set-output name=filename::$(cat dist/filename)"
-      - name: Build the preprint pdf file
+      - name: Build the PDF file
         uses: xu-cheng/latex-action@master
         with:
           working_directory: dist

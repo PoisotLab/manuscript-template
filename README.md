@@ -25,7 +25,7 @@ render (mostly) like a normal README file.
 The process of deploying this template has been *greatly* streamlined from
 previous versions:
 
-- Click on the "Use this template" button
+- Click on the "Use this template" button, making sure to check the option to import all branches (this will import `gh-pages` and allow deploys to start immediately)
 - Edit `README.md` with your own text, commit, and push
 - This push will trigger the first build - the builds are only active on the `main` branch (*not* `master`!), and on pull requests
 - Go to `http://you.github.io/repo-name/` to view the html version, and get access to the PDFs
@@ -178,7 +178,7 @@ refer to the table. For example, the table below is @tbl:id. You can remove the
 `\*tbl:id`.
 
 | Sepal.Length | Sepal.Width | Petal.Length | Petal.Width | Species |
-|-------------:|------------:|-------------:|------------:|:--------|
+| -----------: | ----------: | -----------: | ----------: | :------ |
 |          5.1 |         3.5 |          1.4 |         0.2 | setosa  |
 |          5.0 |         3.6 |          1.4 |         0.2 | setosa  |
 |          5.4 |         3.9 |          1.7 |         0.4 | setosa  |

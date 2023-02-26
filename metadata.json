@@ -47,15 +47,5 @@
         "pandoc-crossref",
         "github actions"
     ],
-    "citationstyle": "ecology-letters",
-    "appendix": [
-        {
-            "file": "s1",
-            "shortname": "Supp. Mat. example"
-        },
-        {
-            "file": "s2",
-            "shortname": "Second Supp. Mat."
-        }
-    ]
+    "citationstyle": "ecology-letters"
 }
