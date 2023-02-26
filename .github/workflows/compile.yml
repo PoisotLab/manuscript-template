@@ -26,6 +26,7 @@ jobs:
       - name: Get the typesetter
         run: |
           wget https://github.com/PoisotLab/manuscript-typesetter/archive/refs/tags/v${{ matrix.typesetter-version }}.tar.gz
+          mkdir -p .typesetter
           tar -xvf v${{ matrix.typesetter-version }}.tar.gz -C .typesetter/
       - name: Julia packages
         uses: julia-actions/julia-buildpkg@v1
