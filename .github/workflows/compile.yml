@@ -44,10 +44,6 @@ jobs:
       - name: Get tectonic for typesetting
         run: |
           curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
-      - name: ls
-        run: ls -lah
-      - name: ls (2)
-        run: ls -lah .typesetter
       - name: Prepare the metadata
         run: julia --project=.typesetter .typesetter/scripts/01_metadata.jl
       - name: Prepare the output
