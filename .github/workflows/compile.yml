@@ -28,6 +28,12 @@ jobs:
           wget https://github.com/PoisotLab/manuscript-typesetter/archive/refs/tags/v${{ matrix.typesetter-version }}.tar.gz
           tar -xvf v${{ matrix.typesetter-version }}.tar.gz
           mv manuscript-typesetter-${{ matrix.typesetter-version }} .typesetter
+      - name: Get the TeX Gyre fonts
+        run: |
+          wget https://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg2_501otf.zip
+          mkdir ~/.local/share/fonts
+          unzip tg2_501otf.zip
+          ls
       - name: Julia packages
         uses: julia-actions/julia-buildpkg@v1
         with:
