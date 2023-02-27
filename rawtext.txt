@@ -13,44 +13,49 @@ website, the appendix are listed at the very bottom of the page, just
 after the references and before the institutions.
 
 The *actual* typesetting logic is handled by another repository, which
-is located at **https://github.com/PoisotLab/manuscript-typesetter**. If
-you don't feel like running foreign code on your repo, you are
-absolutely right. This is why the GitHub action file associated to this
-template will specify which release will be downloaded, and so you can
-inspect what the typesetting steps are doing. In short: they convert the
-bibliography into a CSL JSON, reformat the metadata so they are usable
-with pandoc templates, downloads a whole bunch of binaries to do the
-typesetting (as well as the TeX Gyre fonts we use for text, and the
-`JuliaMono` font we use for code), and then return everything as a
-compressed file, which is then deployed using GitHub pages.
+is located at
+[PoisotLab/manuscript-typesetter](https://github.com/PoisotLab/manuscript-typesetter).
+If you don't feel like running foreign code on your repo, you are
+absolutely correct. This is why the GitHub action file associated to
+this template will specify which release will be downloaded, so that you
+can inspect what the typesetting steps are doing.
 
-The core bit of configuration is the `metadata.json` file, which handles
-information about authorship, affiliations, the abstract, keywords, etc.
+In short: they convert the bibliography into a CSL JSON, reformat the
+metadata so they are usable with pandoc templates, downloads a whole
+bunch of binaries to do the typesetting (as well as the TeX Gyre fonts
+we use for text, and the `JuliaMono` font we use for code), and then
+return everything as a compressed file, which is then deployed using
+GitHub pages.
+
 All documents will be deployed to `gh-pages` *only* on push events from
 the `main` branch. All of the artifacts will be built when doing pull
 requests, so you can check that merging a branch is *not* going to cause
 the compilation of the documents to fail; indeed, you can download the
 artifacts produced during the run, to check the PDF and html files. The
-website is only updated from the `main` branch.
+website is only updated from the `main` branch. When doing a pull
+request, you will be notified of the word count of the manuscript
+(approximate, and excluding references).
 
 # Deploying the template
 
 The process of deploying this template has been *greatly* streamlined
-from previous versions:
+from previous versions. Click on the "Use this template" button at the
+top of the Github repo, making sure to check the option to import all
+branches (this will import `gh-pages` and allow deploys to start
+immediately). An example is given in fig. 1.
 
--   Click on the "Use this template" button, making sure to check the
-    option to import all branches (this will import `gh-pages` and allow
-    deploys to start immediately)
--   Edit `README.md` with your own text, commit, and push
--   This push will trigger the first build - the builds are only active
-    on the `main` branch (*not* `master`!), and on pull requests
--   Go to `http://you.github.io/repo-name/` to view the html version,
-    and get access to the PDFs
--   Add your references to the `references.bib` file
--   Edit the `metadata.json` file to add the title, abstract, authors
+![Figure 1: The important steps in using this template are (1) to pick
+the new name for your repository, (2) to make sure "Include all
+branches" is checked, and (3) to finish the process by clicking on
+"Create repository from
+template".](figures/how-to-clone.png){#fig:clone}
 
-In particular, note that *you do not need* to create a personnal access
-token to deploy to `gh-pages` (from where the website is served).
+When this is done, you can open your own repository, edit `README.md`
+with your own text, commit, and push. This will trigger the website
+build, which will become available at `http://you.github.io/repo-name/`.
+You can then edit the `references.bib` file, change the `logo.png` file,
+and update the `metadata.json` file. Every time you push a new commit,
+everything will be updated.
 
 # The metadata file
 
@@ -213,12 +218,12 @@ multiple versions available.
 
     ![This is the legend of the figure...](figures/figure.png){#fig:figure}
 
-![Figure 1: This is the legend of the figure, which will be shown in the
+![Figure 2: This is the legend of the figure, which will be shown in the
 margin in preprint mode, and underneath the figure in draft mode. The
 legend can contain references, etc. It is advised to use a resolution of
 at least 600dpi for the figures.](figures/figure.png){#fig:figure}
 
-We can now use `@fig:figure` to refer to fig. 1.
+We can now use `@fig:figure` to refer to fig. 2.
 
 # Example text
 
@@ -254,9 +259,8 @@ The phylogenetic reconstruction of $\hat{\mathscr{L}}$ and
 $\hat{\mathscr{R}}$ has an associated uncertainty, represented by the
 breadth of the uniform distribution associated to each of their entries.
 Therefore, we can use this information to assemble a *probabilistic*
-metaweb in the sense of @Poisot2016StrPro, *i.e.* in which every
-interaction is represented as a single, independent, Bernoulli event of
-probability $p$.
+metaweb, *i.e.* in which every interaction is represented as a single,
+independent, Bernoulli event of probability $p$.
 
 Specifically, we have adopted the following approach. For every entry in
 $\hat{\mathscr{L}}$ and $\hat{\mathscr{R}}$, we draw a value from its

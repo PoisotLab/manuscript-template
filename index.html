@@ -299,54 +299,55 @@ manuscripts using markdown and github actions</div>
             at the very bottom of the page, just after the references
             and before the institutions.</p>
             <p>The <em>actual</em> typesetting logic is handled by
-            another repository, which is located at
-            <strong>https://github.com/PoisotLab/manuscript-typesetter</strong>.
+            another repository, which is located at <a
+            href="https://github.com/PoisotLab/manuscript-typesetter">PoisotLab/manuscript-typesetter</a>.
             If you don’t feel like running foreign code on your repo,
-            you are absolutely right. This is why the GitHub action file
-            associated to this template will specify which release will
-            be downloaded, and so you can inspect what the typesetting
-            steps are doing. In short: they convert the bibliography
-            into a CSL JSON, reformat the metadata so they are usable
-            with pandoc templates, downloads a whole bunch of binaries
-            to do the typesetting (as well as the TeX Gyre fonts we use
-            for text, and the <code>JuliaMono</code> font we use for
-            code), and then return everything as a compressed file,
-            which is then deployed using GitHub pages.</p>
-            <p>The core bit of configuration is the
-            <code>metadata.json</code> file, which handles information
-            about authorship, affiliations, the abstract, keywords, etc.
-            All documents will be deployed to <code>gh-pages</code>
+            you are absolutely correct. This is why the GitHub action
+            file associated to this template will specify which release
+            will be downloaded, so that you can inspect what the
+            typesetting steps are doing.</p>
+            <p>In short: they convert the bibliography into a CSL JSON,
+            reformat the metadata so they are usable with pandoc
+            templates, downloads a whole bunch of binaries to do the
+            typesetting (as well as the TeX Gyre fonts we use for text,
+            and the <code>JuliaMono</code> font we use for code), and
+            then return everything as a compressed file, which is then
+            deployed using GitHub pages.</p>
+            <p>All documents will be deployed to <code>gh-pages</code>
             <em>only</em> on push events from the <code>main</code>
             branch. All of the artifacts will be built when doing pull
             requests, so you can check that merging a branch is
             <em>not</em> going to cause the compilation of the documents
             to fail; indeed, you can download the artifacts produced
             during the run, to check the PDF and html files. The website
-            is only updated from the <code>main</code> branch.</p>
+            is only updated from the <code>main</code> branch. When
+            doing a pull request, you will be notified of the word count
+            of the manuscript (approximate, and excluding
+            references).</p>
             <h1 id="deploying-the-template">Deploying the template</h1>
             <p>The process of deploying this template has been
-            <em>greatly</em> streamlined from previous versions:</p>
-            <ul>
-            <li>Click on the “Use this template” button, making sure to
-            check the option to import all branches (this will import
-            <code>gh-pages</code> and allow deploys to start
-            immediately)</li>
-            <li>Edit <code>README.md</code> with your own text, commit,
-            and push</li>
-            <li>This push will trigger the first build - the builds are
-            only active on the <code>main</code> branch (<em>not</em>
-            <code>master</code>!), and on pull requests</li>
-            <li>Go to <code>http://you.github.io/repo-name/</code> to
-            view the html version, and get access to the PDFs</li>
-            <li>Add your references to the <code>references.bib</code>
-            file</li>
-            <li>Edit the <code>metadata.json</code> file to add the
-            title, abstract, authors</li>
-            </ul>
-            <p>In particular, note that <em>you do not need</em> to
-            create a personnal access token to deploy to
-            <code>gh-pages</code> (from where the website is
-            served).</p>
+            <em>greatly</em> streamlined from previous versions. Click
+            on the “Use this template” button at the top of the Github
+            repo, making sure to check the option to import all branches
+            (this will import <code>gh-pages</code> and allow deploys to
+            start immediately). An example is given in fig. 1.</p>
+            <figure>
+            <img src="figures/how-to-clone.png" id="fig:clone"
+            alt="Figure 1: The important steps in using this template are (1) to pick the new name for your repository, (2) to make sure “Include all branches” is checked, and (3) to finish the process by clicking on “Create repository from template”." />
+            <figcaption aria-hidden="true">Figure 1: The important steps
+            in using this template are (1) to pick the new name for your
+            repository, (2) to make sure “Include all branches” is
+            checked, and (3) to finish the process by clicking on
+            “Create repository from template”.</figcaption>
+            </figure>
+            <p>When this is done, you can open your own repository, edit
+            <code>README.md</code> with your own text, commit, and push.
+            This will trigger the website build, which will become
+            available at <code>http://you.github.io/repo-name/</code>.
+            You can then edit the <code>references.bib</code> file,
+            change the <code>logo.png</code> file, and update the
+            <code>metadata.json</code> file. Every time you push a new
+            commit, everything will be updated.</p>
             <h1 id="the-metadata-file">The metadata file</h1>
             <h2 id="general-information">General information</h2>
             <p>The title is a field in the
@@ -518,15 +519,15 @@ manuscripts using markdown and github actions</div>
             <pre><code>![This is the legend of the figure...](figures/figure.png){#fig:figure}</code></pre>
             <figure>
             <img src="figures/figure.png" id="fig:figure"
-            alt="Figure 1: This is the legend of the figure, which will be shown in the margin in preprint mode, and underneath the figure in draft mode. The legend can contain references, etc. It is advised to use a resolution of at least 600dpi for the figures." />
-            <figcaption aria-hidden="true">Figure 1: This is the legend
+            alt="Figure 2: This is the legend of the figure, which will be shown in the margin in preprint mode, and underneath the figure in draft mode. The legend can contain references, etc. It is advised to use a resolution of at least 600dpi for the figures." />
+            <figcaption aria-hidden="true">Figure 2: This is the legend
             of the figure, which will be shown in the margin in preprint
             mode, and underneath the figure in draft mode. The legend
             can contain references, etc. It is advised to use a
             resolution of at least 600dpi for the figures.</figcaption>
             </figure>
             <p>We can now use <code>@fig:figure</code> to refer to
-            fig. 1.</p>
+            fig. 2.</p>
             <h1 id="example-text">Example text</h1>
             <p>Connectance, defined as the ratio of realized
             interactions on the total number of potential interactions,
@@ -566,11 +567,9 @@ manuscripts using markdown and github actions</div>
             associated uncertainty, represented by the breadth of the
             uniform distribution associated to each of their entries.
             Therefore, we can use this information to assemble a
-            <em>probabilistic</em> metaweb in the sense of <span
-            class="citation"
-            data-cites="Poisot2016StrPro">(<strong>Poisot2016StrPro?</strong>)</span>,
-            <em>i.e.</em> in which every interaction is represented as a
-            single, independent, Bernoulli event of probability <span
+            <em>probabilistic</em> metaweb, <em>i.e.</em> in which every
+            interaction is represented as a single, independent,
+            Bernoulli event of probability <span
             class="math inline"><em>p</em></span>.</p>
             <p>Specifically, we have adopted the following approach. For
             every entry in <span
