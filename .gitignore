@@ -17,4 +17,6 @@ pandoc-*
 tecto*
 .typesetter
 *.ttf
+*.otf
 *.woff2
+.fonts/*
