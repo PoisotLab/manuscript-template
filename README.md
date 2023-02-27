@@ -10,6 +10,17 @@ extensive metadata, the metadata are stored in a JSON file, which is described
 in detailed in the Appendix 1. Did we mention this system handles supplementary
 material? It does.
 
+The *actual* typesetting logic is handled by another repository, which is
+located at **https://github.com/PoisotLab/manuscript-typesetter**. If you don't
+feel like running foreign code on your repo, you are absolutely right. This is
+why the GitHub action file associated to this template will specify which
+release will be downloaded, and so you can inspect what the typesetting steps
+are doing. In short: they convert the bibliography into a CSL JSON, reformat the
+metadata so they are usable with pandoc templates, downloads a whole bunch of
+binaries to do the typesetting (as well as the TeX Gyre fonts we use), and then
+return everything as a compressed file, which is then deployed using GitHub
+pages.
+
 The core bit of configuration is the `metadata.json` file, which handles
 information about authorship, affiliations, the abstract, keywords, etc. All
 documents will be deployed to `gh-pages` *only* on push events from the `main`
