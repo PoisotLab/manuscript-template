@@ -8,7 +8,7 @@
 and github actions</title>
     <script src="https://hypothes.is/embed.js" async></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+        integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
@@ -25,6 +25,10 @@ and github actions</title>
 
             --width: 820px;
             --inner-space: 1.2em;
+        }
+
+        html {
+            background-color: white;
         }
 
         body {
@@ -207,20 +211,25 @@ and github actions</title>
             width: 7em;
             display: inline-block;
         }    </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
-    integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous" />
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
-    integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
-    crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
-    integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
-    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+        integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+        integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+        crossorigin="anonymous"></script>
+    
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             renderMathInElement(document.body, {
                 delimiters: [
-                { left: "$$", right: "$$", display: true },
-                { left: "$", right: "$", display: false }
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
                 ]
             });
         });
@@ -248,7 +257,7 @@ manuscripts using markdown and github actions</div>
             </div>
         </div>
     </header>
-    
+
     <main class="container">
         <section class="abstract">
             
@@ -267,24 +276,42 @@ manuscripts using markdown and github actions</div>
                 </dl>
 
             <div class="artifacts">
-                <a href="Poisot_et_al_2023_template_prepare_draft.pdf" title="Draft PDF" target="_blank">Draft</a>
-                <a href="Poisot_et_al_2023_template_prepare_preprint.pdf" title="Preprint PDF" target="_blank">Preprint</a>
-                <a href="Poisot_et_al_2023_template_prepare.odt" title="OpenDocument (Word)" target="_blank">Libre Office</a>
+                <a href="Poisot_et_al_2023_template_prepare_draft.pdf" title="Draft" target="_blank">Draft</a>
+                <a href="Poisot_et_al_2023_template_prepare_preprint.pdf" title="Preprint" target="_blank">Preprint</a>
+                <a href="Poisot_et_al_2023_template_prepare.odt" title="OpenDocument" target="_blank">Libre Office</a>
             </div>
         </section>
-        
+
         <article>
-            <p>This template uses <code>pandoc</code> (and a few
-            additional <em>Julia</em> glue scripts) to facilitate the
-            production of scientific articles using a standard markdown
-            file. The objective is to ensure that standard markdown
-            (with the important exception of the
-            <code>pandoc-crossref</code> citation markup) will be
-            rendered into an interactive website (which allows
-            collaborative annotations with the <code>hypothes.is</code>
-            platform), a “draft” style PDF (double-spaced, numbered
-            lines, figures at the end), and a “preprint” style PDF (with
-            more reader-friendly pagination).</p>
+            <p>This template templates turns README files hosted in a
+            GitHub repo into a formatted manuscript. In practice, this
+            involves converting the README file into various LaTeX
+            files, an interactive website, and an OpenDocument text file
+            (for use in Word).</p>
+            <p>The workflow is <em>entirely</em> GitHub-based, and so
+            the manuscript file is contained entirely in the README.
+            There are a few differences with “normal” markdown (or with
+            GFM, the most commonly used variant). First, because
+            manuscripts require extensive metadata, the metadata are
+            stored in a JSON file, which is described in detailed in the
+            Appendix 1. Did we mention this system handles supplementary
+            material? It does. On the website, the appendix are listed
+            at the very bottom of the page, just after the references
+            and before the institutions.</p>
+            <p>The <em>actual</em> typesetting logic is handled by
+            another repository, which is located at
+            <strong>https://github.com/PoisotLab/manuscript-typesetter</strong>.
+            If you don’t feel like running foreign code on your repo,
+            you are absolutely right. This is why the GitHub action file
+            associated to this template will specify which release will
+            be downloaded, and so you can inspect what the typesetting
+            steps are doing. In short: they convert the bibliography
+            into a CSL JSON, reformat the metadata so they are usable
+            with pandoc templates, downloads a whole bunch of binaries
+            to do the typesetting (as well as the TeX Gyre fonts we use
+            for text, and the <code>JuliaMono</code> font we use for
+            code), and then return everything as a compressed file,
+            which is then deployed using GitHub pages.</p>
             <p>The core bit of configuration is the
             <code>metadata.json</code> file, which handles information
             about authorship, affiliations, the abstract, keywords, etc.
@@ -296,17 +323,14 @@ manuscripts using markdown and github actions</div>
             to fail; indeed, you can download the artifacts produced
             during the run, to check the PDF and html files. The website
             is only updated from the <code>main</code> branch.</p>
-            <p>The workflow is <em>very</em> GitHub based, and so the
-            manuscript file <em>is</em> the <code>README.md</code> -
-            this is not going to be a huge issue as 90% of the markdown
-            is standard, with the exception of the citations and
-            mathematics, so this will render (mostly) like a normal
-            README file.</p>
             <h1 id="deploying-the-template">Deploying the template</h1>
             <p>The process of deploying this template has been
             <em>greatly</em> streamlined from previous versions:</p>
             <ul>
-            <li>Click on the “Use this template” button</li>
+            <li>Click on the “Use this template” button, making sure to
+            check the option to import all branches (this will import
+            <code>gh-pages</code> and allow deploys to start
+            immediately)</li>
             <li>Edit <code>README.md</code> with your own text, commit,
             and push</li>
             <li>This push will trigger the first build - the builds are
@@ -584,6 +608,14 @@ manuscripts using markdown and github actions</div>
             means that these two species were predicted to interact in
             all <span class="math inline">2 × 10<sup>5</sup></span>
             random draws, etc..</p>
+            <h1 id="things-to-know">Things to know</h1>
+            <p>The text can use unicode: for example, this α is written
+            as is in the main text. The previous sentence is written
+            as</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode md"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="an">The text can use unicode:</span><span class="co"> for example, this α is written as is in the main text.</span></span></code></pre></div>
+            <p>and so yes, you <em>can</em> actually use unicode in code
+            blocks as well.</p>
             <h1 class="unnumbered" id="references">References</h1>
             <div id="refs"
             class="references csl-bib-body hanging-indent"
@@ -604,8 +636,20 @@ manuscripts using markdown and github actions</div>
     </main>
 
     <footer>
-        <div class="container">
-            <h2>Affiliations</h2> 
+                <div class="container">
+            <h2>Supplementary Material</h2>
+            <span class="appendix--list">
+                <a href="appendix/Poisot_et_al_2023_template_prepare_s1.pdf" target="_blank">
+                    <b>1:</b>&nbsp;The metadata configuration file
+                </a><br />
+            </span><span class="appendix--list">
+                <a href="appendix/Poisot_et_al_2023_template_prepare_s2.pdf" target="_blank">
+                    <b>2:</b>&nbsp;Second supp. mat.
+                </a><br />
+            </span>
+        </div>
+                <div class="container">
+            <h2>Affiliations</h2>
             <sup>1</sup>&nbsp;Université de
             Montréal; <sup>2</sup>&nbsp;Québec Centre for Biodiversity
             Sciences; <sup>3</sup>&nbsp;Inn of the Prancing
@@ -615,6 +659,7 @@ manuscripts using markdown and github actions</div>
             
         </div>
     </footer>
-    
+
 </body>
+
 </html>
