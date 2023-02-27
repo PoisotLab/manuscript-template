@@ -8,7 +8,8 @@ entirely in the README. There are a few differences with "normal" markdown (or
 with GFM, the most commonly used variant). First, because manuscripts require
 extensive metadata, the metadata are stored in a JSON file, which is described
 in detailed in the Appendix 1. Did we mention this system handles supplementary
-material? It does.
+material? It does. On the website, the appendix are listed at the very bottom of
+the page, just after the references and before the institutions.
 
 The *actual* typesetting logic is handled by another repository, which is
 located at **https://github.com/PoisotLab/manuscript-typesetter**. If you don't
@@ -17,9 +18,9 @@ why the GitHub action file associated to this template will specify which
 release will be downloaded, and so you can inspect what the typesetting steps
 are doing. In short: they convert the bibliography into a CSL JSON, reformat the
 metadata so they are usable with pandoc templates, downloads a whole bunch of
-binaries to do the typesetting (as well as the TeX Gyre fonts we use), and then
-return everything as a compressed file, which is then deployed using GitHub
-pages.
+binaries to do the typesetting (as well as the TeX Gyre fonts we use for text,
+and the `JuliaMono` font we use for code), and then return everything as a
+compressed file, which is then deployed using GitHub pages.
 
 The core bit of configuration is the `metadata.json` file, which handles
 information about authorship, affiliations, the abstract, keywords, etc. All
