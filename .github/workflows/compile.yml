@@ -7,76 +7,35 @@ on:
   pull_request:
 
 jobs:
-  generate:
+  build:
     name: Build the sources
     runs-on: ubuntu-latest
     strategy:
       matrix:
         julia-version: [1.8]
-        pandoc-version: [2.19.2]
-        crossref-version: [0.3.14.0]
+        typesetter-version: [0.0.17]
     steps:
       - uses: actions/checkout@v2
       - name: Julia ${{ matrix.julia-version }}
         uses: julia-actions/setup-julia@v1
         with:
           version: ${{ matrix.julia-version }}
-          arch: 'x64'
+          arch: 'x64'      
+      - name: Get the typesetter
+        run: |
+          wget https://github.com/PoisotLab/manuscript-typesetter/archive/refs/tags/v${{ matrix.typesetter-version }}.tar.gz
+          tar -xvf v${{ matrix.typesetter-version }}.tar.gz
+          mv manuscript-typesetter-${{ matrix.typesetter-version }} .typesetter
       - name: Julia packages
         uses: julia-actions/julia-buildpkg@v1
-      - name: Download and install pandoc
-        run: |
-          wget https://github.com/jgm/pandoc/releases/download/${{ matrix.pandoc-version }}/pandoc-${{ matrix.pandoc-version }}-1-amd64.deb
-          sudo dpkg -i pandoc-${{ matrix.pandoc-version }}-1-amd64.deb
-          rm pandoc-${{ matrix.pandoc-version }}-1-amd64.deb
-      - name: Get the crossref filter
-        run: |
-          wget https://github.com/lierdakil/pandoc-crossref/releases/download/v${{ matrix.crossref-version }}/pandoc-crossref-Linux.tar.xz
-          tar -xf pandoc-crossref-Linux.tar.xz
-      - name: Convert the bib file to json
-        run: |
-          export LANG=en_US.UTF-8
-          pandoc references.bib -t csljson -o references.json
-      - name: Cleanup the bibliography
-        run: julia --project .assets/scripts/bibliography.jl
-      - name: Cleanup the affiliations
-        run: julia --project .assets/scripts/affiliations.jl
-      - name: Get the citation style file
-        run: julia --project .assets/scripts/citationstyle.jl
-      - name: Format the abstract
-        run: julia --project .assets/scripts/abstract.jl
-      - name: Generate the manuscript shortname
-        run: julia --project .assets/scripts/filename.jl
-      - name: Collapse metadata
-        run: julia --project .assets/scripts/metadata.jl
-      - name: Prepare the output
-        run: |
-          mkdir -p dist
-          cp -r figures dist/
-          cp references.json dist/
-          cp filename dist/
-          cp .assets/logo.png dist/
-      - name: Get the filename in a variable
-        id: filename
-        run: echo "::set-output name=filename::$(cat filename)"
-      - name: Build the website
-        run: pandoc README.md -o dist/index.html -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/index.html
-      - name: Build the draft
-        run: |
-          pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}_draft.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/draft.tex
-      - name: Build the preprint
-        run: |
-          pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}_preprint.tex -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/preprint.tex
-      - name: Build the LibreOffice file
-        run: |
-          pandoc README.md -s -o dist/${{ steps.filename.outputs.filename }}.odt -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json --template=.assets/templates/default.opendocument
-      - name: Build a raw file for word counting
-        run: |
-          pandoc README.md -s -o rawtext.txt -t plain -F pandoc-crossref --citeproc --bibliography=references.json --csl .assets/citationstyle.csl --metadata-file=manuscript-metadata.json -M suppress-bibliography=true 
+        with:
+          project: .typesetter
+      - name: Run the full project
+        run: julia --project=.typesetter .typesetter/scripts/00_build.jl
       - name: "Word count in the build folder"
         id: word-count
         if: github.event_name == 'pull_request'
-        run: echo "::set-output name=count::Current word count (main text; no references) is approx. $(wc -w rawtext.txt | cut -d' ' -f1)"
+        run: echo "::set-output name=count::Current word count (main text; no references) is approx. $(wc -w dist/rawtext.txt | cut -d' ' -f1)"
       - name: "Comment on wordcount"
         uses: thollander/actions-comment-pull-request@v1
         if: github.event_name == 'pull_request'
@@ -87,47 +46,11 @@ jobs:
         if: always()
         uses: actions/upload-artifact@master
         with:
-          name: "raw_files"
-          path: dist
-  build:
-    name: Build the PDFs
-    needs: generate
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    strategy:
-      matrix:
-        pdf-version: [preprint, draft]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Download dist folder
-        uses: actions/download-artifact@v2
-        with:
-          name: "raw_files"
-          path: dist
-      - name: Get the filename in a variable
-        id: filename
-        run: echo "::set-output name=filename::$(cat dist/filename)"
-      - name: Build the preprint pdf file
-        uses: xu-cheng/latex-action@master
-        with:
-          working_directory: dist
-          root_file: ${{ steps.filename.outputs.filename }}_${{ matrix.pdf-version }}.tex
-          args: "-f -interaction=nonstopmode -pdf"
-      - name: Cleanup after PDF build
-        uses: xu-cheng/latex-action@master
-        with:
-          working_directory: dist
-          root_file: ${{ steps.filename.outputs.filename }}_${{ matrix.pdf-version }}.tex
-          args: "-c"
-      - name: Save artifacts
-        if: always()
-        uses: actions/upload-artifact@master
-        with:
-          name: "compiled"
+          name: "dist"
           path: dist
   deploy:
     name: Deploy to gh-pages
-    needs: [generate, build]
+    needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
@@ -135,19 +58,10 @@ jobs:
       - name: Download dist folder
         uses: actions/download-artifact@v2
         with:
-          name: "compiled"
+          name: "dist"
           path: dist
       - name: "Deploy!"
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
-  cleanup:
-      name: Cleanup the old files
-      needs: [deploy, build]
-      runs-on: ubuntu-latest
-      steps:
-        - name: Remove raw files
-          uses: geekyeggo/delete-artifact@v1
-          with:
-            name: "raw_files"

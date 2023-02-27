@@ -1,10 +1,26 @@
-This template uses `pandoc` (and a few additional *Julia* glue scripts) to
-facilitate the production of scientific articles using a standard markdown file.
-The objective is to ensure that standard markdown (with the important exception
-of the `pandoc-crossref` citation markup) will be rendered into an interactive
-website (which allows collaborative annotations with the `hypothes.is`
-platform), a "draft" style PDF (double-spaced, numbered lines, figures at the
-end), and a "preprint" style PDF (with more reader-friendly pagination).
+This template templates turns README files hosted in a GitHub repo into a
+formatted manuscript. In practice, this involves converting the README file into
+various LaTeX files, an interactive website, and an OpenDocument text file (for
+use in Word).
+
+The workflow is *entirely* GitHub-based, and so the manuscript file is contained
+entirely in the README. There are a few differences with "normal" markdown (or
+with GFM, the most commonly used variant). First, because manuscripts require
+extensive metadata, the metadata are stored in a JSON file, which is described
+in detailed in the Appendix 1. Did we mention this system handles supplementary
+material? It does. On the website, the appendix are listed at the very bottom of
+the page, just after the references and before the institutions.
+
+The *actual* typesetting logic is handled by another repository, which is
+located at **https://github.com/PoisotLab/manuscript-typesetter**. If you don't
+feel like running foreign code on your repo, you are absolutely right. This is
+why the GitHub action file associated to this template will specify which
+release will be downloaded, and so you can inspect what the typesetting steps
+are doing. In short: they convert the bibliography into a CSL JSON, reformat the
+metadata so they are usable with pandoc templates, downloads a whole bunch of
+binaries to do the typesetting (as well as the TeX Gyre fonts we use for text,
+and the `JuliaMono` font we use for code), and then return everything as a
+compressed file, which is then deployed using GitHub pages.
 
 The core bit of configuration is the `metadata.json` file, which handles
 information about authorship, affiliations, the abstract, keywords, etc. All
@@ -15,17 +31,12 @@ documents to fail; indeed, you can download the artifacts produced during the
 run, to check the PDF and html files. The website is only updated from the
 `main` branch.
 
-The workflow is *very* GitHub based, and so the manuscript file *is* the
-`README.md` - this is not going to be a huge issue as 90% of the markdown is
-standard, with the exception of the citations and mathematics, so this will
-render (mostly) like a normal README file.
-
 # Deploying the template
 
 The process of deploying this template has been *greatly* streamlined from
 previous versions:
 
-- Click on the "Use this template" button
+- Click on the "Use this template" button, making sure to check the option to import all branches (this will import `gh-pages` and allow deploys to start immediately)
 - Edit `README.md` with your own text, commit, and push
 - This push will trigger the first build - the builds are only active on the `main` branch (*not* `master`!), and on pull requests
 - Go to `http://you.github.io/repo-name/` to view the html version, and get access to the PDFs
@@ -178,7 +189,7 @@ refer to the table. For example, the table below is @tbl:id. You can remove the
 `\*tbl:id`.
 
 | Sepal.Length | Sepal.Width | Petal.Length | Petal.Width | Species |
-|-------------:|------------:|-------------:|------------:|:--------|
+| -----------: | ----------: | -----------: | ----------: | :------ |
 |          5.1 |         3.5 |          1.4 |         0.2 | setosa  |
 |          5.0 |         3.6 |          1.4 |         0.2 | setosa  |
 |          5.4 |         3.9 |          1.7 |         0.4 | setosa  |
@@ -260,5 +271,15 @@ inferred trait distributions) is given by the number of times where it appears
 across all random draws $N$, divided by the number of samples. An interaction
 with $P_{i,j} = 1$ means that these two species were predicted to interact in
 all $2\times 10^5$ random draws, etc..
+
+# Things to know
+
+The text can use unicode: for example, this α is written as is in the main text. The previous sentence is written as
+
+~~~ md
+The text can use unicode: for example, this α is written as is in the main text.
+~~~
+
+and so yes, you *can* actually use unicode in code blocks as well.
 
 # References

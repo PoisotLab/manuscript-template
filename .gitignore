@@ -11,3 +11,12 @@ filename
 filename.json
 manuscript-metadata.json
 .~lock*
+appendix/*.pdf
+pandoc-cross*
+pandoc-*
+tecto*
+.typesetter
+*.ttf
+*.otf
+*.woff2
+.fonts/*
