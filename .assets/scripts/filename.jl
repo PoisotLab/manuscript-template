@@ -25,6 +25,7 @@ else
 end
 
 filename = join([author_string, ms_year, title_placeholder], "_")
+filename = filter(x -> !isspace(x), filename)
 
 open("filename", "w") do f
     return write(f, filename)
