@@ -16,3 +16,5 @@ pandoc-cross*
 pandoc-*
 tecto*
 .typesetter
+*.ttf
+*.woff2
