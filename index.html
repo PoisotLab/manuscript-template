@@ -285,27 +285,44 @@ manuscripts using markdown and github actions</div>
         <article>
             <p>This template templates turns README files hosted in a
             GitHub repo into a formatted manuscript. In practice, this
-            involves converting the README file into various LaTeX
-            files, an interactive website, and an OpenDocument text file
-            (for use in Word).</p>
-            <p>The workflow is <em>entirely</em> GitHub-based, and so
-            the manuscript file is contained entirely in the README.
-            There are a few differences with “normal” markdown (or with
-            GFM, the most commonly used variant). First, because
-            manuscripts require extensive metadata, the metadata are
-            stored in a JSON file, which is described in detailed in the
-            Appendix 1. Did we mention this system handles supplementary
-            material? It does. On the website, the appendix are listed
-            at the very bottom of the page, just after the references
-            and before the institutions.</p>
-            <p>The <em>actual</em> typesetting logic is handled by
-            another repository, which is located at <a
+            involves converting the <code>README.md</code> file into
+            various LaTeX files, an interactive website, and an
+            OpenDocument text file (for use in Word, or to generate
+            track changes).</p>
+            <p>The workflow is <em>entirely</em> GitHub-based, so the
+            manuscript file is contained entirely in the README. There
+            are a few differences with “normal” markdown (or with GFM,
+            the most commonly used variant). First, because manuscripts
+            require extensive metadata, the metadata are stored in a
+            JSON file, as opposed to a YAML front-matter. Second, we use
+            the <a
+            href="https://github.com/lierdakil/pandoc-crossref"><code>pandoc-crossref</code></a>
+            filter to generate references to figures and tables, which
+            are not rendered when looking at the README on Github.
+            Everything else is standard markdown.</p>
+            <p>There are <em>two</em> important folders:
+            <code>figures</code> and <code>appendix</code>. Both of them
+            will remain in the repository even if they are empty (they
+            come with a <code>.gitkeep</code> file). The
+            <code>figures</code> folder is where figures are stored, and
+            the <code>appendix</code> folder is where you can put
+            markdown files for the appendices. Note that the appendices
+            will come with their <em>own</em> bibliography (which draws
+            from the global <code>references.bib</code> file at the root
+            of the project).</p>
+            <h1 id="the-typesetting">The typesetting</h1>
+            <p>The <em>actual</em> typesetting is handled by another
+            repository, which is located at <a
             href="https://github.com/PoisotLab/manuscript-typesetter">PoisotLab/manuscript-typesetter</a>.
             If you don’t feel like running foreign code on your repo,
             you are absolutely correct. This is why the GitHub action
             file associated to this template will specify which release
-            will be downloaded, so that you can inspect what the
-            typesetting steps are doing.</p>
+            of the typesetter will be downloaded, so that you can
+            inspect what the typesetting steps are doing. The
+            typesetting versions follow semantic versioning, so as long
+            the <em>major</em> (as in <code>major.minor.patch</code>)
+            version remains the same, you will not need to change your
+            <code>README.md</code> or <code>metadata.json</code>.</p>
             <p>In short: they convert the bibliography into a CSL JSON,
             reformat the metadata so they are usable with pandoc
             templates, downloads a whole bunch of binaries to do the
@@ -324,6 +341,14 @@ manuscripts using markdown and github actions</div>
             doing a pull request, you will be notified of the word count
             of the manuscript (approximate, and excluding
             references).</p>
+            <p>If you want to use the typesetting system locally,
+            <em>you can</em>. We do not recommend it, but you absolutely
+            can. All you need to do is make sure it is downloaded in the
+            <code>.typesetter</code> folder in your repository (which is
+            going to be ignored by <code>git</code> by default), and
+            then install <code>Julia</code> (we know…), and then run the
+            top-level script. Again, we definitely advise against
+            running things locally.</p>
             <h1 id="deploying-the-template">Deploying the template</h1>
             <p>The process of deploying this template has been
             <em>greatly</em> streamlined from previous versions. Click
@@ -349,89 +374,30 @@ manuscripts using markdown and github actions</div>
             <code>metadata.json</code> file. Every time you push a new
             commit, everything will be updated.</p>
             <h1 id="the-metadata-file">The metadata file</h1>
-            <h2 id="general-information">General information</h2>
-            <p>The title is a field in the
-            <code>metadata.json</code>:</p>
-            <div class="sourceCode" id="cb1"><pre
-            class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Preprint template&quot;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-            <h2 id="authorship">Authorship</h2>
-            <p>Authors are listed as objects in the <code>authors</code>
-            block. Each author is specified as follows:</p>
-            <div class="sourceCode" id="cb2"><pre
-            class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;familyname&quot;</span><span class="fu">:</span> <span class="st">&quot;Bob&quot;</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;givennames&quot;</span><span class="fu">:</span> <span class="st">&quot;Alice&quot;</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;alice.bob@u.edu&quot;</span><span class="fu">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;orcid&quot;</span><span class="fu">:</span> <span class="st">&quot;0000-0000-0000-0001&quot;</span><span class="fu">,</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;affiliations&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Affiliation 1&quot;</span><span class="ot">,</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Affiliation 2&quot;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;corresponding&quot;</span><span class="ot">,</span> <span class="st">&quot;equal&quot;</span><span class="ot">]</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code></pre></div>
-            <p>The <code>email</code> field is recommended for all
-            authors. The <code>status</code> field is only useful for
-            the corresponding author, and to denote equal contributions.
-            These informations are rendered on the initial page. If an
-            <code>orcid</code> is given, it will be linked on the HTML
-            and PDF versions.</p>
-            <p>Note that there is <em>no need</em> to number the
-            affiliations - a small python script will take care of this
-            automatically.</p>
-            <h2 id="abstract">Abstract</h2>
-            <p>This template supports three types of abstracts,
-            indicated in the metadata file as <code>abstract</code>:</p>
-            <p>A regular <code>abstract</code> is defined as</p>
-            <div class="sourceCode" id="cb3"><pre
-            class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;abstract&quot;:</span> <span class="er">&quot;A</span> <span class="er">very</span> <span class="er">long</span> <span class="er">string&quot;</span></span></code></pre></div>
-            <p>An itemized abstract is an array of strings, each
-            representing a bullet point:</p>
-            <div class="sourceCode" id="cb4"><pre
-            class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;abstract&quot;:</span> <span class="ot">[</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Point 1&quot;</span><span class="ot">,</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Point 2&quot;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div>
-            <p>A structured abstract is an object with key-value pairs
-            :</p>
-            <div class="sourceCode" id="cb5"><pre
-            class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;abstract&quot;:</span> <span class="fu">{</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;Location&quot;</span><span class="fu">:</span> <span class="st">&quot;Worldwide&quot;</span><span class="fu">,</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;Organisms&quot;</span><span class="fu">:</span> <span class="st">&quot;Mammals&quot;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-            <h2 id="citation-style">Citation style</h2>
-            <p>The <code>citationstyle</code> key corresponds to the
-            name, with <code>.csl</code> ommited, of a CSL stylesheet
-            stored in the <a
-            href="https://github.com/citation-style-language/">citation
-            style language</a> repository. Note that there is no
-            difference between main and dependent styles, the build
-            engine will take the correct steps to get the correct style.
-            The default is
-            <code>"citationstyle": "ecology-letters"</code>. There is a
-            longer section about references management later on.</p>
-            <h1 id="references-management">References management</h1>
-            <p>The references are managed by <code>pandoc</code>. Note
-            that we <em>do not</em> use <code>pandoc-citeproc</code>,
-            which was an external module for older <code>pandoc</code>
-            versions. References <em>must</em> be stored in a
+            <p>The <code>metadata.json</code> file provided with this
+            template is reasonably complete, but the full format is
+            explained in the Supp. Mat. on the metadata specification.
+            From the website, Supp. Mat. can be accessed at the very
+            bottom of the page. # References management</p>
+            <p>The references are managed by <code>pandoc</code>.
+            References <em>must</em> be stored in a
             <code>references.bib</code> file, and that it would make
-            sense to order it alphabetically by key.</p>
+            sense to order it alphabetically by key, but this makes no
+            difference.</p>
             <p>We use <a href="https://www.zotero.org/">Zotero</a> for
             references management, and for the lab’s manuscripts, we
             work from folders in a shared library (with a folder for
             every manuscript).</p>
-            <p>It is recommedned to use the <a
+            <p>We recommend the <a
             href="https://retorque.re/zotero-better-bibtex/">Better
             BibTeX</a> plugin for citation key generations, and
             auto-export of the shared library to the
             <code>references.bib</code> file. We use a citation key
             format meant to convey information on the author (first
             author full name), date (complet year), and title (first
-            three letters of the first two non-stop words). It must be
-            set in the Better BibTeX preferences as (you might need to
-            remove the line changes):</p>
+            non-stop-word word of the title). It must be set in the
+            Better BibTeX preferences as (you might need to remove the
+            line changes):</p>
             <pre><code>auth.fold.fold + year + title.fold.nopunctordash.skipwords.lower.select(1,1).capitalize()</code></pre>
             <p>It is a good idea to configure Better BibTeX to
             auto-export on change, and to remove a lot of fields that
@@ -444,8 +410,8 @@ manuscripts using markdown and github actions</div>
             (1927)</span>, and <code>[@Camerano1880EquViv]</code>
             produces <span class="citation"
             data-cites="Camerano1880EquViv">(Camerano 1880)</span>.</p>
-            <h1 id="figures-tables-and-other-floats">Figures, Tables,
-            and other floats</h1>
+            <h1 id="figures-tables-and-other-things">Figures, Tables,
+            and other things</h1>
             <p>Note that you can wrap the text of legends for both
             figures and tables. This avoids the issue of having very
             long lines.</p>
@@ -455,8 +421,8 @@ manuscripts using markdown and github actions</div>
             \frac{1}{\text{log}(S)}\times\left(-\sum p \times
             \text{log}(p)\right)\qquad{(1)}$$</span></span></p>
             <p>is produced using</p>
-            <div class="sourceCode" id="cb8"><pre
-            class="sourceCode latex"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$J&#39;(p) = </span><span class="sc">\frac</span><span class="ss">{1}{</span><span class="sc">\text</span>{log}<span class="ss">(S)}</span><span class="sc">\times</span><span class="ss"> ... $$</span> {#eq:eq1}</span></code></pre></div>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode latex"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$J&#39;(p) = </span><span class="sc">\frac</span><span class="ss">{1}{</span><span class="sc">\text</span>{log}<span class="ss">(S)}</span><span class="sc">\times</span><span class="ss"> ... $$</span> {#eq:eq1}</span></code></pre></div>
             <p>and can be referenced using <code>@eq:eq1</code>, which
             will result in eq. 1. Note that because we use
             <code>pandoc-crossref</code>, the label “eq.” will be
@@ -528,93 +494,22 @@ manuscripts using markdown and github actions</div>
             </figure>
             <p>We can now use <code>@fig:figure</code> to refer to
             fig. 2.</p>
-            <h1 id="example-text">Example text</h1>
-            <p>Connectance, defined as the ratio of realized
-            interactions on the total number of potential interactions,
-            is one of the most common descriptor of network structure.
-            In a bipartite network with <span
-            class="math inline"><em>T</em></span> species at the top,
-            and <span class="math inline"><em>B</em></span> at the
-            bottom, having a total of <span
-            class="math inline"><em>L</em></span> interactions, it is
-            defined as <span
-            class="math inline"><em>C</em><em>o</em> = <em>L</em>/(<em>T</em>×<em>B</em>)</span>.
-            Connectance has a lower bound, as the network cannot have
-            fewer interactions that the number of species in its more
-            speciose level – the minimal connectance is therefore <span
-            class="math inline"><em>c</em><sub><em>m</em></sub> = max(<em>T</em>,<em>B</em>)</span>.
-            This makes the connectance of networks of different sizes
-            difficult to compare, especially since bipartite networks
-            tends to have a low connectance. For this reason, we used a
-            corrected version of connectance, defined as</p>
-            <p><span id="eq:cstar"><span
-            class="math display">$$Co^\star=\frac{L-c_m}{T\times B-c_m}
-            \,.\qquad{(2)}$$</span></span></p>
-            <h2 id="this-is-a-subsection">This is a subsection</h2>
-            <p>This takes values between 0 (the network has the minimal
-            number of interactions) and 1 (all species are connected),
-            but is robust to variations in species richness.</p>
-            <h2 id="this-is-another-subsection">This is another
-            subsection</h2>
-            <p>This takes values between 0 (the network has the minimal
-            number of interactions) and 1 (all species are connected),
-            but is robust to variations in species richness.</p>
-            <h2 id="some-non-standard-maths">Some non-standard
-            maths</h2>
-            <p>The phylogenetic reconstruction of <span
-            class="math inline">$\hat{\mathscr{L}}$</span> and <span
-            class="math inline">$\hat{\mathscr{R}}$</span> has an
-            associated uncertainty, represented by the breadth of the
-            uniform distribution associated to each of their entries.
-            Therefore, we can use this information to assemble a
-            <em>probabilistic</em> metaweb, <em>i.e.</em> in which every
-            interaction is represented as a single, independent,
-            Bernoulli event of probability <span
-            class="math inline"><em>p</em></span>.</p>
-            <p>Specifically, we have adopted the following approach. For
-            every entry in <span
-            class="math inline">$\hat{\mathscr{L}}$</span> and <span
-            class="math inline">$\hat{\mathscr{R}}$</span>, we draw a
-            value from its distribution. This results in one instance of
-            the possible left (<span
-            class="math inline">$\hat{\mathscr{l}}$</span>) and right
-            (<span class="math inline">$\hat{\mathscr{r}}$</span>)
-            subspaces for the Canadian metaweb. These can be multiplied,
-            to produce one matrix of real values. Because the entries in
-            <span class="math inline">$\hat{\mathscr{l}}$</span> and
-            <span class="math inline">$\hat{\mathscr{r}}$</span> are in
-            the same space where <span class="math inline">ℒ</span> and
-            <span class="math inline">ℛ</span> were originally
-            predicted, it follows that the threshold <span
-            class="math inline"><em>ρ</em></span> estimated for the
-            European metaweb also applies. We use this information to
-            produce one random Canadian metaweb, <span
-            class="math inline">$N = \hat{\mathscr{L}}$</span><span
-            class="math inline">$\hat{\mathscr{R}}' \ge
-            \rho$</span>.</p>
-            <p>Because the intervals around some trait values can be
-            broad (in fact, probably broader than what they would
-            actually be), we repeat the above process <span
-            class="math inline">2 × 10<sup>5</sup></span> times, which
-            results in a probabilistic metaweb <span
-            class="math inline"><em>P</em></span>, where the probability
-            of an interaction (here conveying our degree of trust that
-            it exists given the inferred trait distributions) is given
-            by the number of times where it appears across all random
-            draws <span class="math inline"><em>N</em></span>, divided
-            by the number of samples. An interaction with <span
-            class="math inline"><em>P</em><sub><em>i</em>, <em>j</em></sub> = 1</span>
-            means that these two species were predicted to interact in
-            all <span class="math inline">2 × 10<sup>5</sup></span>
-            random draws, etc..</p>
-            <h1 id="things-to-know">Things to know</h1>
+            <h1 id="unicode-support">Unicode support</h1>
+            <p>The PDFs are rendered using the excellent <a
+            href="https://tectonic-typesetting.github.io/en-US/"><code>tectonic</code></a>
+            engine, and use <code>fontspec</code> for better looking
+            fonts. The text is set in TeX Gyre Termes, the titles are
+            set in TeX Gyre Heros, and the code is set in JuliaMono.</p>
             <p>The text can use unicode: for example, this α is written
-            as is in the main text. The previous sentence is written
-            as</p>
-            <div class="sourceCode" id="cb10"><pre
-            class="sourceCode md"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="an">The text can use unicode:</span><span class="co"> for example, this α is written as is in the main text.</span></span></code></pre></div>
-            <p>and so yes, you <em>can</em> actually use unicode in code
-            blocks as well.</p>
+            as is in the main text. The code can, similarly, use
+            unicode. For example, we can use the one-liner neural
+            network from the <a href=""
+            title="https://github.com/mossr/BeautifulAlgorithms.jl/blob/master/src/neural_network_one_liner.jl">beautiful
+            algorithms</a> repository:</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode md"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>neural_network(x, 𝐕, 𝐰, φ, g) = 𝐰 ⋅ map(𝐯ⱼ -&gt; g(𝐯ⱼ ⋅ φ(x)), 𝐕)</span></code></pre></div>
+            <p>Every character that <code>JuliaMono</code> supports
+            (which is <em>a lot</em> can be used in code).</p>
             <h1 class="unnumbered" id="references">References</h1>
             <div id="refs"
             class="references csl-bib-body hanging-indent"
