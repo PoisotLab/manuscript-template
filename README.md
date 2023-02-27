@@ -1,10 +1,14 @@
-This template uses `pandoc` (and a few additional *Julia* glue scripts) to
-facilitate the production of scientific articles using a standard markdown file.
-The objective is to ensure that standard markdown (with the important exception
-of the `pandoc-crossref` citation markup) will be rendered into an interactive
-website (which allows collaborative annotations with the `hypothes.is`
-platform), a "draft" style PDF (double-spaced, numbered lines, figures at the
-end), and a "preprint" style PDF (with more reader-friendly pagination).
+This template templates turns README files hosted in a GitHub repo into a
+formatted manuscript. In practice, this involves converting the README file into
+various LaTeX files, an interactive website, and an OpenDocument text file (for
+use in Word).
+
+The workflow is *entirely* GitHub-based, and so the manuscript file is contained
+entirely in the README. There are a few differences with "normal" markdown (or
+with GFM, the most commonly used variant). First, because manuscripts require
+extensive metadata, the metadata are stored in a JSON file, which is described
+in detailed in the Appendix 1. Did we mention this system handles supplementary
+material? It does.
 
 The core bit of configuration is the `metadata.json` file, which handles
 information about authorship, affiliations, the abstract, keywords, etc. All
@@ -14,11 +18,6 @@ check that merging a branch is *not* going to cause the compilation of the
 documents to fail; indeed, you can download the artifacts produced during the
 run, to check the PDF and html files. The website is only updated from the
 `main` branch.
-
-The workflow is *very* GitHub based, and so the manuscript file *is* the
-`README.md` - this is not going to be a huge issue as 90% of the markdown is
-standard, with the exception of the citations and mathematics, so this will
-render (mostly) like a normal README file.
 
 # Deploying the template
 
