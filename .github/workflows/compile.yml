@@ -13,9 +13,7 @@ jobs:
     strategy:
       matrix:
         julia-version: [1.8]
-        pandoc-version: [2.19.2]
-        crossref-version: [0.3.14.0]
-        typesetter-version: [0.0.3]
+        typesetter-version: [0.0.4]
     steps:
       - uses: actions/checkout@v2
       - name: Julia ${{ matrix.julia-version }}
@@ -28,35 +26,10 @@ jobs:
           wget https://github.com/PoisotLab/manuscript-typesetter/archive/refs/tags/v${{ matrix.typesetter-version }}.tar.gz
           tar -xvf v${{ matrix.typesetter-version }}.tar.gz
           mv manuscript-typesetter-${{ matrix.typesetter-version }} .typesetter
-      - name: Get the TeX Gyre fonts
-        run: |
-          wget https://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg2_501otf.zip
-          mkdir ~/.local/share/fonts
-          unzip tg2_501otf.zip
-          mv tg2_501otf/* ~/.local/share/fonts
-          fc-cache -vf
-      - name: Get the TeX Gyre math fonts
-        run: |
-          wget https://www.gust.org.pl/projects/e-foundry/tg-math/download/texgyretermes-math-1543.zip
-          unzip texgyretermes-math-1543.zip
-          mv texgyretermes-math-1543/* ~/.local/share/fonts
-          fc-cache -vf
       - name: Julia packages
         uses: julia-actions/julia-buildpkg@v1
         with:
           project: .typesetter
-      - name: Download and install pandoc
-        run: |
-          wget https://github.com/jgm/pandoc/releases/download/${{ matrix.pandoc-version }}/pandoc-${{ matrix.pandoc-version }}-1-amd64.deb
-          sudo dpkg -i pandoc-${{ matrix.pandoc-version }}-1-amd64.deb
-          rm pandoc-${{ matrix.pandoc-version }}-1-amd64.deb
-      - name: Get the crossref filter
-        run: |
-          wget https://github.com/lierdakil/pandoc-crossref/releases/download/v${{ matrix.crossref-version }}/pandoc-crossref-Linux.tar.xz
-          tar -xf pandoc-crossref-Linux.tar.xz
-      - name: Get tectonic for typesetting
-        run: |
-          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
       - name: Run the full project
         run: julia --project=.typesetter .typesetter/scripts/00_build.jl
       - name: "Word count in the build folder"
