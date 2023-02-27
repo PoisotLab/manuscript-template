@@ -184,7 +184,7 @@ neural network from the [beautiful algorithms][ba] repository:
 neural_network(x, 𝐕, 𝐰, φ, g) = 𝐰 ⋅ map(𝐯ⱼ -> g(𝐯ⱼ ⋅ φ(x)), 𝐕)
 ~~~
 
-Every character that `JuliaMono` supports (which is *a lot* can be used in
-code).
+Every character that `JuliaMono` supports (which is *a lot*) can be used in
+code.
 
 # References
