@@ -13,4 +13,6 @@ manuscript-metadata.json
 .~lock*
 appendix/*.pdf
 pandoc-cross*
+pandoc-*
+tecto*
 .typesetter
