@@ -180,7 +180,7 @@ neural network from the [beautiful algorithms][ba] repository:
 
 [ba]: (https://github.com/mossr/BeautifulAlgorithms.jl/blob/master/src/neural_network_one_liner.jl)
 
-~~~ md
+~~~ julia
 neural_network(x, 𝐕, 𝐰, φ, g) = 𝐰 ⋅ map(𝐯ⱼ -> g(𝐯ⱼ ⋅ φ(x)), 𝐕)
 ~~~
 
