@@ -77,6 +77,7 @@ updated.
 The `metadata.json` file provided with this template is reasonably complete, but
 the full format is explained in the Supp. Mat. on the metadata specification.
 From the website, Supp. Mat. can be accessed at the very bottom of the page.
+
 # References management
 
 The references are managed by `pandoc`. References *must* be stored in a
