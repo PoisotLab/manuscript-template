@@ -195,4 +195,11 @@ neural_network(x, 𝐕, 𝐰, φ, g) = 𝐰 ⋅ map(𝐯ⱼ -> g(𝐯ⱼ ⋅ φ(
 Every character that `JuliaMono` supports (which is *a lot*) can be used
 in code.
 
+# Suppl. Mat.
+
+The supplementary material *must* be in markdown files stored in
+`appendix`, and *must* have a front-matter with `order` (a number giving
+the order of the supp. mat. document) and `name` (a string giving the
+name of the supp. mat.).
+
 # References

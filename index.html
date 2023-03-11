@@ -511,6 +511,12 @@ manuscripts using markdown and github actions</div>
             class="sourceCode julia"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">neural_network</span>(x, 𝐕, 𝐰, <span class="cn">φ</span>, g) <span class="op">=</span> 𝐰 <span class="op">⋅</span> <span class="fu">map</span>(𝐯ⱼ <span class="op">-&gt;</span> <span class="fu">g</span>(𝐯ⱼ <span class="op">⋅</span> <span class="fu">φ</span>(x)), 𝐕)</span></code></pre></div>
             <p>Every character that <code>JuliaMono</code> supports
             (which is <em>a lot</em>) can be used in code.</p>
+            <h1 id="suppl.-mat.">Suppl. Mat.</h1>
+            <p>The supplementary material <em>must</em> be in markdown
+            files stored in <code>appendix</code>, and <em>must</em>
+            have a front-matter with <code>order</code> (a number giving
+            the order of the supp. mat. document) and <code>name</code>
+            (a string giving the name of the supp. mat.).</p>
             <h1 class="unnumbered" id="references">References</h1>
             <div id="refs"
             class="references csl-bib-body hanging-indent"
