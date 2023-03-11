@@ -1,5 +1,8 @@
 name: Compile the document
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
