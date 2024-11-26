@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         julia-version: [1.8]
-        typesetter-version: [0.0.17]
+        typesetter-version: [0.0.18]
     steps:
       - uses: actions/checkout@v2
       - name: Julia ${{ matrix.julia-version }}
