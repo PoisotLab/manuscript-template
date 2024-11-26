@@ -47,7 +47,7 @@ jobs:
           message: ${{ steps.word-count.outputs.count }}
       - name: Save artifacts
         if: always()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v4
         with:
           name: "dist"
           path: dist
@@ -57,9 +57,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Download dist folder
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: "dist"
           path: dist
